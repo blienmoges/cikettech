@@ -1,0 +1,12 @@
+node_modules
+.env
+.env.local
+data.sqlite
+data.sqlite-journal
+data.sqlite-wal
+data.sqlite-shm
+uploads
+backups
+coverage
+.git
+*.md

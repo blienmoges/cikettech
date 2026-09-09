@@ -1,0 +1,38 @@
+# Local/self-hosted orchestration for both CIKETTECH services. For a first
+# run, copy cikettech-backend/.env.example to cikettech-backend/.env and set
+# a real JWT_SECRET before running `docker compose up --build`.
+services:
+  backend:
+    build:
+      context: ./cikettech-backend
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./cikettech-backend/.env
+    environment:
+      - ALLOWED_ORIGINS=http://localhost:3000
+      # Named volumes must be mounted on directories, not files — point the
+      # database at a file inside the mounted db/ directory instead of the
+      # default ./data.sqlite path.
+      - DB_PATH=/app/db/data.sqlite
+    volumes:
+      - backend_db:/app/db
+      - backend_uploads:/app/uploads
+      - backend_backups:/app/backups
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./cikettech-website
+      args:
+        NEXT_PUBLIC_API_BASE: http://localhost:4000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  backend_db:
+  backend_uploads:
+  backend_backups:

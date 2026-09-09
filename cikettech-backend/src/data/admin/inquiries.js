@@ -1,0 +1,68 @@
+const inquiries = [
+  {
+    id: "8492",
+    name: "Elena Sokolov",
+    initials: "ES",
+    org: "Global Data Corp",
+    type: "Technical Support",
+    product: "Cloud Infrastructure v3",
+    date: "Oct 24, 2023",
+    time: "09:42 AM",
+    status: "New",
+    email: "elena.sokolov@globaldatacorp.com",
+    phone: "+1 (555) 019-2834",
+    subject: "System Kernel Panic during Routine Data Migration",
+    message:
+      "We are experiencing a critical issue with our newly deployed Cloud Infrastructure v3 units. During a scheduled data migration, the primary node suffered a kernel panic and initiated an automated failsafe shutdown. Could a senior technical engineer review this as soon as possible?",
+  },
+  {
+    id: "8491",
+    name: "Marcus Reid",
+    initials: "MR",
+    org: "FinTech Solutions",
+    type: "Sales Inquiry",
+    product: "Enterprise License",
+    date: "Oct 23, 2023",
+    time: "14:15 PM",
+    status: "Reviewed",
+    email: "marcus.reid@fintechsolutions.com",
+    phone: "+1 (555) 271-9048",
+    subject: "Enterprise License Pricing for 500+ Seats",
+    message:
+      "We're evaluating your platform for a company-wide rollout and would like pricing details for an enterprise license covering approximately 500 seats, plus information on volume discounts.",
+  },
+  {
+    id: "8488",
+    name: "Sarah Jenkins",
+    initials: "SJ",
+    org: "Logistics Hub",
+    type: "Feature Request",
+    product: "Analytics Dashboard",
+    date: "Oct 21, 2023",
+    time: "11:30 AM",
+    status: "Closed",
+    email: "sarah.jenkins@logisticshub.com",
+    phone: "+1 (555) 384-6621",
+    subject: "Custom Export Options for Analytics Dashboard",
+    message:
+      "It would be very helpful if the Analytics Dashboard supported scheduled CSV exports to a shared drive. Is this something on your roadmap?",
+  },
+  {
+    id: "8485",
+    name: "Javier Perez",
+    initials: "JP",
+    org: "Nexus Systems",
+    type: "Billing Inquiry",
+    product: "N/A",
+    date: "Oct 20, 2023",
+    time: "16:45 PM",
+    status: "New",
+    email: "javier.perez@nexussystems.com",
+    phone: "+1 (555) 902-1157",
+    subject: "Duplicate Charge on Last Invoice",
+    message:
+      "Our last invoice appears to include a duplicate charge for the same billing period. Could someone from billing take a look and issue a correction if needed?",
+  },
+];
+
+module.exports = inquiries;
