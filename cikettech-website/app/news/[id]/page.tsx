@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter, SiteHeader } from "../../components/site-chrome";
@@ -42,10 +43,17 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ id
         <section className="legal-content">
           <div
             className="catalog-image"
-            style={{ backgroundImage: `url(${resolveMediaUrl(article.image)})`, height: 360, borderRadius: 12 }}
-            role="img"
-            aria-label={article.title}
-          />
+            style={{ height: 360, borderRadius: 12, overflow: "hidden" }}
+          >
+            <Image
+              src={resolveMediaUrl(article.image)}
+              alt={article.title}
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="100vw"
+              unoptimized={article.image.includes("wikimedia.org")}
+            />
+          </div>
         </section>
       )}
 

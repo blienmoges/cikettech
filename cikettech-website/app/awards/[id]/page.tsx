@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter, SiteHeader } from "../../components/site-chrome";
@@ -44,10 +45,17 @@ export default async function AwardDetailPage({ params }: { params: Promise<{ id
         <section className="legal-content">
           <div
             className="catalog-image"
-            style={{ backgroundImage: `url(${resolveMediaUrl(award.image)})`, height: 360, borderRadius: 12 }}
-            role="img"
-            aria-label={award.name}
-          />
+            style={{ height: 360, borderRadius: 12, overflow: "hidden" }}
+          >
+            <Image
+              src={resolveMediaUrl(award.image)}
+              alt={award.name}
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="100vw"
+              unoptimized={award.image.includes("wikimedia.org")}
+            />
+          </div>
         </section>
       )}
 

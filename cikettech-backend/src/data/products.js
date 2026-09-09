@@ -134,7 +134,7 @@ const products = [
     listImage:
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=85",
     homeImage:
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1100&q=80",
     theme: "blue",
     features: [
       {
@@ -170,7 +170,7 @@ const products = [
     ],
     gallery: [
       "https://commons.wikimedia.org/wiki/Special:FilePath/Public_address_speaker_in_Eschelbronn_07.JPG?width=1200",
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
       "https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=800",
     ],
@@ -233,7 +233,7 @@ const products = [
       "https://commons.wikimedia.org/wiki/Special:FilePath/Digital_tally_counter.jpg?width=1200",
       "https://commons.wikimedia.org/wiki/Special:FilePath/USB_seven_segment_display_module_(48158381686).jpg?width=800",
       "https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=800",
-      "https://images.unsplash.com/photo-1508385082359-f5f2f7d1c7a7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80",
     ],
     specs: [
       { label: "Power Supply", value: "12–24V DC" },

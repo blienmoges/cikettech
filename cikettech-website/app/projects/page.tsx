@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import { resolveMediaUrl } from "../lib/api";
@@ -31,12 +32,16 @@ export default async function ProjectsPage() {
           {projects.map((project) => (
             <article className="catalog-card" key={project.id}>
               {project.image && (
-                <div
-                  className="catalog-image"
-                  style={{ backgroundImage: `url(${resolveMediaUrl(project.image)})` }}
-                  role="img"
-                  aria-label={project.title}
-                />
+                <div className="catalog-image">
+                  <Image
+                    src={resolveMediaUrl(project.image)}
+                    alt={project.title}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    unoptimized={project.image.includes("wikimedia.org")}
+                  />
+                </div>
               )}
               <div className="catalog-content">
                 <p className="legal-updated">Updated {project.updated}</p>

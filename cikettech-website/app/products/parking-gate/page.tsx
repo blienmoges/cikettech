@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SiteHeader, SiteFooter } from "../../components/site-chrome";
 import QuoteForm from "../QuoteForm";
@@ -45,12 +46,17 @@ export default async function ParkingGatePage() {
           </div>
         </div>
 
-        <div
-          className="product-hero-image"
-          role="img"
-          aria-label={product.name}
-          style={{ backgroundImage: `url('${product.heroImage}')` }}
-        />
+        <div className="product-hero-image">
+          <Image
+            src={product.heroImage}
+            alt={product.name}
+            fill
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 900px) 100vw, 640px"
+            unoptimized={product.heroImage.includes("wikimedia.org")}
+            priority
+          />
+        </div>
       </section>
 
       <section className="capabilities-section">
@@ -100,10 +106,28 @@ export default async function ParkingGatePage() {
           <h2>{t(locale, "productGallery")}</h2>
         </div>
         <div className="gallery-grid">
-          <div className="gallery-large" style={{ backgroundImage: `url('${product.gallery[0]}')` }} />
+          <div className="gallery-large">
+            <Image
+              src={product.gallery[0]}
+              alt={`${product.name} gallery photo 1`}
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 900px) 100vw, 640px"
+              unoptimized={product.gallery[0].includes("wikimedia.org")}
+            />
+          </div>
           <div>
-            {product.gallery.slice(1).map((src) => (
-              <div key={src} className="gallery-small" style={{ backgroundImage: `url('${src}')` }} />
+            {product.gallery.slice(1).map((src, i) => (
+              <div key={src} className="gallery-small">
+                <Image
+                  src={src}
+                  alt={`${product.name} gallery photo ${i + 2}`}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="360px"
+                  unoptimized={src.includes("wikimedia.org")}
+                />
+              </div>
             ))}
           </div>
         </div>

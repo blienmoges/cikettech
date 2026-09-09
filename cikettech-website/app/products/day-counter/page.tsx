@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/site-chrome";
 import QuoteForm from "../QuoteForm";
@@ -86,12 +87,17 @@ export default async function DayCounterPage() {
             </Link>
           </div>
         </div>
-        <div
-          className="product-hero-image"
-          role="img"
-          aria-label={product.name}
-          style={{ backgroundImage: `url('${product.heroImage}')` }}
-        />
+        <div className="product-hero-image">
+          <Image
+            src={product.heroImage}
+            alt={product.name}
+            fill
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 900px) 100vw, 640px"
+            unoptimized={product.heroImage.includes("wikimedia.org")}
+            priority
+          />
+        </div>
       </section>
 
       <section className="capabilities-section">
@@ -111,13 +117,16 @@ export default async function DayCounterPage() {
               </div>
               <h3>{wide.title}</h3>
               <p>{wide.description}</p>
-              <div
-                className="cap-image tall"
-                style={{
-                  backgroundImage:
-                    "url('https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=900')",
-                }}
-              />
+              <div className="cap-image tall">
+                <Image
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=900"
+                  alt="Controller board close-up"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 900px) 100vw, 480px"
+                  unoptimized
+                />
+              </div>
             </article>
           )}
 
@@ -144,15 +153,16 @@ export default async function DayCounterPage() {
             );
           })}
 
-          <div
-            className="cap-image-tile"
-            role="img"
-            aria-label="Smart Day Counter enclosure"
-            style={{
-              backgroundImage:
-                "url('https://commons.wikimedia.org/wiki/Special:FilePath/Digital_tally_counter.jpg?width=600')",
-            }}
-          />
+          <div className="cap-image-tile">
+            <Image
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Digital_tally_counter.jpg?width=600"
+              alt="Smart Day Counter enclosure"
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 900px) 100vw, 320px"
+              unoptimized
+            />
+          </div>
         </div>
       </section>
 
@@ -187,10 +197,28 @@ export default async function DayCounterPage() {
           <h2>{t(locale, "productGallery")}</h2>
         </div>
         <div className="gallery-grid">
-          <div className="gallery-large" style={{ backgroundImage: `url('${product.gallery[0]}')` }} />
+          <div className="gallery-large">
+            <Image
+              src={product.gallery[0]}
+              alt={`${product.name} gallery photo 1`}
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 900px) 100vw, 640px"
+              unoptimized={product.gallery[0].includes("wikimedia.org")}
+            />
+          </div>
           <div>
-            {product.gallery.slice(1).map((src) => (
-              <div key={src} className="gallery-small" style={{ backgroundImage: `url('${src}')` }} />
+            {product.gallery.slice(1).map((src, i) => (
+              <div key={src} className="gallery-small">
+                <Image
+                  src={src}
+                  alt={`${product.name} gallery photo ${i + 2}`}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="360px"
+                  unoptimized={src.includes("wikimedia.org")}
+                />
+              </div>
             ))}
           </div>
         </div>

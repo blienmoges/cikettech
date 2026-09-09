@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import { resolveMediaUrl } from "../lib/api";
@@ -31,12 +32,16 @@ export default async function AwardsPage() {
           {awards.map((award) => (
             <article className="catalog-card" key={award.id}>
               {award.image && (
-                <div
-                  className="catalog-image"
-                  style={{ backgroundImage: `url(${resolveMediaUrl(award.image)})` }}
-                  role="img"
-                  aria-label={award.name}
-                />
+                <div className="catalog-image">
+                  <Image
+                    src={resolveMediaUrl(award.image)}
+                    alt={award.name}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    unoptimized={award.image.includes("wikimedia.org")}
+                  />
+                </div>
               )}
               <div className="catalog-content">
                 <p className="legal-updated">

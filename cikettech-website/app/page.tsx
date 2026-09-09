@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "./components/site-chrome";
 import { apiGet } from "./lib/server-content";
@@ -83,12 +84,15 @@ export default async function Home() {
         <div className="product-grid">
           {data.featuredProducts.map((product) => (
             <article className="product-card" key={product.slug}>
-              <div
-                className="product-image"
-                style={{ backgroundImage: `url(${product.image})` }}
-                role="img"
-                aria-label={product.title}
-              />
+              <div className="product-image">
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
               <div className="product-content">
                 <h3>{product.title}</h3>
                 <p>{product.description}</p>

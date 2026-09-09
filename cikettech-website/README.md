@@ -95,7 +95,15 @@ client-rendered instead, since user data needs auth on reads too.
 - Dark mode is scoped to the admin portal only — the public site's ~400
   one-off hex colors across bespoke per-page styling weren't worth the risk
   of a blind global conversion.
-- No `next/image` optimization on catalog/gallery images — they render as
-  plain CSS background images.
+- Public-facing photos (catalog cards, home/about/product hero and gallery
+  images) use `next/image` for optimization, responsive sizing, and lazy
+  loading. Admin-portal thumbnails (list tables, form previews) and a few
+  static decorative backgrounds baked into the CSS (e.g. the home hero and
+  about-page hero banners) were deliberately left as plain CSS background
+  images — lower value for the effort given the time available.
+- Wikimedia-hosted photos are rendered `unoptimized` (served directly,
+  bypassing Next's image-optimization proxy) — Wikimedia's abuse mitigation
+  blocks/rate-limits the generic server-side fetch Next's optimizer makes,
+  while a normal browser request works fine.
 - No automated tests for the frontend (see `cikettech-backend` for the API
   test suite).

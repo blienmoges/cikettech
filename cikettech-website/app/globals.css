@@ -315,6 +315,7 @@ button {
 }
 
 .product-image {
+  position: relative;
   min-height: 328px;
   background-position: center;
   background-size: cover;
@@ -581,6 +582,7 @@ button {
 }
 
 .catalog-image {
+  position: relative;
   min-height: 328px;
   background-position: center;
   background-size: cover;
@@ -1337,8 +1339,8 @@ button {
 }
 
 .gallery-grid { display: grid; grid-template-columns: 1fr 360px; gap: 12px; align-items: start; }
-.gallery-small { min-height: 120px; border-radius: 10px; background-size: cover; background-position: center; border: 1px solid #eef4fb; }
-.gallery-large { border-radius: 12px; min-height: 320px; background-size: cover; background-position: center; border: 1px solid #eef4fb; }
+.gallery-small { position: relative; overflow: hidden; min-height: 120px; border-radius: 10px; background-size: cover; background-position: center; border: 1px solid #eef4fb; }
+.gallery-large { position: relative; overflow: hidden; border-radius: 12px; min-height: 320px; background-size: cover; background-position: center; border: 1px solid #eef4fb; }
 
 /* Assistant page: dark navbar, wide chat card, and minimal footer */
 .assistant-page {
@@ -1703,6 +1705,7 @@ button {
 
 /* team photo visual treatment */
 .team-photo {
+  position: relative;
   min-height: 260px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -2067,6 +2070,8 @@ button {
 }
 
 .product-hero-image {
+  position: relative;
+  overflow: hidden;
   min-height: 360px;
   border-radius: 12px;
   background:
@@ -2117,6 +2122,8 @@ button {
 }
 
 .cap-image {
+  position: relative;
+  overflow: hidden;
   margin-top: 12px;
   height: 96px;
   border-radius: 8px;
@@ -2318,6 +2325,8 @@ button {
 }
 
 .cap-image-tile {
+  position: relative;
+  overflow: hidden;
   min-height: 120px;
   border-radius: 12px;
   border: 1px solid #eef4fb;

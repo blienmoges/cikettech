@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import { resolveMediaUrl } from "../lib/api";
@@ -31,12 +32,16 @@ export default async function NewsPage() {
           {articles.map((article) => (
             <article className="catalog-card" key={article.id}>
               {article.image && (
-                <div
-                  className="catalog-image"
-                  style={{ backgroundImage: `url(${resolveMediaUrl(article.image)})` }}
-                  role="img"
-                  aria-label={article.title}
-                />
+                <div className="catalog-image">
+                  <Image
+                    src={resolveMediaUrl(article.image)}
+                    alt={article.title}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    unoptimized={article.image.includes("wikimedia.org")}
+                  />
+                </div>
               )}
               <div className="catalog-content">
                 <p className="legal-updated">{article.date}</p>

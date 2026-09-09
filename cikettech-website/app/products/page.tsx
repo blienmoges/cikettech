@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import { apiGet } from "../lib/server-content";
@@ -43,12 +44,15 @@ export default async function ProductsPage() {
             const href = `/products/${product.slug}`;
             return (
               <article className="catalog-card" key={product.slug}>
-                <div
-                  className="catalog-image"
-                  style={{ backgroundImage: `url(${product.image})` }}
-                  role="img"
-                  aria-label={product.name}
-                />
+                <div className="catalog-image">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
                 <div className="catalog-content">
                   <h2>{product.name}</h2>
                   <p>{product.summary}</p>

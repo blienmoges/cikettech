@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import { apiGet } from "../lib/server-content";
@@ -137,12 +138,15 @@ export default async function AboutPage() {
         <div className="team-grid">
           {data.team.map((member) => (
             <figure className="team-card" key={member.name}>
-              <div
-                className="team-photo"
-                style={{ backgroundImage: `url(${member.image})`, backgroundSize: "cover" }}
-                role="img"
-                aria-label={member.name}
-              />
+              <div className="team-photo">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              </div>
               <figcaption>
                 <strong>{member.name}</strong>
                 <div className="muted">{member.role}</div>
@@ -162,12 +166,16 @@ export default async function AboutPage() {
               {awards.slice(0, 3).map((award) => (
                 <article className="catalog-card" key={award.id}>
                   {award.image && (
-                    <div
-                      className="catalog-image"
-                      style={{ backgroundImage: `url(${award.image})` }}
-                      role="img"
-                      aria-label={award.name}
-                    />
+                    <div className="catalog-image">
+                      <Image
+                        src={award.image}
+                        alt={award.name}
+                        fill
+                        style={{ objectFit: "cover" }}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        unoptimized={award.image.includes("wikimedia.org")}
+                      />
+                    </div>
                   )}
                   <div className="catalog-content">
                     <p className="legal-updated">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/site-chrome";
 import DeploymentQuoteForm from "./DeploymentQuoteForm";
@@ -74,10 +75,16 @@ export default async function BiometricAttendancePage() {
               </div>
               <h3>{main.title}</h3>
               <p>{main.description}</p>
-              <div
-                className="cap-image tall"
-                style={{ backgroundImage: `url('${product.heroImage}')` }}
-              />
+              <div className="cap-image tall">
+                <Image
+                  src={product.heroImage}
+                  alt={product.name}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 900px) 100vw, 480px"
+                  unoptimized={product.heroImage.includes("wikimedia.org")}
+                />
+              </div>
             </article>
           )}
 
@@ -160,10 +167,28 @@ export default async function BiometricAttendancePage() {
           <h2>{t(locale, "productGallery")}</h2>
         </div>
         <div className="gallery-grid">
-          <div className="gallery-large" style={{ backgroundImage: `url('${product.gallery[0]}')` }} />
+          <div className="gallery-large">
+            <Image
+              src={product.gallery[0]}
+              alt={`${product.name} gallery photo 1`}
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 900px) 100vw, 640px"
+              unoptimized={product.gallery[0].includes("wikimedia.org")}
+            />
+          </div>
           <div>
-            {product.gallery.slice(1).map((src) => (
-              <div key={src} className="gallery-small" style={{ backgroundImage: `url('${src}')` }} />
+            {product.gallery.slice(1).map((src, i) => (
+              <div key={src} className="gallery-small">
+                <Image
+                  src={src}
+                  alt={`${product.name} gallery photo ${i + 2}`}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="360px"
+                  unoptimized={src.includes("wikimedia.org")}
+                />
+              </div>
             ))}
           </div>
         </div>

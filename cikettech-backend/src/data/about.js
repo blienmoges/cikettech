@@ -149,8 +149,8 @@ const content = {
 
 const teamImages = [
   "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1545996124-1b1b29b6a3d9?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1545266740-0b6a4f8f1a7f?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80",
   "https://images.unsplash.com/photo-1544006659-f0b21884ce1d?auto=format&fit=crop&w=600&q=80",
 ];
 
