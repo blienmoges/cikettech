@@ -64,6 +64,10 @@ app.use((req, res, next) => {
 const uploadsDir = process.env.UPLOADS_DIR || path.join(__dirname, "..", "uploads");
 app.use("/uploads", express.static(uploadsDir));
 
+app.get("/", (req, res) => {
+  res.json({ name: "CIKETTECH API", status: "ok", health: "/api/health" });
+});
+
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
 });
