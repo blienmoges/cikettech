@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node .next/standalone/server.js",
     "lint": "eslint",
     "audit:perf": "lighthouse http://localhost:3000 --preset=desktop --output=html --output-path=./lighthouse-desktop.html",
     "audit:perf:mobile": "lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-mobile.html"
