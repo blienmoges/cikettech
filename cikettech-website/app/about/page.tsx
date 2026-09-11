@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
-import { apiGet } from "../lib/server-content";
+import { apiGet, getTranslations } from "../lib/server-content";
 import { getLocale } from "../lib/locale";
 import { t } from "../lib/i18n";
 
@@ -38,10 +38,11 @@ type AboutData = {
 type AwardSummary = { id: string; name: string; org: string; date: string; image?: string };
 
 export default async function AboutPage() {
-  const [data, awards, locale] = await Promise.all([
+  const [data, awards, locale, translations] = await Promise.all([
     apiGet<AboutData>("/api/about"),
     apiGet<AwardSummary[]>("/api/awards"),
     getLocale(),
+    getTranslations(),
   ]);
 
   return (
@@ -51,14 +52,14 @@ export default async function AboutPage() {
       <section className="about-hero">
         <div className="about-hero-copy">
           <p className="dark-breadcrumb">
-            <Link href="/">{t(locale, "home")}</Link> <span>/</span> {t(locale, "about")}
+            <Link href="/">{t(locale, "home", translations)}</Link> <span>/</span> {t(locale, "about", translations)}
           </p>
           <p className="innovation-pill">{data.hero.eyebrow}</p>
           <h1>{data.hero.heading}</h1>
           <p>{data.hero.body}</p>
           <div style={{ marginTop: 28 }}>
             <Link className="primary-button" href="/contact">
-              {t(locale, "contactUs")}
+              {t(locale, "contactUs", translations)}
             </Link>
           </div>
         </div>
@@ -183,7 +184,7 @@ export default async function AboutPage() {
                     </p>
                     <h2>{award.name}</h2>
                     <Link className="text-action" href={`/awards/${award.id}`}>
-                      {t(locale, "viewAward")}
+                      {t(locale, "viewAward", translations)}
                     </Link>
                   </div>
                 </article>
@@ -191,7 +192,7 @@ export default async function AboutPage() {
             </div>
             <div style={{ textAlign: "center", marginTop: 28 }}>
               <Link className="secondary-button" href="/awards">
-                {t(locale, "viewAllAwards")}
+                      {t(locale, "viewAllAwards", translations)}
               </Link>
             </div>
           </>
@@ -204,7 +205,7 @@ export default async function AboutPage() {
         <h2>{data.sections.ctaHeading}</h2>
         <p>{data.sections.ctaBody}</p>
         <Link className="primary-button" href="/contact">
-          {t(locale, "contactUs")}
+          {t(locale, "contactUs", translations)}
         </Link>
       </section>
 

@@ -37,10 +37,62 @@ const deviceBreakdown = [
   { label: "Tablet", pct: "3% of traffic" },
 ];
 
-function getAnalytics(range) {
-  // `range` (7D/30D/3M/Custom) would select a different dataset with a real analytics
-  // provider. All ranges return the same demo dataset for now.
-  return { range: range || "30D", kpis, traffic, engagementByCategory, mostViewedPages, languageUsage, deviceBreakdown };
+const { db } = require("../../db");
+
+function records(collection) {
+  return db.prepare(`SELECT data FROM "${collection}"`).all().map((row) => JSON.parse(row.data));
+}
+
+function sinceFor(range) {
+  const days = range === "7D" ? 7 : range === "3M" ? 90 : 30;
+  return Date.now() - days * 24 * 60 * 60 * 1000;
+}
+
+function getAnalytics(range = "30D") {
+  const selectedRange = ["7D", "30D", "3M"].includes(range) ? range : "30D";
+  const since = sinceFor(selectedRange);
+  const events = records("analyticsEvents").filter((event) => Date.parse(event.createdAt) >= since);
+  const inquiries = records("inquiries").filter((item) => Date.parse(item.createdAt || item.date) >= since);
+  const pageviews = events.filter((event) => event.type === "pageview");
+  const visitors = new Set(pageviews.map((event) => event.visitorId).filter(Boolean));
+  const buckets = selectedRange === "7D" ? 7 : selectedRange === "3M" ? 12 : 10;
+  const bucketSize = (Date.now() - since) / buckets;
+  const trafficPoints = Array.from({ length: buckets }, (_, index) => {
+    const start = since + index * bucketSize;
+    return pageviews.filter((event) => {
+      const time = Date.parse(event.createdAt);
+      return time >= start && time < start + bucketSize;
+    }).length;
+  });
+  const labels = trafficPoints.map((_, index) => `${index + 1}`);
+  const performance = records("performanceMetrics").filter((item) => Date.parse(item.createdAt) >= since);
+  const vitals = ["lcp", "cls", "inp"].map((metric) => {
+    const values = performance.map((item) => item.metrics?.[metric]).filter(Number.isFinite);
+    return { metric, samples: values.length, average: values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : null };
+  });
+  const pageCounts = new Map();
+  pageviews.forEach((event) => pageCounts.set(event.path, (pageCounts.get(event.path) || 0) + 1));
+  const mostViewedPages = [...pageCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([path, views]) => ({ path, views: String(views) }));
+  const deviceCounts = new Map();
+  pageviews.forEach((event) => deviceCounts.set(event.device || "Desktop", (deviceCounts.get(event.device || "Desktop") || 0) + 1));
+  return {
+    range: selectedRange,
+    kpis: [
+      { label: "Total Visitors", value: String(visitors.size), delta: "live", up: true },
+      { label: "Page Views", value: String(pageviews.length), delta: "live", up: true },
+      { label: "Customer Inquiries", value: String(inquiries.length), delta: "live", up: true },
+      { label: "Quote Requests", value: String(inquiries.filter((item) => item.type === "Quote").length), delta: "live", up: true },
+    ],
+    traffic: { months: labels, points: trafficPoints },
+    engagementByCategory: [...pageCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([label, value]) => ({ label, value })),
+    mostViewedPages,
+    languageUsage: [
+      { label: "English", pct: pageviews.length ? Math.round((pageviews.filter((e) => e.locale !== "am").length / pageviews.length) * 100) : 0 },
+      { label: "Amharic", pct: pageviews.length ? Math.round((pageviews.filter((e) => e.locale === "am").length / pageviews.length) * 100) : 0 },
+    ],
+    deviceBreakdown: ["Desktop", "Mobile", "Tablet"].map((label) => ({ label, pct: `${pageviews.length ? Math.round(((deviceCounts.get(label) || 0) / pageviews.length) * 100) : 0}% of traffic` })),
+    vitals,
+  };
 }
 
 module.exports = { getAnalytics };

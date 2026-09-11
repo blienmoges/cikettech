@@ -11,7 +11,8 @@ async function getToken() {
 
 describe("admin products CRUD", () => {
   test("list returns the seeded products", async () => {
-    const res = await request(app).get("/api/admin/products");
+    const token = await getToken();
+    const res = await request(app).get("/api/admin/products").set("Authorization", `Bearer ${token}`);
     expect(res.status).toBe(200);
     expect(Array.isArray(res.body)).toBe(true);
     expect(res.body.length).toBeGreaterThan(0);
@@ -30,7 +31,7 @@ describe("admin products CRUD", () => {
     const id = created.body.id;
     expect(id).toBeTruthy();
 
-    const fetched = await request(app).get(`/api/admin/products/${id}`);
+    const fetched = await auth(request(app).get(`/api/admin/products/${id}`));
     expect(fetched.status).toBe(200);
     expect(fetched.body.name).toBe("Test Lifecycle Widget");
 
@@ -42,7 +43,7 @@ describe("admin products CRUD", () => {
     const deleted = await auth(request(app).delete(`/api/admin/products/${id}`));
     expect(deleted.status).toBe(200);
 
-    const afterDelete = await request(app).get(`/api/admin/products/${id}`);
+    const afterDelete = await auth(request(app).get(`/api/admin/products/${id}`));
     expect(afterDelete.status).toBe(404);
   });
 
@@ -59,15 +60,20 @@ describe("admin products CRUD", () => {
 });
 
 describe("settings", () => {
-  test("reading settings is public, writing requires a token", async () => {
+  test("reading and writing settings require a token", async () => {
     const get = await request(app).get("/api/admin/settings");
-    expect(get.status).toBe(200);
-    expect(get.body.email).toBeTruthy();
+    expect(get.status).toBe(401);
+
+    const token = await getToken();
+    const authenticatedGet = await request(app)
+      .get("/api/admin/settings")
+      .set("Authorization", `Bearer ${token}`);
+    expect(authenticatedGet.status).toBe(200);
+    expect(authenticatedGet.body.email).toBeTruthy();
 
     const unauthedPut = await request(app).put("/api/admin/settings").send({ name: "Hacker" });
     expect(unauthedPut.status).toBe(401);
 
-    const token = await getToken();
     const authedPut = await request(app)
       .put("/api/admin/settings")
       .set("Authorization", `Bearer ${token}`)

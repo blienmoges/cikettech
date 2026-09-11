@@ -32,6 +32,7 @@ function createInquiry({ name, org, type, product, email, phone, subject, messag
     product: product || "N/A",
     date: now.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
     time: now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }),
+    createdAt: now.toISOString(),
     status: "New",
     email,
     phone: phone || "N/A",

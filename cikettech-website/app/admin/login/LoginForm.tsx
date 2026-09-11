@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { MailIcon, LockIcon, EyeIcon, EyeOffIcon, ArrowRightIcon } from "../../components/admin-icons";
-import { API_BASE, setAdminToken } from "../../lib/api";
+import { setAdminToken } from "../../lib/api";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function LoginForm() {
     setError("");
     setSubmitting(true);
     try {
-      const res = await fetch(`${API_BASE}/api/admin/auth/login`, {
+      const res = await fetch("/api/admin/session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

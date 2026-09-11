@@ -9,7 +9,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:perf": "lighthouse http://localhost:3000 --preset=desktop --output=html --output-path=./lighthouse-desktop.html",
+    "audit:perf:mobile": "lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-mobile.html"
   },
   "dependencies": {
     "next": "16.3.3",
@@ -24,6 +26,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.3",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "lighthouse": "^12.8.2"
   }
 }

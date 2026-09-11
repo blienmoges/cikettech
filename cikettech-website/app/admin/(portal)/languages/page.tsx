@@ -2,6 +2,7 @@ import { GlobeIcon } from "../../../components/admin-icons";
 import { StatusBadge } from "../AdminBadges";
 import { apiGet } from "../../../lib/server-content";
 import Link from "next/link";
+import TranslationEditor from "./TranslationEditor";
 
 export const metadata = {
   title: "Languages | CIKETTECH Admin",
@@ -11,6 +12,7 @@ export const metadata = {
 type Language = { code: string; name: string; status: string; description: string };
 type Breakdown = { key: string; label: string; href: string; total: number; enComplete: number; amComplete: number };
 type LanguagesData = { languages: Language[]; breakdown: Breakdown[] };
+type Translation = { key: string; context: string; en: string; am: string; status: string };
 
 function pct(done: number, total: number) {
   if (!total) return 100;
@@ -18,7 +20,10 @@ function pct(done: number, total: number) {
 }
 
 export default async function AdminLanguagesPage() {
-  const data = await apiGet<LanguagesData>("/api/admin/languages");
+  const [data, translations] = await Promise.all([
+    apiGet<LanguagesData>("/api/admin/languages"),
+    apiGet<Translation[]>("/api/admin/translations"),
+  ]);
 
   return (
     <>
@@ -83,14 +88,15 @@ export default async function AdminLanguagesPage() {
         </div>
       </div>
 
+      <TranslationEditor initialTranslations={translations} />
+
       <div className="admin-info-banner">
         <GlobeIcon />
         <div>
           <strong>About bilingual coverage</strong>
           <p>
             English and Amharic content is tracked per item across Products, News, Projects, Awards,
-            and the AI Knowledge Base. French and Arabic are reserved for future expansion and are
-            not yet enabled anywhere on the site.
+            and the AI Knowledge Base. Shared navigation and action labels can be edited above.
           </p>
         </div>
       </div>

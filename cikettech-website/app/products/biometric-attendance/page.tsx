@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/site-chrome";
 import DeploymentQuoteForm from "./DeploymentQuoteForm";
-import { apiGet } from "../../lib/server-content";
+import { apiGet, getTranslations } from "../../lib/server-content";
 import { getLocale } from "../../lib/locale";
 import { t } from "../../lib/i18n";
 
@@ -24,9 +24,10 @@ type ProductDetail = {
 };
 
 export default async function BiometricAttendancePage() {
-  const [product, locale] = await Promise.all([
+  const [product, locale, translations] = await Promise.all([
     apiGet<ProductDetail>("/api/products/biometric-attendance"),
     getLocale(),
+    getTranslations(),
   ]);
   const [main, matching, sync, integration] = product.features;
 
@@ -44,7 +45,7 @@ export default async function BiometricAttendancePage() {
           <p>{product.description}</p>
           <div className="hero-actions">
             <Link className="primary-button" href="#specs">
-              {t(locale, "technicalSpecs")}
+              {t(locale, "technicalSpecs", translations)}
             </Link>
             <Link className="secondary-button" href="#demo">
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -138,7 +139,7 @@ export default async function BiometricAttendancePage() {
 
       <section className="features-section">
         <div className="section-heading">
-          <h2>{t(locale, "idealApplicationsBenefits")}</h2>
+          <h2>{t(locale, "idealApplicationsBenefits", translations)}</h2>
         </div>
 
         <div className="capabilities-grid" style={{ gridTemplateColumns: "1fr 1fr" }}>
@@ -164,7 +165,7 @@ export default async function BiometricAttendancePage() {
 
       <section className="gallery-section">
         <div className="section-heading">
-          <h2>{t(locale, "productGallery")}</h2>
+          <h2>{t(locale, "productGallery", translations)}</h2>
         </div>
         <div className="gallery-grid">
           <div className="gallery-large">
@@ -196,7 +197,7 @@ export default async function BiometricAttendancePage() {
 
       <section id="specs" className="specs-section">
         <div className="section-heading">
-          <h2>{t(locale, "technicalSpecifications")}</h2>
+          <h2>{t(locale, "technicalSpecifications", translations)}</h2>
         </div>
         <div className="specs-table">
           {Array.from({ length: Math.ceil(product.specs.length / 2) }).map((_, rowIdx) => {

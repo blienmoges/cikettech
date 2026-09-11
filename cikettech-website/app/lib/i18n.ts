@@ -45,7 +45,14 @@ const dictionary = {
 } as const;
 
 type Key = keyof typeof dictionary;
+export type TranslationOverrides = Partial<Record<Key, { en: string; am: string }>>;
 
-export function t(locale: Locale, key: Key): string {
-  return dictionary[key][locale] ?? dictionary[key].en;
+export function t(locale: Locale, key: Key, overrides?: TranslationOverrides): string {
+  return overrides?.[key]?.[locale] ?? dictionary[key][locale] ?? dictionary[key].en;
+}
+
+export function toTranslationOverrides(rows: { key: string; en: string; am: string }[]): TranslationOverrides {
+  return Object.fromEntries(
+    rows.filter((row) => row.key in dictionary).map((row) => [row.key, { en: row.en, am: row.am }])
+  ) as TranslationOverrides;
 }

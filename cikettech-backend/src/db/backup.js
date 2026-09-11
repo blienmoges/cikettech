@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { db } = require("./index");
 
-const BACKUP_DIR = path.join(__dirname, "..", "..", "backups");
+const BACKUP_DIR = process.env.BACKUP_DIR || path.join(__dirname, "..", "..", "backups");
 const MAX_BACKUPS = 14; // keep the last 14 (e.g. two weeks at one backup/day)
 
 function backupDatabase() {

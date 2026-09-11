@@ -39,6 +39,27 @@ runtime `-e`. If you run this alongside the backend in separate containers
 rendering happens inside this container, where `localhost` doesn't reach a
 sibling container.
 
+## Deployment (Vercel)
+
+Deployed on Vercel's free plan — no `render.yaml`/Docker needed there, Vercel
+builds Next.js natively.
+
+1. On [vercel.com](https://vercel.com), New Project → import the
+   `blienmoges/cikettech` GitHub repo.
+2. Set **Root Directory** to `cikettech-website`.
+3. Framework preset should auto-detect as Next.js; leave build/output
+   settings default.
+4. Add environment variables:
+   - `NEXT_PUBLIC_API_BASE` — your deployed backend's URL (e.g. the Render
+     backend's `https://cikettech-backend.onrender.com`).
+   - `NEXT_PUBLIC_SITE_URL` — this site's own URL, once Vercel assigns it
+     (used for metadata/sitemap).
+5. Deploy. `INTERNAL_API_BASE` (used for Docker Compose networking) isn't
+   needed on Vercel — server-side rendering there reaches the backend over
+   the public internet, same as the browser does.
+6. Once you have this site's URL, set it as `ALLOWED_ORIGINS` on the backend
+   (Render dashboard) so CORS allows it, then redeploy the backend.
+
 ## Admin portal
 
 Log in at `/admin/login`:

@@ -12,7 +12,7 @@ import {
   MobileIcon,
   TabletIcon,
 } from "../../../components/admin-icons";
-import { API_BASE } from "../../../lib/api";
+import { API_BASE, adminFetch } from "../../../lib/api";
 
 type AnalyticsData = {
   range: string;
@@ -22,6 +22,7 @@ type AnalyticsData = {
   mostViewedPages: { path: string; views: string }[];
   languageUsage: { label: string; pct: number }[];
   deviceBreakdown: { label: string; pct: string }[];
+  vitals?: { metric: string; samples: number; average: number | null }[];
 };
 
 const kpiIcons: Record<string, React.ComponentType> = {
@@ -48,15 +49,43 @@ function chartPath(points: number[], max: number, width: number, height: number)
 export default function AnalyticsClient({ initialData }: { initialData: AnalyticsData }) {
   const [range, setRange] = useState(initialData.range);
   const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function refresh(nextRange = range) {
+    setLoading(true);
+    setError("");
+    try {
+      const res = await adminFetch(`${API_BASE}/api/admin/analytics?range=${encodeURIComponent(nextRange)}`);
+      if (!res.ok) throw new Error();
+      setData(await res.json());
+    } catch {
+      setError("Could not refresh analytics.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
-    if (range === initialData.range) return;
-    fetch(`${API_BASE}/api/admin/analytics?range=${encodeURIComponent(range)}`)
-      .then((res) => res.json())
-      .then(setData)
-      .catch(() => {});
+    if (range !== initialData.range) refresh(range);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [range]);
+
+  function downloadCsv() {
+    const rows = [
+      ["Metric", "Value"],
+      ...data.kpis.map((item) => [item.label, item.value]),
+      ...data.mostViewedPages.map((item) => [`Page views: ${item.path}`, item.views]),
+      ...data.deviceBreakdown.map((item) => [`Device: ${item.label}`, item.pct]),
+    ];
+    const csv = rows.map((row) => row.map((value) => `"${String(value).replaceAll('"', '""')}"`).join(",")).join("\n");
+    const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `cikettech-analytics-${data.range.toLowerCase()}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  }
 
   const width = 640;
   const height = 220;
@@ -85,6 +114,26 @@ export default function AnalyticsClient({ initialData }: { initialData: Analytic
           >
             <CalendarIcon /> Custom
           </button>
+          <button type="button" className="admin-outline-btn compact" onClick={() => refresh()} disabled={loading}>
+            {loading ? "Refreshing..." : "Refresh"}
+          </button>
+          <button type="button" className="admin-outline-btn compact" onClick={downloadCsv}>
+            Export CSV
+          </button>
+        </div>
+      </div>
+
+      {error && <p className="admin-login-error">{error}</p>}
+
+      <div className="admin-card admin-vitals-card">
+        <div className="admin-card-head-row"><h2>Core Web Vitals</h2><span className="admin-hint">Real-user samples: {data.vitals?.reduce((sum, item) => sum + item.samples, 0) ?? 0}</span></div>
+        <div className="admin-vitals-grid">
+          {(data.vitals ?? []).map((item) => {
+            const limits: Record<string, number> = { lcp: 2500, cls: 0.1, inp: 200 };
+            const average = item.average;
+            const good = average !== null && average <= limits[item.metric];
+            return <div key={item.metric} className="admin-vital"><strong>{item.metric.toUpperCase()}</strong><span>{average === null ? "No data" : `${average.toFixed(item.metric === "cls" ? 3 : 0)}${item.metric === "cls" ? "" : " ms"}`}</span><small className={average === null ? "" : good ? "good" : "needs-attention"}>{average === null ? "Awaiting samples" : good ? "Good" : "Needs attention"}</small></div>;
+          })}
         </div>
       </div>
 
@@ -110,14 +159,9 @@ export default function AnalyticsClient({ initialData }: { initialData: Analytic
         <div className="admin-card admin-chart-card">
           <div className="admin-card-head-row">
             <h2>Traffic Overview</h2>
-            <button
-              type="button"
-              className="admin-icon-only"
-              aria-label="More options"
-              onClick={() => alert("Download CSV / Refresh chart (demo)")}
-            >
-              <DotsVerticalIcon />
-            </button>
+            <span className="admin-chart-actions" aria-label="Traffic chart actions">
+              <button type="button" className="admin-icon-only" aria-label="Refresh traffic chart" onClick={() => refresh()} disabled={loading}><DotsVerticalIcon /></button>
+            </span>
           </div>
           <div className="admin-chart-row">
             <div className="admin-chart-yaxis">
@@ -162,14 +206,9 @@ export default function AnalyticsClient({ initialData }: { initialData: Analytic
         <div className="admin-card admin-chart-card">
           <div className="admin-card-head-row">
             <h2>Engagement by Category</h2>
-            <button
-              type="button"
-              className="admin-icon-only"
-              aria-label="More options"
-              onClick={() => alert("Download CSV / Refresh chart (demo)")}
-            >
-              <DotsVerticalIcon />
-            </button>
+            <span className="admin-chart-actions" aria-label="Engagement chart actions">
+              <button type="button" className="admin-icon-only" aria-label="Refresh engagement chart" onClick={() => refresh()} disabled={loading}><DotsVerticalIcon /></button>
+            </span>
           </div>
           <div className="admin-chart-row">
             <div className="admin-chart-yaxis admin-chart-yaxis-tall">

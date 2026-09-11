@@ -73,6 +73,7 @@ export default function AIWidget() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [input, setInput] = useState("");
+  const [pending, setPending] = useState(false);
   const idRef = useRef(1);
   const scroller = useRef<HTMLDivElement | null>(null);
 
@@ -99,17 +100,20 @@ export default function AIWidget() {
   }, [messages]);
 
   async function send(text?: string) {
+    if (pending) return;
     const t = text ?? input.trim();
     if (!t) return;
     const userMsg: Msg = { id: idRef.current++, from: "user", text: t };
+    const history = messages.map(({ from, text }) => ({ from, text }));
     setMessages((m) => [...m, userMsg]);
     setInput("");
+    setPending(true);
 
     try {
       const res = await fetch(`${API_BASE}/api/assistant/message`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: t }),
+        body: JSON.stringify({ text: t, history }),
       });
       const data = await res.json();
       const botMsg: Msg = {
@@ -123,6 +127,8 @@ export default function AIWidget() {
         ...m,
         { id: idRef.current++, from: "bot", text: "Sorry, I'm having trouble connecting right now. Please try again shortly." },
       ]);
+    } finally {
+      setPending(false);
     }
   }
 
@@ -152,11 +158,19 @@ export default function AIWidget() {
               <div className={m.from === "bot" ? "ai-bubble ai-bot" : "ai-bubble ai-user"}>{m.text}</div>
             </div>
           ))}
+          {pending && (
+            <div className="ai-row ai-row-bot">
+              <div className="ai-avatar">
+                <BotIcon />
+              </div>
+              <div className="ai-bubble ai-bot ai-typing">Typing…</div>
+            </div>
+          )}
         </div>
 
         <div className="ai-card-suggestions">
           {suggestions.map((s) => (
-            <button key={s.label} className="ai-chip" onClick={() => send(s.label)}>
+            <button key={s.label} className="ai-chip" onClick={() => send(s.label)} disabled={pending}>
               <span className="ai-chip-icon">{suggestionIcons[s.topic]}</span>
               {s.label}
             </button>
@@ -169,8 +183,9 @@ export default function AIWidget() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') send(); }}
+            disabled={pending}
           />
-          <button className="ai-send" onClick={() => send()} aria-label="Send">
+          <button className="ai-send" onClick={() => send()} aria-label="Send" disabled={pending}>
             <SendIcon />
           </button>
         </footer>

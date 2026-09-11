@@ -5,7 +5,10 @@ const nextConfig: NextConfig = {
   // required by the multi-stage Dockerfile so the runtime image doesn't need
   // node_modules or the full source tree.
   output: "standalone",
+  compress: true,
   images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "commons.wikimedia.org" },

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { apiGet } from "../lib/server-content";
+import { apiGet, getTranslations } from "../lib/server-content";
 import { getLocale } from "../lib/locale";
 import { t } from "../lib/i18n";
 import LocaleToggle from "./LocaleToggle";
@@ -24,7 +24,7 @@ function Logo() {
 }
 
 export async function SiteHeader({ active = "Home" }: { active?: string }) {
-  const locale = await getLocale();
+  const [locale, translations] = await Promise.all([getLocale(), getTranslations()]);
 
   return (
     <header className="site-header">
@@ -32,14 +32,14 @@ export async function SiteHeader({ active = "Home" }: { active?: string }) {
       <nav aria-label="Primary navigation">
         {navItems.map((item) => (
           <Link key={item.label} className={item.label === active ? "active" : ""} href={item.href}>
-            {t(locale, item.key)}
+            {t(locale, item.key, translations)}
           </Link>
         ))}
       </nav>
       <div className="header-actions">
         <LocaleToggle locale={locale} />
         <Link className="quote-button" href="/contact">
-          {t(locale, "requestQuote")}
+          {t(locale, "requestQuote", translations)}
         </Link>
       </div>
     </header>
@@ -68,9 +68,10 @@ const socialIcons: Record<keyof SocialLinks, { label: string; path: string }> = 
 };
 
 export async function SiteFooter() {
-  const [socialLinks, locale] = await Promise.all([
+  const [socialLinks, locale, translations] = await Promise.all([
     apiGet<SocialLinks>("/api/social-links").catch(() => ({}) as SocialLinks),
     getLocale(),
+    getTranslations(),
   ]);
   const activeSocials = (Object.keys(socialIcons) as (keyof SocialLinks)[]).filter((key) => socialLinks[key]);
 
@@ -78,8 +79,8 @@ export async function SiteFooter() {
     <footer className="site-footer">
       <div>
         <Logo />
-        <p>&copy; 2024 CIKETTECH. {t(locale, "allRightsReserved")}</p>
-        <p>{t(locale, "precisionTagline")}</p>
+        <p>&copy; 2024 CIKETTECH. {t(locale, "allRightsReserved", translations)}</p>
+        <p>{t(locale, "precisionTagline", translations)}</p>
         {activeSocials.length > 0 && (
           <div className="footer-social-links">
             {activeSocials.map((key) => (
@@ -99,28 +100,28 @@ export async function SiteFooter() {
         )}
       </div>
       <div className="footer-col">
-        <h4>{t(locale, "platform")}</h4>
-        <Link href="/">{t(locale, "home")}</Link>
-        <Link href="/products">{t(locale, "products")}</Link>
-        <Link href="/technology">{t(locale, "technology")}</Link>
-        <Link href="/assistant">{t(locale, "aiAssistant")}</Link>
+        <h4>{t(locale, "platform", translations)}</h4>
+        <Link href="/">{t(locale, "home", translations)}</Link>
+        <Link href="/products">{t(locale, "products", translations)}</Link>
+        <Link href="/technology">{t(locale, "technology", translations)}</Link>
+        <Link href="/assistant">{t(locale, "aiAssistant", translations)}</Link>
       </div>
       <div className="footer-col">
-        <h4>{t(locale, "company")}</h4>
-        <Link href="/innovation">{t(locale, "innovation")}</Link>
-        <Link href="/impact">{t(locale, "impact")}</Link>
-        <Link href="/about">{t(locale, "about")}</Link>
-        <Link href="/news">{t(locale, "news")}</Link>
-        <Link href="/projects">{t(locale, "projects")}</Link>
-        <Link href="/awards">{t(locale, "awards")}</Link>
+        <h4>{t(locale, "company", translations)}</h4>
+        <Link href="/innovation">{t(locale, "innovation", translations)}</Link>
+        <Link href="/impact">{t(locale, "impact", translations)}</Link>
+        <Link href="/about">{t(locale, "about", translations)}</Link>
+        <Link href="/news">{t(locale, "news", translations)}</Link>
+        <Link href="/projects">{t(locale, "projects", translations)}</Link>
+        <Link href="/awards">{t(locale, "awards", translations)}</Link>
       </div>
       <div className="footer-col">
-        <h4>{t(locale, "legalSupport")}</h4>
-        <Link href="/contact">{t(locale, "contact")}</Link>
-        <Link href="/privacy">{t(locale, "privacyPolicy")}</Link>
-        <Link href="/terms">{t(locale, "termsOfService")}</Link>
-        <Link href="/security">{t(locale, "security")}</Link>
-        <Link href="/status">{t(locale, "status")}</Link>
+        <h4>{t(locale, "legalSupport", translations)}</h4>
+        <Link href="/contact">{t(locale, "contact", translations)}</Link>
+        <Link href="/privacy">{t(locale, "privacyPolicy", translations)}</Link>
+        <Link href="/terms">{t(locale, "termsOfService", translations)}</Link>
+        <Link href="/security">{t(locale, "security", translations)}</Link>
+        <Link href="/status">{t(locale, "status", translations)}</Link>
       </div>
     </footer>
   );

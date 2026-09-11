@@ -47,8 +47,6 @@ router.get("/", (req, res) => {
   const languages = [
     { code: "en", name: "English", status: "Active", description: "Default language. Required for all content." },
     { code: "am", name: "Amharic", status: "Active", description: "Secondary language — coverage tracked per item below." },
-    { code: "fr", name: "French", status: "Planned", description: "Future-ready per project spec; not yet enabled." },
-    { code: "ar", name: "Arabic", status: "Planned", description: "Future-ready per project spec; not yet enabled." },
   ];
 
   res.json({ languages, breakdown });

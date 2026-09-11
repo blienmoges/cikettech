@@ -42,9 +42,9 @@ describe("admin auth", () => {
     expect(bad.status).toBe(401);
   });
 
-  test("mutating admin routes require a token, reading them does not", async () => {
+  test("all admin resource routes require a token", async () => {
     const unauthedGet = await request(app).get("/api/admin/products");
-    expect(unauthedGet.status).toBe(200);
+    expect(unauthedGet.status).toBe(401);
 
     const unauthedPost = await request(app).post("/api/admin/products").send({ name: "No Token Product" });
     expect(unauthedPost.status).toBe(401);

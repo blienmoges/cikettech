@@ -89,4 +89,26 @@ describe("AI assistant is driven by the admin-editable knowledge base", () => {
       .send({ text: "How long does shipping take?" });
     expect(after.body.reply).toBe("Updated shipping answer via admin edit.");
   });
+
+  test("searches Amharic knowledge and returns an Amharic approved answer", async () => {
+    const token = await getToken();
+    const created = await request(app)
+      .post("/api/admin/knowledge-base")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        title: "የመገኛ መረጃ",
+        contentType: "FAQ",
+        related: "Global (Applies to all)",
+        status: "Published",
+        questionAm: "የኩባንያው ስም ማን ነው?",
+        answerAm: "ይህ የተፈቀደ የአማርኛ መልስ ነው።",
+      });
+    expect(created.status).toBe(201);
+
+    const reply = await request(app)
+      .post("/api/assistant/message")
+      .send({ text: "የኩባንያው ስም ማን ነው?" });
+    expect(reply.status).toBe(200);
+    expect(reply.body.reply).toBe("ይህ የተፈቀደ የአማርኛ መልስ ነው።");
+  });
 });

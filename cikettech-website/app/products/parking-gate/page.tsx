@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteHeader, SiteFooter } from "../../components/site-chrome";
 import QuoteForm from "../QuoteForm";
-import { apiGet } from "../../lib/server-content";
+import { apiGet, getTranslations } from "../../lib/server-content";
 import { getLocale } from "../../lib/locale";
 import { t } from "../../lib/i18n";
 
@@ -23,9 +23,10 @@ type ProductDetail = {
 };
 
 export default async function ParkingGatePage() {
-  const [product, locale] = await Promise.all([
+  const [product, locale, translations] = await Promise.all([
     apiGet<ProductDetail>("/api/products/parking-gate"),
     getLocale(),
+    getTranslations(),
   ]);
 
   return (
@@ -38,10 +39,10 @@ export default async function ParkingGatePage() {
           <p>{product.description}</p>
           <div className="hero-actions">
             <Link className="primary-button" href="/contact">
-              {t(locale, "requestAQuote")}
+              {t(locale, "requestAQuote", translations)}
             </Link>
             <Link className="secondary-button" href="#specs">
-              {t(locale, "technicalSpecs")}
+              {t(locale, "technicalSpecs", translations)}
             </Link>
           </div>
         </div>
@@ -77,7 +78,7 @@ export default async function ParkingGatePage() {
 
       <section className="features-section">
         <div className="section-heading">
-          <h2>{t(locale, "idealApplicationsBenefits")}</h2>
+          <h2>{t(locale, "idealApplicationsBenefits", translations)}</h2>
         </div>
 
         <div className="capabilities-grid" style={{ gridTemplateColumns: "1fr 1fr" }}>
@@ -103,7 +104,7 @@ export default async function ParkingGatePage() {
 
       <section className="gallery-section">
         <div className="section-heading">
-          <h2>{t(locale, "productGallery")}</h2>
+          <h2>{t(locale, "productGallery", translations)}</h2>
         </div>
         <div className="gallery-grid">
           <div className="gallery-large">
@@ -135,7 +136,7 @@ export default async function ParkingGatePage() {
 
       <section id="specs" className="specs-section">
         <div className="section-heading">
-          <h2>{t(locale, "technicalSpecifications")}</h2>
+          <h2>{t(locale, "technicalSpecifications", translations)}</h2>
         </div>
         <div className="specs-table">
           {Array.from({ length: Math.ceil(product.specs.length / 2) }).map((_, rowIdx) => {
@@ -159,7 +160,7 @@ export default async function ParkingGatePage() {
 
       <section id="quote" className="quote-section">
         <div className="section-heading">
-          <h2>{t(locale, "requestAQuote")}</h2>
+          <h2>{t(locale, "requestAQuote", translations)}</h2>
           <p>Contact our engineering sales team to discuss tailored system requirements.</p>
         </div>
         <div className="quote-card-wrapper">
