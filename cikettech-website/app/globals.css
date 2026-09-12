@@ -1766,6 +1766,7 @@ button {
   background: #ffffff;
   border: 1px solid #dce8f2;
   box-shadow: 0 24px 70px rgba(7, 23, 43, 0.22);
+  overflow-y: auto;
 }
 
 .customer-assistant-panel .ai-card {
@@ -1831,9 +1832,10 @@ button {
 
 .customer-assistant-panel .ai-card-body {
   min-height: 210px;
-  max-height: 330px;
+  max-height: none;
   padding: 18px 16px 12px;
   background: #f8fbfd;
+  overflow: visible;
 }
 
 .customer-assistant-panel .ai-row {
@@ -1870,8 +1872,8 @@ button {
 }
 
 .customer-assistant-panel .ai-card-suggestions {
-  max-height: 96px;
-  overflow: auto;
+  max-height: none;
+  overflow: visible;
   padding: 10px 12px;
   gap: 7px;
   background: #ffffff;
