@@ -12,6 +12,7 @@ import {
   ExternalLinkIcon,
 } from "../../../../components/admin-icons";
 import { adminFetch } from "../../../../lib/api";
+import { useState } from "react";
 
 type Inquiry = {
   id: string;
@@ -30,15 +31,27 @@ type Inquiry = {
 
 export default function InquiryDetail({ inquiry }: { inquiry: Inquiry }) {
   const router = useRouter();
+  const [status, setStatusValue] = useState(inquiry.status);
+  const [savingStatus, setSavingStatus] = useState(false);
+  const [error, setError] = useState("");
 
   async function setStatus(status: string) {
-    const res = await adminFetch(`/api/admin/inquiries/${inquiry.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status }),
-    });
-    if (res.ok) router.refresh();
-    else if (res.status !== 401) alert("Could not update this inquiry.");
+    setSavingStatus(true);
+    setError("");
+    try {
+      const res = await adminFetch(`/api/admin/inquiries/${inquiry.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status }),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setStatusValue(status);
+      router.refresh();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not update this inquiry.");
+    } finally {
+      setSavingStatus(false);
+    }
   }
 
   async function deleteInquiry() {
@@ -57,13 +70,13 @@ export default function InquiryDetail({ inquiry }: { inquiry: Inquiry }) {
       <div className="admin-page-head">
         <div className="admin-inquiry-title">
           <h1>Inquiry #INQ-{inquiry.id}</h1>
-          <span className={"admin-status admin-status-" + inquiry.status.toLowerCase()}>{inquiry.status}</span>
+          <span className={"admin-status admin-status-" + status.toLowerCase()}>{status}</span>
         </div>
         <div className="admin-form-actions">
-          <button type="button" className="admin-outline-btn compact" onClick={() => setStatus("Reviewed")}>
+          <button type="button" className="admin-outline-btn compact" disabled={savingStatus || status === "Reviewed"} onClick={() => setStatus("Reviewed")}>
             <CheckCircleIcon /> Mark as Reviewed
           </button>
-          <button type="button" className="admin-outline-btn compact" onClick={() => setStatus("Closed")}>
+          <button type="button" className="admin-outline-btn compact" disabled={savingStatus || status === "Closed"} onClick={() => setStatus("Closed")}>
             <ArchiveIcon /> Mark as Closed
           </button>
           <button type="button" className="admin-btn-danger" onClick={deleteInquiry}>
@@ -71,6 +84,8 @@ export default function InquiryDetail({ inquiry }: { inquiry: Inquiry }) {
           </button>
         </div>
       </div>
+
+      {error && <p className="admin-login-error">{error}</p>}
 
       <div className="admin-card admin-inquiry-card">
         <div className="admin-card-head-row">
@@ -129,9 +144,12 @@ export default function InquiryDetail({ inquiry }: { inquiry: Inquiry }) {
         </div>
 
         <div className="admin-inquiry-footer">
-          <button type="button" className="admin-outline-btn compact" onClick={() => alert("Reply sent (demo)")}>
+          <a
+            className="admin-outline-btn compact"
+            href={`mailto:${encodeURIComponent(inquiry.email)}?subject=${encodeURIComponent(`Re: ${inquiry.subject}`)}&body=${encodeURIComponent(`Hello ${inquiry.name},\n\nThank you for contacting CIKETTECH.\n\n`)}`}
+          >
             <ReplyIcon /> Reply to Customer
-          </button>
+          </a>
         </div>
       </div>
     </>
