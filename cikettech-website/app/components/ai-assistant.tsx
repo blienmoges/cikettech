@@ -60,6 +60,14 @@ function SendIcon() {
   );
 }
 
+function CloseIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+      <path d="m6 6 12 12M18 6 6 18" />
+    </svg>
+  );
+}
+
 const suggestionIcons: Record<string, React.ReactNode> = {
   parking: <PinIcon />,
   biometric: <FingerprintIcon />,
@@ -69,7 +77,7 @@ const suggestionIcons: Record<string, React.ReactNode> = {
 
 type Suggestion = { topic: string; label: string };
 
-export default function AIWidget() {
+export default function AIWidget({ compact = false, onClose }: { compact?: boolean; onClose?: () => void }) {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [input, setInput] = useState("");
@@ -145,6 +153,11 @@ export default function AIWidget() {
               <div className="ai-sub">CIKETTECH INTELLIGENT SUPPORT</div>
             </div>
           </div>
+          {compact && onClose && (
+            <button type="button" className="ai-close" onClick={onClose} aria-label="Close AI Assistant">
+              <CloseIcon />
+            </button>
+          )}
         </header>
 
         <div className="ai-card-body" ref={scroller}>

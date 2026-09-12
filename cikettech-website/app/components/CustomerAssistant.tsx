@@ -14,7 +14,7 @@ export default function CustomerAssistant() {
     <div className="customer-assistant">
       {open && (
         <div className="customer-assistant-panel" role="dialog" aria-label="CIKETTECH AI Assistant">
-          <AIWidget />
+          <AIWidget compact onClose={() => setOpen(false)} />
         </div>
       )}
       <button
