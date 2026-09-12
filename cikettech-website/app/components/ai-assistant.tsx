@@ -5,7 +5,7 @@ import { API_BASE } from "../lib/api";
 
 type Msg = { id: number; from: "bot" | "user"; text: string };
 
-function BotIcon() {
+export function BotIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <rect x="4" y="8" width="16" height="11" rx="3" />
