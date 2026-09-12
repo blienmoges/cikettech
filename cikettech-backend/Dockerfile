@@ -1,9 +1,7 @@
-# CIKETTECH backend — Express/SQLite API
 FROM node:22-alpine
 
 WORKDIR /app
 
-# Required for better-sqlite3 native compilation
 RUN apk add --no-cache python3 make g++
 
 COPY package*.json ./
