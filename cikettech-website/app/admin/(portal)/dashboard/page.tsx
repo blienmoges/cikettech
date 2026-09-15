@@ -6,11 +6,11 @@ import {
   TrophyIcon,
   ImageIcon,
   DownloadIcon,
-  QuestionIcon,
-  BarChartIcon,
-  PlusIcon,
+  CloudUploadIcon,
+  BrainIcon,
 } from "../../../components/admin-icons";
 import { apiGet } from "../../../lib/server-content";
+import { resolveMediaUrl } from "../../../lib/api";
 
 export const metadata = {
   title: "Dashboard | CIKETTECH Admin",
@@ -20,8 +20,12 @@ export const metadata = {
 type DashboardData = {
   stats: { label: string; value: string; href: string }[];
   trafficBars: number[];
+  trafficTotal: number;
   recentUpdates: { title: string; meta: string }[];
-  recentInquiries: { name: string; type: string; product: string; date: string; status: string }[];
+  recentInquiries: { id: string; name: string; type: string; product: string; date: string; status: string }[];
+  recentMedia: { id: string; name: string; date: string; src: string }[];
+  latestDownloads: { id: string; title: string; type: string; language: string; date: string }[];
+  inquiryCount: number;
 };
 
 const statIcons: Record<string, React.ComponentType> = {
@@ -33,8 +37,6 @@ const statIcons: Record<string, React.ComponentType> = {
   Downloads: DownloadIcon,
 };
 
-const updateIcons = [BoxIcon, CalendarIcon, ProjectsIcon];
-
 function statusClass(status: string) {
   return "admin-status admin-status-" + status.toLowerCase().replace(/\s+/g, "-");
 }
@@ -43,125 +45,57 @@ export default async function AdminDashboardPage() {
   const data = await apiGet<DashboardData>("/api/admin/dashboard");
 
   return (
-    <>
-      <div className="admin-page-head">
+    <div className="admin-dashboard-page">
+      <div className="admin-page-head admin-dashboard-head">
         <div>
           <h1>Dashboard</h1>
-          <p>Welcome back to the CIKETTECH Admin Portal. Here&apos;s a summary of your system.</p>
-        </div>
-        <Link className="primary-button admin-new-btn" href="/admin/projects/new">
-          <PlusIcon /> New Project
-        </Link>
-      </div>
-
-      <div className="admin-grid">
-        <div>
-          <h2 className="admin-section-title">System Overview</h2>
-          <div className="admin-stats-grid">
-            {data.stats.map((stat) => {
-              const Icon = statIcons[stat.label] ?? BoxIcon;
-              return (
-                <div key={stat.label} className="admin-stat-card">
-                  <div className="admin-stat-top">
-                    <div className="admin-stat-icon">
-                      <Icon />
-                    </div>
-                    <div className="admin-stat-value">{stat.value}</div>
-                  </div>
-                  <div className="admin-stat-bottom">
-                    <span className="admin-stat-label">{stat.label.toUpperCase()}</span>
-                    <Link className="text-action" href={stat.href}>
-                      View
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="admin-side-col">
-          <div className="admin-card admin-traffic-card">
-            <h3>
-              <BarChartIcon /> Traffic Overview
-            </h3>
-            <div className="admin-bars">
-              {data.trafficBars.map((h, i) => (
-                <div
-                  key={i}
-                  className={"admin-bar" + (i === data.trafficBars.length - 1 ? " active" : "")}
-                  style={{ height: `${h}%` }}
-                />
-              ))}
-            </div>
-            <Link className="admin-outline-btn" href="/admin/analytics">
-              View Full Analytics
-            </Link>
-          </div>
-
-          <div className="admin-card admin-updates-card">
-            <p className="admin-card-label">Recently Updated</p>
-            <ul>
-              {data.recentUpdates.map((u, i) => {
-                const Icon = updateIcons[i % updateIcons.length];
-                return (
-                  <li key={u.title}>
-                    <div className="admin-update-icon">
-                      <Icon />
-                    </div>
-                    <div>
-                      <div className="admin-update-title">{u.title}</div>
-                      <div className="admin-update-meta">{u.meta}</div>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+          <p>Welcome back. Here&apos;s what&apos;s happening across your website.</p>
         </div>
       </div>
 
-      <div className="admin-inquiries-head">
-        <h2 className="admin-section-title">
-          <QuestionIcon /> Recent Customer Inquiries
-        </h2>
-        <Link className="text-action" href="/admin/inquiries">
-          View All Inquiries
-        </Link>
+      <div className="admin-dashboard-stats">
+        {data.stats.slice(0, 4).map((stat) => {
+          const Icon = statIcons[stat.label] ?? BoxIcon;
+          return <Link key={stat.label} href={stat.href} className="admin-dashboard-stat"><span className="admin-dashboard-stat-icon"><Icon /></span><span><strong>{stat.value}</strong><small>{stat.label}</small></span><span className="admin-dashboard-stat-arrow">View</span></Link>;
+        })}
       </div>
 
-      <div className="admin-table-wrapper">
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Inquiry Type</th>
-              <th>Product/Context</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.recentInquiries.map((row) => (
-              <tr key={row.name}>
-                <td className="admin-table-name">{row.name}</td>
-                <td>{row.type}</td>
-                <td>{row.product}</td>
-                <td>{row.date}</td>
-                <td>
-                  <span className={statusClass(row.status)}>{row.status.toUpperCase()}</span>
-                </td>
-                <td>
-                  <Link className="text-action" href="/admin/inquiries">
-                    View
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="admin-dashboard-columns">
+        <section className="admin-dashboard-panel admin-quick-actions">
+          <div className="admin-dashboard-panel-head"><div><span className="admin-kicker">Workspace</span><h2>Quick Actions</h2></div><span className="admin-hint">Create and manage</span></div>
+          <div className="admin-quick-grid">
+            <Link href="/admin/products/new"><BoxIcon />Add Product</Link>
+            <Link href="/admin/images"><CloudUploadIcon />Upload Image</Link>
+            <Link href="/admin/downloads/new"><DownloadIcon />Add Download</Link>
+            <Link href="/admin/news/new"><CalendarIcon />Add News</Link>
+            <Link href="/admin/awards/new"><TrophyIcon />Add Award</Link>
+            <Link href="/admin/knowledge-base/new"><BrainIcon />Update Knowledge</Link>
+          </div>
+        </section>
+
+        <section className="admin-dashboard-panel admin-dashboard-traffic">
+          <div className="admin-dashboard-panel-head"><div><span className="admin-kicker">Last 7 days</span><h2>Traffic overview</h2></div><Link className="text-action" href="/admin/analytics">View analytics</Link></div>
+          <div className="admin-dashboard-bars">{data.trafficBars.map((height, index) => <span key={index} style={{ height: `${height}%` }} />)}</div>
+          <div className="admin-dashboard-traffic-meta"><strong>{data.trafficTotal}</strong><span>tracked page views</span></div>
+        </section>
       </div>
-    </>
+
+      <div className="admin-dashboard-columns admin-dashboard-columns-wide">
+        <section className="admin-dashboard-panel">
+          <div className="admin-dashboard-panel-head"><div><span className="admin-kicker">Content</span><h2>Recent media</h2></div><Link className="text-action" href="/admin/images">View all</Link></div>
+          <div className="admin-media-grid">{data.recentMedia.length ? data.recentMedia.map((image) => <Link href={`/admin/images/${image.id}`} key={image.id} className="admin-media-item"><img src={resolveMediaUrl(image.src)} alt="" /><strong>{image.name}</strong><small>{image.date}</small></Link>) : <p className="admin-empty">No uploaded images yet.</p>}</div>
+        </section>
+
+        <section className="admin-dashboard-panel">
+          <div className="admin-dashboard-panel-head"><div><span className="admin-kicker">Inbox</span><h2>Customer inquiries</h2></div><Link className="text-action" href="/admin/inquiries">View all</Link></div>
+          <div className="admin-dashboard-inquiries">{data.recentInquiries.length ? data.recentInquiries.map((row) => <Link href={`/admin/inquiries/${row.id}`} key={row.id}><span className="admin-inquiry-avatar">{row.name.slice(0, 1)}</span><span><strong>{row.name}</strong><small>{row.type} · {row.date}</small></span><span className={statusClass(row.status)}>{row.status}</span></Link>) : <p className="admin-empty">No customer inquiries yet.</p>}</div>
+        </section>
+      </div>
+
+      <section className="admin-dashboard-panel admin-dashboard-downloads">
+        <div className="admin-dashboard-panel-head"><div><span className="admin-kicker">Resources</span><h2>Latest downloads</h2></div><Link className="text-action" href="/admin/downloads">View all</Link></div>
+        <div className="admin-table-wrapper flush"><table className="admin-table"><thead><tr><th>Title</th><th>Type</th><th>Language</th><th>Date</th><th>Status</th></tr></thead><tbody>{data.latestDownloads.length ? data.latestDownloads.map((item) => <tr key={item.id}><td className="admin-table-name">{item.title}</td><td>{item.type}</td><td>{item.language}</td><td>{item.date}</td><td><span className="admin-status admin-status-published">PUBLISHED</span></td></tr>) : <tr><td colSpan={5}>No published downloads yet.</td></tr>}</tbody></table></div>
+      </section>
+    </div>
   );
 }
