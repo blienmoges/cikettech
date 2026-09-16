@@ -6,6 +6,7 @@ const articles = [
     en: "Complete",
     am: "Complete",
     status: "Published",
+    category: "Technology",
     date: "Oct 12, 2023",
     summary: "CIKETTECH announces a major data center expansion to support regional growth.",
     content:
@@ -18,6 +19,7 @@ const articles = [
     en: "Complete",
     am: "Pending Translation",
     status: "Draft",
+    category: "Technology",
     date: "Oct 10, 2023",
     summary: "Our Biometric Attendance System was recognized for engineering excellence.",
     content:

@@ -16,3 +16,7 @@ services:
         sync: false
       - key: GEMINI_MODEL
         value: gemini-3.6-flash
+      - key: EXTERNAL_NEWS_ENABLED
+        value: "true"
+      - key: EXTERNAL_NEWS_QUERY
+        value: technology electronics artificial intelligence

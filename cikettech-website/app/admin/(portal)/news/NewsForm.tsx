@@ -201,6 +201,7 @@ export default function NewsForm({ article }: { article?: Article }) {
             <label>
               Category
               <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option>Technology</option>
                 <option>Product Update</option>
                 <option>Press Release</option>
                 <option>Company News</option>
