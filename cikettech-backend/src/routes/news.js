@@ -14,7 +14,7 @@ function decodeXml(value) {
 }
 
 async function externalTechnologyNews() {
-  if (process.env.EXTERNAL_NEWS_ENABLED !== "true") return [];
+  if (process.env.EXTERNAL_NEWS_ENABLED === "false") return [];
   if (externalCache.expiresAt > Date.now()) return externalCache.items;
 
   const query = encodeURIComponent(process.env.EXTERNAL_NEWS_QUERY || "technology electronics artificial intelligence");
