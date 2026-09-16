@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   description: "Announcements, press releases, and company updates from CIKETTECH.",
 };
 
-type NewsSummary = { id: string; title: string; summary: string; image?: string; date: string };
+type NewsSummary = { id: string; title: string; summary: string; image?: string; date: string; category?: string; source?: string; url?: string; external?: boolean };
 
 export default async function NewsPage() {
-  const articles = await apiGet<NewsSummary[]>("/api/news");
+  const news = await apiGet<{ admin: NewsSummary[]; external: NewsSummary[] }>("/api/news?category=Technology&includeExternal=true");
 
   return (
     <main>
@@ -23,13 +23,13 @@ export default async function NewsPage() {
         <p>
           <Link href="/">Home</Link> / <span>News</span>
         </p>
-        <h1>Latest News</h1>
-        <div>Announcements, press releases, and updates from across CIKETTECH.</div>
+        <h1>Latest Technology News</h1>
+        <div>Technology updates, product innovation, and engineering news from CIKETTECH.</div>
       </section>
 
       <section className="catalog-section" aria-label="News articles">
         <div className="catalog-grid">
-          {articles.map((article) => (
+          {news.admin.map((article) => (
             <article className="catalog-card" key={article.id}>
               {article.image && (
                 <div className="catalog-image">
@@ -44,7 +44,7 @@ export default async function NewsPage() {
                 </div>
               )}
               <div className="catalog-content">
-                <p className="legal-updated">{article.date}</p>
+                <p className="legal-updated">{article.date}{article.category ? ` · ${article.category}` : ""}</p>
                 <h2>{article.title}</h2>
                 <p>{article.summary}</p>
                 <div className="catalog-actions">
@@ -55,7 +55,19 @@ export default async function NewsPage() {
               </div>
             </article>
           ))}
-          {articles.length === 0 && <p>No news articles are published yet.</p>}
+          {news.admin.length === 0 && <p>No CIKETTECH technology news has been published yet.</p>}
+        </div>
+      </section>
+
+      <section className="catalog-section" aria-label="External technology news">
+        <div className="section-heading"><h2>Technology News From Around the Web</h2><p>External headlines are linked to their original publishers.</p></div>
+        <div className="catalog-grid">
+          {news.external.map((article) => (
+            <article className="catalog-card" key={article.id}>
+              <div className="catalog-content"><p className="legal-updated">{article.date} · {article.source}</p><h2>{article.title}</h2><p>{article.summary}</p><div className="catalog-actions"><a className="primary-button compact" href={article.url} target="_blank" rel="noreferrer">Read Original Article</a></div></div>
+            </article>
+          ))}
+          {news.external.length === 0 && <p>No external technology headlines are available right now.</p>}
         </div>
       </section>
 
