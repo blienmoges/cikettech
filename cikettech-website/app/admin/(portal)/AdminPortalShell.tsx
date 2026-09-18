@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import LangButton from "../../components/LangButton";
 import ThemeToggle from "../../components/ThemeToggle";
 import { clearAdminToken } from "../../lib/api";
 import {
-  BrandMark,
   UserIcon,
   ChevronDownIcon,
   DashboardGridIcon,
@@ -53,8 +53,7 @@ export default function AdminPortalShell({ children }: { children: React.ReactNo
       <aside className="admin-sidebar">
         <div>
           <div className="admin-sidebar-logo">
-            <BrandMark />
-            CIKETTECH
+            <Image src="/cikettech-logo-mark.svg" alt="CIKETTECH" width={44} height={44} priority />
           </div>
           <p className="admin-sidebar-tag">Admin Portal</p>
         </div>

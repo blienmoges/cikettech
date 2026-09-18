@@ -1,0 +1,24 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="teal" x1="80" y1="40" x2="420" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07536A"/>
+      <stop offset="1" stop-color="#00647D"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="120" y1="160" x2="245" y2="385" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4F5F3"/>
+      <stop offset="1" stop-color="#8D9699"/>
+    </linearGradient>
+  </defs>
+  <path d="M245 30C135 32 48 123 48 250s87 218 197 220c-33-29-55-65-65-108-70-17-112-70-112-112 0-60 46-109 115-116 13-40 34-75 62-104Z" fill="url(#teal)"/>
+  <path d="M250 30c49 40 81 90 94 154h122c-17-77-68-139-138-154H250Zm94 300c-13 64-45 114-94 140h78c70-15 121-77 138-140H344Z" fill="url(#teal)"/>
+  <g stroke="#D8A25A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M329 30v30l22 20 37-9 20 20-24 25 8 34 31 14"/>
+    <path d="M397 117l-30 18 10 30 34 8"/>
+    <path d="M389 330l-27 20 8 31 31 12 19 26"/>
+    <path d="M300 470v-31l22-22-7-32"/>
+  </g>
+  <g fill="#D8A25A">
+    <circle cx="329" cy="30" r="12"/><circle cx="364" cy="135" r="12"/><circle cx="397" cy="117" r="12"/><circle cx="408" cy="419" r="12"/><circle cx="300" cy="470" r="12"/>
+  </g>
+  <path d="m116 206 111-4-43 79 50 1-83 111 27-89-54-2 36-64-44-1Z" fill="url(#silver)" stroke="#D9DDDC" stroke-width="3"/>
+</svg>

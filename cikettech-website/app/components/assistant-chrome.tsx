@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BrandMark } from "./admin-icons";
+import Image from "next/image";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -42,8 +42,7 @@ export function AssistantHeader() {
   return (
     <header className="assistant-header">
       <Link href="/" className="assistant-logo" aria-label="CIKETTECH home">
-        <BrandMark />
-        <span>CIKETTECH</span>
+        <Image src="/cikettech-logo-mark.svg" alt="CIKETTECH" width={48} height={48} priority />
       </Link>
       <nav aria-label="Primary navigation">
         {navItems.map((item) => (

@@ -1,5 +1,6 @@
 import { Suspense } from "react";
-import { BrandMark, ShieldIcon, SignalIcon } from "../../components/admin-icons";
+import { ShieldIcon, SignalIcon } from "../../components/admin-icons";
+import Image from "next/image";
 import LangButton from "../../components/LangButton";
 import ResetPasswordForm from "./ResetPasswordForm";
 
@@ -15,8 +16,7 @@ export default function ResetPasswordPage() {
         <div className="admin-login-side">
           <div>
             <div className="admin-login-logo">
-              <BrandMark />
-              CIKETTECH
+              <Image src="/cikettech-logo-mark.svg" alt="CIKETTECH" width={54} height={54} priority />
             </div>
             <p className="admin-login-tag">Admin Portal</p>
           </div>
