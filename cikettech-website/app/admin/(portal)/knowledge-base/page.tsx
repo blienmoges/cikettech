@@ -78,17 +78,6 @@ export default async function AdminKnowledgeBasePage() {
           <span>
             Showing 1 to {entries.length} of {entries.length} results
           </span>
-          <div className="admin-pagination">
-            <button type="button" disabled>
-              Previous
-            </button>
-            <button type="button" className="active">
-              1
-            </button>
-            <button type="button" disabled>
-              Next
-            </button>
-          </div>
         </div>
       </div>
     </>

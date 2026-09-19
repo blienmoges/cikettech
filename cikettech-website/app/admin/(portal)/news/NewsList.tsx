@@ -104,14 +104,6 @@ export default function NewsList({ articles }: { articles: Article[] }) {
           <span>
             Showing 1 to {filtered.length} of {articles.length} entries
           </span>
-          <div className="admin-pagination">
-            <button type="button" disabled>
-              Previous
-            </button>
-            <button type="button" disabled>
-              Next
-            </button>
-          </div>
         </div>
       </div>
     </>

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { CloudUploadIcon, SearchIcon, PdfFileIcon, DocxFileIcon } from "../../../components/admin-icons";
 import { StatusBadge, RowActions } from "../AdminBadges";
-import AdminPagination from "../AdminPagination";
 import { resolveMediaUrl } from "../../../lib/api";
 
 type Document = {
@@ -132,7 +131,6 @@ export default function DownloadsList({ documents }: { documents: Document[] }) 
           <span>
             Showing 1 to {filtered.length} of {documents.length} entries
           </span>
-          <AdminPagination pages={[1]} prevLabel="<" nextLabel=">" />
         </div>
       </div>
     </>

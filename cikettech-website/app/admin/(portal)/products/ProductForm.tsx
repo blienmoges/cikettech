@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   ArrowLeftIcon,
-  EyeIcon,
   SaveIcon,
   PublishIcon,
   InfoIcon,
@@ -67,9 +66,7 @@ export default function ProductForm({ product }: { product?: Product }) {
     setNewBenefit("");
   }
 
-  async function onAction(action: "Preview" | "Draft saved" | "Published") {
-    if (action === "Preview") return alert("Preview (demo)");
-
+  async function onAction(action: "Draft saved" | "Published") {
     const nextStatus = action === "Published" ? "Published" : "Draft";
     setStatus(nextStatus);
     setSaving(true);
@@ -112,9 +109,6 @@ export default function ProductForm({ product }: { product?: Product }) {
       <div className="admin-page-head">
         <h1>{isEdit ? "Edit Product" : "Add New Product"}</h1>
         <div className="admin-form-actions">
-          <button type="button" className="admin-outline-btn compact" onClick={() => onAction("Preview")}>
-            <EyeIcon /> Preview
-          </button>
           <button
             type="button"
             className="admin-outline-btn compact"

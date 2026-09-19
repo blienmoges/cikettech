@@ -31,14 +31,14 @@ export function RowActions({
 }: {
   editHref: string;
   published: boolean;
-  /** Admin API resource path (e.g. "products", "news", "knowledge-base"). Omit to fall back to demo alerts. */
+  /** Admin API resource path (e.g. "products", "news", "knowledge-base"). */
   resource?: string;
   id?: string;
 }) {
   const router = useRouter();
 
   async function togglePublish() {
-    if (!resource || !id) return alert((published ? "Unpublished" : "Published") + " (demo)");
+    if (!resource || !id) return;
     const res = await adminFetch(`/api/admin/${resource}/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -50,11 +50,24 @@ export function RowActions({
 
   async function remove() {
     if (!confirm("Delete this item?")) return;
-    if (!resource || !id) return alert("Deleted (demo)");
+    if (!resource || !id) return;
     const res = await adminFetch(`/api/admin/${resource}/${id}`, { method: "DELETE" });
     if (res.ok) router.refresh();
     else if (res.status === 403) alert("Only Administrators can delete this.");
     else if (res.status !== 401) alert("Could not delete item.");
+  }
+
+  function preview() {
+    if (!resource || !id) return;
+    const publicPaths: Record<string, string> = {
+      products: `/products/${id}`,
+      news: `/news/${id}`,
+      projects: `/projects/${id}`,
+      awards: `/awards/${id}`,
+    };
+    const path = publicPaths[resource];
+    if (path) window.open(path, "_blank", "noopener,noreferrer");
+    else router.push(editHref);
   }
 
   // Defaults to true (matches server render, no localStorage access there) and
@@ -69,7 +82,7 @@ export function RowActions({
       <Link href={editHref} aria-label="Edit">
         <PencilIcon />
       </Link>
-      <button type="button" aria-label="Preview" onClick={() => alert("Preview (demo)")}>
+      <button type="button" aria-label="Preview" onClick={preview} disabled={!resource || !id}>
         <EyeIcon />
       </button>
       <button type="button" aria-label={published ? "Unpublish" : "Publish"} onClick={togglePublish}>

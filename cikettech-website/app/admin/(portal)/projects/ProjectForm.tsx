@@ -4,7 +4,6 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeftIcon,
-  EyeIcon,
   SaveIcon,
   PublishIcon,
   InfoIcon,
@@ -41,9 +40,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
   const [gallery, setGallery] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
 
-  async function onAction(action: "Preview" | "Draft saved" | "Published") {
-    if (action === "Preview") return alert("Preview (demo)");
-
+  async function onAction(action: "Draft saved" | "Published") {
     const nextStatus = action === "Published" ? "Published" : status === "Published" ? "Published" : "Unpublished";
     setStatus(nextStatus);
     setSaving(true);
@@ -84,9 +81,6 @@ export default function ProjectForm({ project }: { project?: Project }) {
       <div className="admin-page-head">
         <h1>{isEdit ? "Edit Project" : "Add New Project"}</h1>
         <div className="admin-form-actions">
-          <button type="button" className="admin-outline-btn compact" onClick={() => onAction("Preview")}>
-            <EyeIcon /> Preview
-          </button>
           <button
             type="button"
             className="admin-outline-btn compact"

@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { PublishIcon, DashboardGridIcon, ListViewIcon, ShieldLockIcon } from "../../../components/admin-icons";
-import AdminPagination from "../AdminPagination";
 import { adminFetch, resolveMediaUrl } from "../../../lib/api";
 
 type Img = { id: string; name: string; date: string; size: string; src: string };
@@ -158,7 +157,6 @@ export default function ImagesList({ images }: { images: Img[] }) {
 
         <div className="admin-table-footer">
           <div />
-          <AdminPagination pages={[1]} prevLabel="<" nextLabel=">" />
         </div>
       </div>
     </>

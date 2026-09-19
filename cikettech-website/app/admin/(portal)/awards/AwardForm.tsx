@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeftIcon,
-  EyeIcon,
   SaveIcon,
   PublishIcon,
   InfoIcon,
@@ -40,9 +39,7 @@ export default function AwardForm({ award }: { award?: Award }) {
   const [image, setImage] = useState(award?.image ?? "");
   const [saving, setSaving] = useState(false);
 
-  async function onAction(action: "Preview" | "Draft saved" | "Published") {
-    if (action === "Preview") return alert("Preview (demo)");
-
+  async function onAction(action: "Draft saved" | "Published") {
     const nextStatus = action === "Published" ? "Published" : status;
     setStatus(nextStatus);
     setSaving(true);
@@ -82,9 +79,6 @@ export default function AwardForm({ award }: { award?: Award }) {
       <div className="admin-page-head">
         <h1>{isEdit ? "Edit Award" : "Add New Award"}</h1>
         <div className="admin-form-actions">
-          <button type="button" className="admin-outline-btn compact" onClick={() => onAction("Preview")}>
-            <EyeIcon /> Preview
-          </button>
           <button
             type="button"
             className="admin-outline-btn compact"
