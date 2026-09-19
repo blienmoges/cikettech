@@ -7,6 +7,7 @@ export default function SchoolBellQuoteForm() {
   const [values, setValues] = useState({
     organization: "",
     email: "",
+    phone: "",
     zones: "1 - 5 Zones",
     campus: "Single Building",
     details: "",
@@ -30,6 +31,7 @@ export default function SchoolBellQuoteForm() {
         body: JSON.stringify({
           name: values.organization,
           email: values.email,
+          phone: values.phone,
           org: values.organization,
           product: "Smart School Bell System",
           message: `Zones: ${values.zones}. Campus type: ${values.campus}. ${values.details}`.trim(),
@@ -37,7 +39,7 @@ export default function SchoolBellQuoteForm() {
       });
       if (!res.ok) throw new Error("Request failed");
       alert("Thanks! Your quote request has been submitted.");
-      setValues((v) => ({ ...v, organization: "", email: "", details: "" }));
+      setValues((v) => ({ ...v, organization: "", email: "", phone: "", details: "" }));
     } catch {
       alert("Could not submit your request. Please try again.");
     } finally {
@@ -55,6 +57,10 @@ export default function SchoolBellQuoteForm() {
         <label>
           Contact Email
           <input name="email" type="email" value={values.email} onChange={onChange} />
+        </label>
+        <label>
+          Phone Number
+          <input name="phone" type="tel" required value={values.phone} onChange={onChange} placeholder="+251 9XX XXX XXX" />
         </label>
       </div>
 

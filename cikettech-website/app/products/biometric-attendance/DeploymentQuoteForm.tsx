@@ -7,6 +7,7 @@ export default function DeploymentQuoteForm() {
   const [values, setValues] = useState({
     company: "",
     email: "",
+    phone: "",
     terminals: "1-10 (Small Facility)",
     details: "",
   });
@@ -29,6 +30,7 @@ export default function DeploymentQuoteForm() {
         body: JSON.stringify({
           name: values.company,
           email: values.email,
+          phone: values.phone,
           org: values.company,
           product: "Biometric Attendance System",
           message: `Estimated terminals: ${values.terminals}. ${values.details}`.trim(),
@@ -36,7 +38,7 @@ export default function DeploymentQuoteForm() {
       });
       if (!res.ok) throw new Error("Request failed");
       alert("Thanks! Your deployment quote request has been submitted.");
-      setValues((v) => ({ ...v, company: "", email: "", details: "" }));
+      setValues((v) => ({ ...v, company: "", email: "", phone: "", details: "" }));
     } catch {
       alert("Could not submit your request. Please try again.");
     } finally {
@@ -54,6 +56,10 @@ export default function DeploymentQuoteForm() {
         <label>
           Work Email
           <input name="email" type="email" value={values.email} onChange={onChange} placeholder="admin@acme.com" />
+        </label>
+        <label>
+          Phone Number
+          <input name="phone" type="tel" required value={values.phone} onChange={onChange} placeholder="+251 9XX XXX XXX" />
         </label>
       </div>
 

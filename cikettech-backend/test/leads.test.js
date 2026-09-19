@@ -14,6 +14,7 @@ describe("public lead capture reaches the admin inquiries collection", () => {
     const submit = await request(app).post("/api/quote").send({
       name: "Lead Tester",
       email: "lead@example.com",
+      phone: "+251911123456",
       product: "Smart Day Counter",
       org: "Test Co",
       message: "Need pricing for 5 units",

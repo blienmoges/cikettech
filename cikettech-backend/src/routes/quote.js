@@ -8,6 +8,7 @@ router.post("/", (req, res) => {
   const errors = [];
   if (!name || !String(name).trim()) errors.push("Name is required.");
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push("A valid email address is required.");
+  if (!phone || !String(phone).trim()) errors.push("Phone number is required.");
   if (!product || !String(product).trim()) errors.push("Product is required.");
   if (errors.length) return res.status(400).json({ error: "Validation failed", details: errors });
 

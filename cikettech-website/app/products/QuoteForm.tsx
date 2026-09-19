@@ -71,7 +71,7 @@ export default function QuoteForm({ defaultProduct }: QuoteFormProps) {
         </label>
         <label>
           Phone
-          <input name="phone" value={values.phone} onChange={onChange} />
+          <input name="phone" type="tel" required value={values.phone} onChange={onChange} placeholder="+251 9XX XXX XXX" />
         </label>
       </div>
 
