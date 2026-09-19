@@ -3544,38 +3544,43 @@ button {
   border-bottom: 1px solid var(--line);
 }
 
-.admin-topbar-brand,
+.admin-topbar-search,
 .admin-topbar-actions {
   display: flex;
   align-items: center;
 }
 
-.admin-topbar-brand {
-  gap: 10px;
+.admin-topbar-search {
+  position: relative;
+  width: min(320px, 42vw);
 }
 
-.admin-topbar-brand img {
-  width: 38px;
-  height: 38px;
-  object-fit: contain;
+.admin-topbar-search svg {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  width: 17px;
+  height: 17px;
+  color: #89a0b5;
+  transform: translateY(-50%);
 }
 
-.admin-topbar-brand div {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.admin-topbar-search input {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 14px 0 40px;
+  border: 1px solid #dce7f1;
+  border-radius: 8px;
+  color: #1b2b41;
+  background: #f4f8fc;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-.admin-topbar-brand strong {
-  color: var(--navy);
-  font-size: 13px;
-  letter-spacing: 0.8px;
-}
-
-.admin-topbar-brand span {
-  color: #8090a4;
-  font-size: 11px;
-  font-weight: 700;
+.admin-topbar-search input:focus {
+  outline: 2px solid rgba(13, 121, 255, 0.2);
+  border-color: var(--blue);
 }
 
 .admin-topbar-actions {
@@ -4132,12 +4137,8 @@ button {
     gap: 0;
   }
 
-  .admin-topbar-brand strong {
-    font-size: 11px;
-  }
-
-  .admin-topbar-brand span {
-    font-size: 9px;
+  .admin-topbar-search {
+    width: min(190px, 48vw);
   }
 
   .admin-content {

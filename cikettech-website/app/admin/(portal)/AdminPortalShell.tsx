@@ -21,6 +21,7 @@ import {
   BarChartIcon,
   BrainIcon,
   LogoutIcon,
+  SearchIcon,
 } from "../../components/admin-icons";
 
 const navItems = [
@@ -78,10 +79,11 @@ export default function AdminPortalShell({ children }: { children: React.ReactNo
 
       <div className="admin-main">
         <header className="admin-topbar">
-          <div className="admin-topbar-brand">
-            <Image src="/cikettech-logo-mark.svg" alt="CIKETTECH" width={38} height={38} />
-            <div><strong>CIKETTECH</strong><span>Admin Portal</span></div>
-          </div>
+          <label className="admin-topbar-search">
+            <SearchIcon />
+            <span className="sr-only">Search admin portal</span>
+            <input type="search" placeholder="Search..." aria-label="Search admin portal" />
+          </label>
           <div className="admin-topbar-actions">
             <ThemeToggle className="admin-lang-btn" />
             <LangButton className="admin-lang-btn" />
