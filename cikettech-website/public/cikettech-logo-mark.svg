@@ -4,9 +4,10 @@
       <stop stop-color="#07536A"/>
       <stop offset="1" stop-color="#00647D"/>
     </linearGradient>
-    <linearGradient id="silver" x1="120" y1="160" x2="245" y2="385" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#F4F5F3"/>
-      <stop offset="1" stop-color="#8D9699"/>
+    <linearGradient id="bolt" x1="120" y1="160" x2="245" y2="385" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#FFF8E8"/>
+      <stop offset="1" stop-color="#E3B76B"/>
     </linearGradient>
   </defs>
   <path d="M245 30C135 32 48 123 48 250s87 218 197 220c-33-29-55-65-65-108-70-17-112-70-112-112 0-60 46-109 115-116 13-40 34-75 62-104Z" fill="url(#teal)"/>
@@ -20,5 +21,5 @@
   <g fill="#D8A25A">
     <circle cx="329" cy="30" r="12"/><circle cx="364" cy="135" r="12"/><circle cx="397" cy="117" r="12"/><circle cx="408" cy="419" r="12"/><circle cx="300" cy="470" r="12"/>
   </g>
-  <path d="m116 206 111-4-43 79 50 1-83 111 27-89-54-2 36-64-44-1Z" fill="url(#silver)" stroke="#D9DDDC" stroke-width="3"/>
+  <path d="m116 206 111-4-43 79 50 1-83 111 27-89-54-2 36-64-44-1Z" fill="url(#bolt)" stroke="#F0C878" stroke-width="3"/>
 </svg>

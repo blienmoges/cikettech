@@ -19,20 +19,29 @@ export default async function NewsPage() {
     <main>
       <SiteHeader active="" />
 
-      <section className="products-page-hero">
+      <section className="news-hero">
         <p>
           <Link href="/">Home</Link> / <span>News</span>
         </p>
-        <h1>Latest Technology News</h1>
-        <div>Technology updates, product innovation, and engineering news from CIKETTECH.</div>
+        <div className="news-hero-grid">
+          <div>
+            <p className="news-eyebrow">The CIKETTECH briefing</p>
+            <h1>Ideas, systems, and technology in motion.</h1>
+          </div>
+          <p className="news-hero-summary">Technology updates, product innovation, and engineering news from CIKETTECH, plus the stories shaping the wider industry.</p>
+        </div>
       </section>
 
-      <section className="catalog-section" aria-label="News articles">
-        <div className="catalog-grid">
+      <section className="news-section news-section-featured" aria-label="CIKETTECH news">
+        <div className="news-section-heading">
+          <div><p className="news-eyebrow">Inside CIKETTECH</p><h2>Latest from our newsroom</h2></div>
+          <p>Announcements, product progress, and practical notes from our engineering team.</p>
+        </div>
+        <div className="news-grid">
           {news.admin.map((article) => (
-            <article className="catalog-card" key={article.id}>
+            <article className="news-card" key={article.id}>
               {article.image && (
-                <div className="catalog-image">
+                <div className="news-card-image">
                   <Image
                     src={resolveMediaUrl(article.image)}
                     alt={article.title}
@@ -43,15 +52,11 @@ export default async function NewsPage() {
                   />
                 </div>
               )}
-              <div className="catalog-content">
-                <p className="legal-updated">{article.date}{article.category ? ` · ${article.category}` : ""}</p>
+              <div className="news-card-content">
+                <p className="news-meta">{article.date}{article.category ? ` · ${article.category}` : ""}</p>
                 <h2>{article.title}</h2>
                 <p>{article.summary}</p>
-                <div className="catalog-actions">
-                  <Link className="primary-button compact" href={`/news/${article.id}`}>
-                    Read Article
-                  </Link>
-                </div>
+                <Link className="news-link" href={`/news/${article.id}`}>Read article <span aria-hidden="true">&#8594;</span></Link>
               </div>
             </article>
           ))}
@@ -59,12 +64,16 @@ export default async function NewsPage() {
         </div>
       </section>
 
-      <section className="catalog-section" aria-label="External technology news">
-        <div className="section-heading"><h2>Technology News From Around the Web</h2><p>External headlines are linked to their original publishers.</p></div>
-        <div className="catalog-grid">
+      <section className="news-section news-section-external" aria-label="External technology news">
+        <div className="news-section-heading">
+          <div><p className="news-eyebrow">Around the web</p><h2>Technology news worth your time</h2></div>
+          <p>External headlines are linked to their original publishers.</p>
+        </div>
+        <div className="external-news-list">
           {news.external.map((article) => (
-            <article className="catalog-card" key={article.id}>
-              <div className="catalog-content"><p className="legal-updated">{article.date} · {article.source}</p><h2>{article.title}</h2><p>{article.summary}</p><div className="catalog-actions"><a className="primary-button compact" href={article.url} target="_blank" rel="noreferrer">Read Original Article</a></div></div>
+            <article className="external-news-item" key={article.id}>
+              <div><p className="news-meta">{article.source} · {article.date}</p><h3>{article.title}</h3><p>{article.summary}</p></div>
+              <a className="news-link" href={article.url} target="_blank" rel="noreferrer">Original story <span aria-hidden="true">&#8599;</span></a>
             </article>
           ))}
           {news.external.length === 0 && <p>No external technology headlines are available right now.</p>}
