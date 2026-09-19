@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import LangButton from "./LangButton";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -9,15 +10,6 @@ const navItems = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
-
-function GlobeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.6">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M3 12h18M12 3c2.6 2.6 4 6 4 9s-1.4 6.4-4 9c-2.6-2.6-4-6-4-9s1.4-6.4 4-9Z" />
-    </svg>
-  );
-}
 
 function GearIcon() {
   return (
@@ -52,9 +44,7 @@ export function AssistantHeader() {
         ))}
       </nav>
       <div className="assistant-header-actions">
-        <button className="icon-btn" aria-label="Language">
-          <GlobeIcon />
-        </button>
+        <LangButton className="icon-btn" />
         <button className="icon-btn" aria-label="Settings">
           <GearIcon />
         </button>
