@@ -33,6 +33,7 @@ export default function InquiryDetail({ inquiry }: { inquiry: Inquiry }) {
   const router = useRouter();
   const [status, setStatusValue] = useState(inquiry.status);
   const [savingStatus, setSavingStatus] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState("");
 
   async function setStatus(status: string) {
@@ -56,9 +57,18 @@ export default function InquiryDetail({ inquiry }: { inquiry: Inquiry }) {
 
   async function deleteInquiry() {
     if (!confirm("Delete this inquiry?")) return;
-    const res = await adminFetch(`/api/admin/inquiries/${inquiry.id}`, { method: "DELETE" });
-    if (res.ok) router.push("/admin/inquiries");
-    else if (res.status !== 401) alert("Could not delete this inquiry.");
+    setDeleting(true);
+    try {
+      const res = await adminFetch(`/api/admin/inquiries/${inquiry.id}`, { method: "DELETE" });
+      if (res.ok) {
+        router.push("/admin/inquiries");
+        return;
+      }
+      if (res.status === 403) alert("Only Administrators can delete inquiries.");
+      else if (res.status !== 401) alert("Could not delete this inquiry.");
+    } finally {
+      setDeleting(false);
+    }
   }
 
   return (
@@ -79,7 +89,7 @@ export default function InquiryDetail({ inquiry }: { inquiry: Inquiry }) {
           <button type="button" className="admin-outline-btn compact" disabled={savingStatus || status === "Closed"} onClick={() => setStatus("Closed")}>
             <ArchiveIcon /> Mark as Closed
           </button>
-          <button type="button" className="admin-btn-danger" onClick={deleteInquiry}>
+          <button type="button" className="admin-btn-danger" disabled={deleting} onClick={deleteInquiry}>
             <TrashIcon /> Delete Inquiry
           </button>
         </div>

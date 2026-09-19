@@ -37,6 +37,7 @@ export default function ImageDetail({ image }: { image: ImageRecord }) {
   const [altAm, setAltAm] = useState(image.altAm ?? "");
   const [captionAm, setCaptionAm] = useState(image.captionAm ?? "");
   const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   async function onSave() {
     setSaving(true);
@@ -58,13 +59,20 @@ export default function ImageDetail({ image }: { image: ImageRecord }) {
 
   async function onDelete() {
     if (!confirm("Delete this image?")) return;
+    setDeleting(true);
     try {
       const res = await adminFetch(`/api/admin/images/${image.id}`, { method: "DELETE" });
-      if (!res.ok && res.status !== 401) throw new Error("Delete failed");
+      if (res.status === 403) {
+        alert("Only Administrators can delete images.");
+        return;
+      }
+      if (!res.ok) throw new Error("Delete failed");
       router.push("/admin/images");
       router.refresh();
     } catch {
       alert("Could not delete this image. Please try again.");
+    } finally {
+      setDeleting(false);
     }
   }
 
@@ -80,7 +88,7 @@ export default function ImageDetail({ image }: { image: ImageRecord }) {
           <p>Manage metadata and variations for this asset.</p>
         </div>
         <div className="admin-form-actions">
-          <button type="button" className="admin-btn-danger" onClick={onDelete}>
+          <button type="button" className="admin-btn-danger" disabled={deleting} onClick={onDelete}>
             <TrashIcon /> Delete Image
           </button>
           <button type="button" className="primary-button admin-new-btn" disabled={saving} onClick={onSave}>
