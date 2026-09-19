@@ -35,25 +35,30 @@ export default async function BiometricAttendancePage() {
     <main>
       <SiteHeader active="Products" />
 
-      <section className="product-hero-banner">
-        <div className="product-hero-banner-inner">
-          <span className="capability-pill">Next-Gen Access Control</span>
-          <h1>
-            Precision Biometric
-            <span>Attendance System</span>
-          </h1>
+      <section className="product-hero">
+        <div className="product-hero-copy">
+          <p className="eyebrow">Next-Gen Access Control</p>
+          <h1>{product.name}</h1>
           <p>{product.description}</p>
           <div className="hero-actions">
-            <Link className="primary-button" href="#specs">
+            <Link className="primary-button" href="#quote">
+              {t(locale, "requestAQuote", translations)}
+            </Link>
+            <Link className="secondary-button" href="#specs">
               {t(locale, "technicalSpecs", translations)}
             </Link>
-            <Link className="secondary-button" href="#demo">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M8 5v14l11-7L8 5Z" />
-              </svg>
-              View Demo
-            </Link>
           </div>
+        </div>
+        <div className="product-hero-image">
+          <Image
+            src={product.heroImage}
+            alt={product.name}
+            fill
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 900px) 100vw, 640px"
+            unoptimized={product.heroImage.includes("wikimedia.org")}
+            priority
+          />
         </div>
       </section>
 
@@ -220,16 +225,11 @@ export default async function BiometricAttendancePage() {
       </section>
 
       <section id="quote" className="quote-section">
-        <div className="deploy-quote-card">
-          <div className="deploy-quote-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
-              <path d="M14 3v4h4" />
-              <path d="M12 11.5v5M10.3 12.8c0-.7.8-1.3 1.7-1.3s1.7.6 1.7 1.3-.8 1.2-1.7 1.2-1.7.5-1.7 1.2.8 1.3 1.7 1.3 1.7-.6 1.7-1.3" />
-            </svg>
-          </div>
-          <h2>Request a Deployment Quote</h2>
+        <div className="section-heading">
+          <h2>{t(locale, "requestAQuote", translations)}</h2>
           <p>Provide your facility details for a customized implementation plan.</p>
+        </div>
+        <div className="quote-card-wrapper">
           <DeploymentQuoteForm />
         </div>
       </section>

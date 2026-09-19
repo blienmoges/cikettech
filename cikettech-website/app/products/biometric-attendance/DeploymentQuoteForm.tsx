@@ -47,7 +47,7 @@ export default function DeploymentQuoteForm() {
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className="quote-form" onSubmit={onSubmit}>
       <div className="field-row">
         <label>
           Company Name
