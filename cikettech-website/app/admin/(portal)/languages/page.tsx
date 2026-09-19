@@ -60,8 +60,6 @@ export default async function AdminLanguagesPage() {
               <tr>
                 <th>Content Type</th>
                 <th>Total Items</th>
-                <th>English</th>
-                <th>Amharic</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -70,12 +68,6 @@ export default async function AdminLanguagesPage() {
                 <tr key={row.key}>
                   <td className="admin-table-name">{row.label}</td>
                   <td>{row.total}</td>
-                  <td>
-                    {row.enComplete}/{row.total} ({pct(row.enComplete, row.total)}%)
-                  </td>
-                  <td>
-                    {row.amComplete}/{row.total} ({pct(row.amComplete, row.total)}%)
-                  </td>
                   <td>
                     <Link className="text-action" href={row.href}>
                       Manage

@@ -78,15 +78,21 @@ export default function AdminPortalShell({ children }: { children: React.ReactNo
 
       <div className="admin-main">
         <header className="admin-topbar">
-          <ThemeToggle className="admin-lang-btn" />
-          <LangButton className="admin-lang-btn" />
-          <Link href="/admin/settings" className="admin-topbar-profile">
-            <div className="admin-avatar">
-              <UserIcon />
-            </div>
-            <span>Admin Profile</span>
-            <ChevronDownIcon />
-          </Link>
+          <div className="admin-topbar-brand">
+            <Image src="/cikettech-logo-mark.svg" alt="CIKETTECH" width={38} height={38} />
+            <div><strong>CIKETTECH</strong><span>Admin Portal</span></div>
+          </div>
+          <div className="admin-topbar-actions">
+            <ThemeToggle className="admin-lang-btn" />
+            <LangButton className="admin-lang-btn" />
+            <Link href="/admin/settings" className="admin-topbar-profile">
+              <div className="admin-avatar">
+                <UserIcon />
+              </div>
+              <span>Admin Profile</span>
+              <ChevronDownIcon />
+            </Link>
+          </div>
         </header>
 
         <div className="admin-content">{children}</div>

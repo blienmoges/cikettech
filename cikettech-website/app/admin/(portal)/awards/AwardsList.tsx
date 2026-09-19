@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { PlusIcon, SearchIcon, ImageIcon } from "../../../components/admin-icons";
-import { TranslationBadge, StatusBadge, RowActions } from "../AdminBadges";
+import { StatusBadge, RowActions } from "../AdminBadges";
 import AdminPagination from "../AdminPagination";
 import { resolveMediaUrl } from "../../../lib/api";
 
@@ -12,17 +12,9 @@ type Award = {
   name: string;
   org: string;
   image: string;
-  en: string;
-  am: string;
   status: string;
   date: string;
 };
-
-function translationTier(label: string): "done" | "pending" | "missing" {
-  if (label === "Ready" || label === "Complete") return "done";
-  if (label === "Missing") return "missing";
-  return "pending";
-}
 
 export default function AwardsList({ awards }: { awards: Award[] }) {
   const [status, setStatus] = useState("All Statuses");
@@ -70,8 +62,6 @@ export default function AwardsList({ awards }: { awards: Award[] }) {
                 <th>Image</th>
                 <th>Award Name</th>
                 <th>Issuing Organization</th>
-                <th>English</th>
-                <th>Amharic</th>
                 <th>Status</th>
                 <th>Date</th>
                 <th>Actions</th>
@@ -94,12 +84,6 @@ export default function AwardsList({ awards }: { awards: Award[] }) {
                   </td>
                   <td>{a.org}</td>
                   <td>
-                    <TranslationBadge tier={translationTier(a.en)} label={a.en} />
-                  </td>
-                  <td>
-                    <TranslationBadge tier={translationTier(a.am)} label={a.am} />
-                  </td>
-                  <td>
                     <StatusBadge status={a.status} />
                   </td>
                   <td>{a.date}</td>
@@ -115,7 +99,7 @@ export default function AwardsList({ awards }: { awards: Award[] }) {
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={8} className="admin-empty-row">
+                  <td colSpan={6} className="admin-empty-row">
                     No awards match your filters.
                   </td>
                 </tr>

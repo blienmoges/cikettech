@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { PlusIcon, SearchIcon } from "../../../components/admin-icons";
-import { TranslationBadge, StatusBadge, RowActions } from "../AdminBadges";
+import { StatusBadge, RowActions } from "../AdminBadges";
 import { resolveMediaUrl } from "../../../lib/api";
 
 type Product = {
@@ -11,17 +11,9 @@ type Product = {
   code: string;
   name: string;
   image: string;
-  english: string;
-  amharic: string;
   status: string;
   updated: string;
 };
-
-function translationTier(label: string): "done" | "pending" | "missing" {
-  if (label === "Complete") return "done";
-  if (label === "Missing") return "missing";
-  return "pending";
-}
 
 export default function ProductsList({ products }: { products: Product[] }) {
   const [search, setSearch] = useState("");
@@ -51,8 +43,6 @@ export default function ProductsList({ products }: { products: Product[] }) {
             <thead>
               <tr>
                 <th>Product</th>
-                <th>English</th>
-                <th>Amharic</th>
                 <th>Status</th>
                 <th>Last Updated</th>
                 <th>Actions</th>
@@ -71,12 +61,6 @@ export default function ProductsList({ products }: { products: Product[] }) {
                     </div>
                   </td>
                   <td>
-                    <TranslationBadge tier={translationTier(p.english)} label={p.english} />
-                  </td>
-                  <td>
-                    <TranslationBadge tier={translationTier(p.amharic)} label={p.amharic} />
-                  </td>
-                  <td>
                     <StatusBadge status={p.status} />
                   </td>
                   <td>{p.updated}</td>
@@ -92,7 +76,7 @@ export default function ProductsList({ products }: { products: Product[] }) {
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="admin-empty-row">
+                  <td colSpan={4} className="admin-empty-row">
                     No products match your search.
                   </td>
                 </tr>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { PlusIcon, SearchIcon } from "../../../components/admin-icons";
-import { TranslationBadge, StatusBadge, RowActions } from "../AdminBadges";
+import { StatusBadge, RowActions } from "../AdminBadges";
 import { resolveMediaUrl } from "../../../lib/api";
 
 type Article = {
@@ -15,12 +15,6 @@ type Article = {
   status: string;
   date: string;
 };
-
-function translationTier(label: string): "done" | "pending" | "missing" {
-  if (label === "Complete") return "done";
-  if (label === "Missing") return "missing";
-  return "pending";
-}
 
 export default function NewsList({ articles }: { articles: Article[] }) {
   const [status, setStatus] = useState("All Statuses");
@@ -67,8 +61,6 @@ export default function NewsList({ articles }: { articles: Article[] }) {
               <tr>
                 <th>Image</th>
                 <th>Title</th>
-                <th>En Status</th>
-                <th>Am Status</th>
                 <th>Publication</th>
                 <th>Date</th>
                 <th>Actions</th>
@@ -82,12 +74,6 @@ export default function NewsList({ articles }: { articles: Article[] }) {
                   </td>
                   <td>
                     <div className="admin-table-name admin-news-title">{a.title}</div>
-                  </td>
-                  <td>
-                    <TranslationBadge tier={translationTier(a.en)} label={a.en} />
-                  </td>
-                  <td>
-                    <TranslationBadge tier={translationTier(a.am)} label={a.am} />
                   </td>
                   <td>
                     <StatusBadge status={a.status} />
@@ -105,7 +91,7 @@ export default function NewsList({ articles }: { articles: Article[] }) {
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="admin-empty-row">
+                  <td colSpan={5} className="admin-empty-row">
                     No articles match your filters.
                   </td>
                 </tr>

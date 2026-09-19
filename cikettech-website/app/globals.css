@@ -3260,12 +3260,14 @@ button {
 }
 
 .admin-lang-btn {
-  display: inline-grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0 8px;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 8px;
   background: #ffffff;
   color: #5f6d7f;
   cursor: pointer;
@@ -3540,6 +3542,44 @@ button {
   padding: 0 34px;
   background: #ffffff;
   border-bottom: 1px solid var(--line);
+}
+
+.admin-topbar-brand,
+.admin-topbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.admin-topbar-brand {
+  gap: 10px;
+}
+
+.admin-topbar-brand img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.admin-topbar-brand div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-topbar-brand strong {
+  color: var(--navy);
+  font-size: 13px;
+  letter-spacing: 0.8px;
+}
+
+.admin-topbar-brand span {
+  color: #8090a4;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.admin-topbar-actions {
+  gap: 12px;
 }
 
 .admin-topbar-profile {
@@ -4074,6 +4114,32 @@ button {
 }
 
 @media (max-width: 560px) {
+  .admin-topbar {
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .admin-topbar-actions {
+    gap: 6px;
+  }
+
+  .admin-topbar-profile span,
+  .admin-topbar-profile svg:last-child {
+    display: none;
+  }
+
+  .admin-topbar-profile {
+    gap: 0;
+  }
+
+  .admin-topbar-brand strong {
+    font-size: 11px;
+  }
+
+  .admin-topbar-brand span {
+    font-size: 9px;
+  }
+
   .admin-content {
     padding: 24px 18px 40px;
   }

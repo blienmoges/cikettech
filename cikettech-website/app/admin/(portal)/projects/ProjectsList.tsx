@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { PlusIcon, SearchIcon } from "../../../components/admin-icons";
-import { TranslationBadge, StatusBadge, RowActions } from "../AdminBadges";
+import { StatusBadge, RowActions } from "../AdminBadges";
 import AdminPagination from "../AdminPagination";
 import { resolveMediaUrl } from "../../../lib/api";
 
@@ -11,17 +11,9 @@ type Project = {
   id: string;
   title: string;
   image: string;
-  en: string;
-  am: string;
   status: string;
   updated: string;
 };
-
-function translationTier(label: string): "done" | "pending" | "missing" {
-  if (label === "Complete") return "done";
-  if (label === "Missing") return "missing";
-  return "pending";
-}
 
 export default function ProjectsList({ projects }: { projects: Project[] }) {
   const [status, setStatus] = useState("All Statuses");
@@ -68,8 +60,6 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
               <tr>
                 <th>Image</th>
                 <th>Project Title</th>
-                <th>English</th>
-                <th>Amharic</th>
                 <th>Status</th>
                 <th>Last Updated</th>
                 <th>Actions</th>
@@ -83,12 +73,6 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
                   </td>
                   <td>
                     <div className="admin-table-name admin-news-title">{p.title}</div>
-                  </td>
-                  <td>
-                    <TranslationBadge tier={translationTier(p.en)} label={p.en} />
-                  </td>
-                  <td>
-                    <TranslationBadge tier={translationTier(p.am)} label={p.am} />
                   </td>
                   <td>
                     <StatusBadge status={p.status} />
@@ -106,7 +90,7 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="admin-empty-row">
+                  <td colSpan={5} className="admin-empty-row">
                     No projects match your filters.
                   </td>
                 </tr>
