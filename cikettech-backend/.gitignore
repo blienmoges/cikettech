@@ -6,5 +6,8 @@ data.sqlite-wal
 data.sqlite-shm
 uploads/*
 !uploads/.gitkeep
+!uploads/smart parking.jpg
+!uploads/biometric.jpg
+!uploads/bell system.jpg
 backups/
 coverage/

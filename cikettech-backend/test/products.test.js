@@ -84,6 +84,27 @@ describe("settings", () => {
 });
 
 describe("public content endpoints", () => {
+  test("product catalog uses the named product photos", async () => {
+    const expectedImages = {
+      "parking-gate": "/uploads/smart%20parking.jpg",
+      "biometric-attendance": "/uploads/biometric.jpg",
+      "school-bell": "/uploads/bell%20system.jpg",
+    };
+
+    for (const [slug, image] of Object.entries(expectedImages)) {
+      const detail = await request(app).get(`/api/products/${slug}`);
+      expect(detail.status).toBe(200);
+      expect(detail.body.heroImage).toBe(image);
+
+      const imageResponse = await request(app).get(image);
+      expect(imageResponse.status).toBe(200);
+      expect(imageResponse.headers["content-type"]).toMatch(/^image\/(jpeg|png)/);
+
+      const list = await request(app).get("/api/products");
+      expect(list.body.find((product) => product.slug === slug).image).toBe(image);
+    }
+  });
+
   test("only published news/projects/awards are exposed publicly", async () => {
     const news = await request(app).get("/api/news");
     expect(news.status).toBe(200);
