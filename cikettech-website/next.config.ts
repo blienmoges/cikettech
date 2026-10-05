@@ -12,9 +12,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "commons.wikimedia.org" },
-      // Admin-uploaded files, served by cikettech-backend (see resolveMediaUrl
-      // in app/lib/api.ts). Add your production backend's hostname here too
-      // once one exists.
+      { protocol: "https", hostname: "cikettech.onrender.com" },
+      { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "http", hostname: "localhost", port: "4000" },
     ],
   },

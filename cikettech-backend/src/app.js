@@ -53,7 +53,7 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:3000")
 // documents from this API's /uploads route — helmet's default "same-origin"
 // would silently block that.
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
 app.use((req, res, next) => {
   if (req.method === "GET" && !req.path.startsWith("/api/admin") && req.path !== "/api/health") {

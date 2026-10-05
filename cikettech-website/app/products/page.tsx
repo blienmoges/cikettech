@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import { apiGet } from "../lib/server-content";
+import { resolveMediaUrl } from "../lib/api";
 
 export const metadata: Metadata = {
   title: "Products | CIKETTECH",
@@ -46,7 +47,7 @@ export default async function ProductsPage() {
               <article className="catalog-card" key={product.slug}>
                 <div className="catalog-image">
                   <Image
-                    src={product.image}
+                    src={resolveMediaUrl(product.image)}
                     alt={product.name}
                     fill
                     style={{ objectFit: "cover" }}

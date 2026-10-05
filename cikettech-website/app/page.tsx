@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "./components/site-chrome";
 import { apiGet } from "./lib/server-content";
+import { resolveMediaUrl } from "./lib/api";
 
 type HomeData = {
   hero: {
@@ -116,7 +117,7 @@ export default async function Home() {
             <article className="product-card" key={product.slug}>
               <div className="product-image">
                 <Image
-                  src={product.image}
+                  src={resolveMediaUrl(product.image)}
                   alt={product.title}
                   fill
                   style={{ objectFit: "cover" }}
