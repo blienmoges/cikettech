@@ -2,15 +2,22 @@
 
 import { useEffect } from "react";
 
+const STORAGE_KEY = "cikettech_admin_theme";
+
 export default function ThemeInit() {
   useEffect(() => {
     try {
-      const theme = localStorage.getItem("cikettech_admin_theme");
-      if (theme === "dark") {
-        document.documentElement.setAttribute("data-theme", "dark");
-      }
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      const preferredDark =
+        saved === "dark" ||
+        (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+      document.documentElement.setAttribute(
+        "data-theme",
+        preferredDark ? "dark" : "light",
+      );
     } catch {
-      // Ignore storage access issues in restricted browsers.
+      document.documentElement.setAttribute("data-theme", "light");
     }
   }, []);
 

@@ -2,13 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../../components/site-chrome";
 import SchoolBellQuoteForm from "./SchoolBellQuoteForm";
+import { resolveMediaUrl } from "../../lib/api";
 import { apiGet, getTranslations } from "../../lib/server-content";
 import { getLocale } from "../../lib/locale";
 import { t } from "../../lib/i18n";
 
 export const metadata = {
   title: "Smart School Bell System | CIKETTECH",
-  description: "Smart School Bell System product page with capabilities and quote form.",
+  description:
+    "Smart School Bell System product page with capabilities and quote form.",
 };
 
 type ProductDetail = {
@@ -25,7 +27,14 @@ type ProductDetail = {
 
 function ClockIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="13" r="8" />
       <path d="M12 9v4l3 2M9 2h6" />
     </svg>
@@ -34,7 +43,14 @@ function ClockIcon() {
 
 function BroadcastIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="8" y="10" width="8" height="11" rx="1.5" />
       <path d="M12 10V6M9 3.5a4 4 0 0 1 6 0M6.5 1.5a7.5 7.5 0 0 1 11 0" />
     </svg>
@@ -43,7 +59,14 @@ function BroadcastIcon() {
 
 function DashboardIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3.5" y="3.5" width="7" height="7" rx="1.2" />
       <rect x="13.5" y="3.5" width="7" height="7" rx="1.2" />
       <rect x="3.5" y="13.5" width="7" height="7" rx="1.2" />
@@ -54,7 +77,14 @@ function DashboardIcon() {
 
 function ShieldIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 3.5 19 6.5v5.5c0 4.5-3 7-7 8.5-4-1.5-7-4-7-8.5V6.5L12 3.5Z" />
       <path d="m9.2 12.2 1.9 1.9 3.7-3.9" />
     </svg>
@@ -76,7 +106,9 @@ export default async function SchoolBellPage() {
 
       <section className="product-hero">
         <div className="product-hero-copy">
-          {product.tagline && <span className="capability-pill">{product.tagline}</span>}
+          {product.tagline && (
+            <span className="capability-pill">{product.tagline}</span>
+          )}
           <h1>{product.name}.</h1>
           <p>{product.description}</p>
           <div className="hero-actions">
@@ -90,7 +122,7 @@ export default async function SchoolBellPage() {
         </div>
         <div className="product-hero-image">
           <Image
-            src={product.heroImage}
+            src={resolveMediaUrl(product.heroImage)}
             alt={product.name}
             fill
             style={{ objectFit: "cover" }}
@@ -105,8 +137,8 @@ export default async function SchoolBellPage() {
         <div className="section-heading">
           <h2>Engineered for Precision.</h2>
           <p>
-            The core architecture of the Smart School Bell System is built on a foundation of
-            reliability, scalability, and ease of integration.
+            The core architecture of the Smart School Bell System is built on a
+            foundation of reliability, scalability, and ease of integration.
           </p>
         </div>
 
@@ -131,7 +163,10 @@ export default async function SchoolBellPage() {
           <h2>{t(locale, "idealApplicationsBenefits", translations)}</h2>
         </div>
 
-        <div className="capabilities-grid" style={{ gridTemplateColumns: "1fr 1fr" }}>
+        <div
+          className="capabilities-grid"
+          style={{ gridTemplateColumns: "1fr 1fr" }}
+        >
           <div>
             {product.applications.map((a) => (
               <article className="cap-card" key={a.title}>
@@ -159,7 +194,7 @@ export default async function SchoolBellPage() {
         <div className="gallery-grid">
           <div className="gallery-large">
             <Image
-              src={product.gallery[0]}
+              src={resolveMediaUrl(product.gallery[0])}
               alt={`${product.name} gallery photo 1`}
               fill
               style={{ objectFit: "cover" }}
@@ -171,7 +206,7 @@ export default async function SchoolBellPage() {
             {product.gallery.slice(1).map((src, i) => (
               <div key={src} className="gallery-small">
                 <Image
-                  src={src}
+                  src={resolveMediaUrl(src)}
                   alt={`${product.name} gallery photo ${i + 2}`}
                   fill
                   style={{ objectFit: "cover" }}
@@ -189,22 +224,24 @@ export default async function SchoolBellPage() {
           <h2>{t(locale, "technicalSpecifications", translations)}</h2>
         </div>
         <div className="specs-table">
-          {Array.from({ length: Math.ceil(product.specs.length / 2) }).map((_, rowIdx) => {
-            const left = product.specs[rowIdx * 2];
-            const right = product.specs[rowIdx * 2 + 1];
-            return (
-              <div className="spec-row" key={left.label}>
-                <div>{left.label}</div>
-                <div>{left.value}</div>
-                {right && (
-                  <>
-                    <div>{right.label}</div>
-                    <div>{right.value}</div>
-                  </>
-                )}
-              </div>
-            );
-          })}
+          {Array.from({ length: Math.ceil(product.specs.length / 2) }).map(
+            (_, rowIdx) => {
+              const left = product.specs[rowIdx * 2];
+              const right = product.specs[rowIdx * 2 + 1];
+              return (
+                <div className="spec-row" key={left.label}>
+                  <div>{left.label}</div>
+                  <div>{left.value}</div>
+                  {right && (
+                    <>
+                      <div>{right.label}</div>
+                      <div>{right.value}</div>
+                    </>
+                  )}
+                </div>
+              );
+            },
+          )}
         </div>
       </section>
 
@@ -212,8 +249,8 @@ export default async function SchoolBellPage() {
         <div className="section-heading">
           <h2>{t(locale, "requestAQuote", translations)}</h2>
           <p>
-            Provide details about your facility requirements, and our engineering team will
-            architect a tailored solution.
+            Provide details about your facility requirements, and our
+            engineering team will architect a tailored solution.
           </p>
         </div>
         <div className="quote-card-wrapper">

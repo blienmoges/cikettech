@@ -8,12 +8,9 @@ const products = [
       "Advanced license plate recognition and automated barrier control for seamless vehicle access management. Designed for high-traffic corporate and institutional facilities.",
     description:
       "An intelligent, automated access control solution engineered for commercial and institutional facilities. Utilizing advanced ANPR and machine learning, this system ensures seamless entry, robust security, and comprehensive vehicle flow management.",
-    heroImage:
-      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=85",
-    listImage:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85",
-    homeImage:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1100&q=80",
+    heroImage: "/uploads/1788909381660-4bb5c3e31c22.png",
+    listImage: "/uploads/1788909381660-4bb5c3e31c22.png",
+    homeImage: "/uploads/1788909381660-4bb5c3e31c22.png",
     theme: "blue",
     features: [
       {
@@ -45,10 +42,10 @@ const products = [
       { title: "Improved UX", description: "Frictionless entry for VIPs, employees, and tenants without manual checks." },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80",
+      "/uploads/1788909381660-4bb5c3e31c22.png",
+      "/uploads/1788909381660-4bb5c3e31c22.png",
+      "/uploads/1788909381660-4bb5c3e31c22.png",
+      "/uploads/1788909381660-4bb5c3e31c22.png",
     ],
     specs: [
       { label: "Power Supply", value: "12–24V DC" },
@@ -68,12 +65,9 @@ const products = [
       "Secure, rapid, and hygienic workforce tracking utilizing advanced facial recognition and fingerprint scanning technologies, fully integrated with central HR systems.",
     description:
       "Engineered for high-security environments. Our flagship biometric terminal combines military-grade optical sensors with a proprietary anti-spoofing algorithm, delivered in a minimalist, architectural chassis.",
-    heroImage:
-      "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=85",
-    listImage:
-      "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=85",
-    homeImage:
-      "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1100&q=80",
+    heroImage: "/uploads/1789151956000-caa1fc86a51a.png",
+    listImage: "/uploads/1789151956000-caa1fc86a51a.png",
+    homeImage: "/uploads/1789151956000-caa1fc86a51a.png",
     theme: "blue",
     features: [
       {
@@ -106,10 +100,10 @@ const products = [
       { title: "Enterprise-Grade Data Security", description: "End-to-end AES-256 encryption and a zero-knowledge architecture protect biometric data at rest and in transit." },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+      "/uploads/1789151956000-caa1fc86a51a.png",
+      "/uploads/1789151956000-caa1fc86a51a.png",
+      "/uploads/1789151956000-caa1fc86a51a.png",
+      "/uploads/1789151956000-caa1fc86a51a.png",
     ],
     specs: [
       { label: "Sensor Type", value: "Optical Silk ID" },
@@ -129,12 +123,9 @@ const products = [
       "Automated scheduling and multi-zone audio distribution for educational campuses. Ensure precise timing and clear communication across diverse facilities.",
     description:
       "A technically advanced, automated scheduling solution designed to replace obsolete mechanical bells with precision digital timing, custom audio zones, and centralized management. Built for modern educational facilities demanding reliability and minimal maintenance.",
-    heroImage:
-      "https://commons.wikimedia.org/wiki/Special:FilePath/Public_address_speaker_in_Eschelbronn_07.JPG?width=1200",
-    listImage:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=85",
-    homeImage:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1100&q=80",
+    heroImage: "/uploads/1789474394526-355f7a3ad0da.png",
+    listImage: "/uploads/1789474394526-355f7a3ad0da.png",
+    homeImage: "/uploads/1789474394526-355f7a3ad0da.png",
     theme: "blue",
     features: [
       {
@@ -169,10 +160,10 @@ const products = [
       { title: "Uninterrupted Operation", description: "Local schedule caching and battery backup keep bells ringing on time during a network or power outage." },
     ],
     gallery: [
-      "https://commons.wikimedia.org/wiki/Special:FilePath/Public_address_speaker_in_Eschelbronn_07.JPG?width=1200",
-      "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
-      "https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=800",
+      "/uploads/1789474394526-355f7a3ad0da.png",
+      "/uploads/1789474394526-355f7a3ad0da.png",
+      "/uploads/1789474394526-355f7a3ad0da.png",
+      "/uploads/1789474394526-355f7a3ad0da.png",
     ],
     specs: [
       { label: "Power Supply", value: "100–240V AC / 12V DC backup" },
@@ -184,66 +175,64 @@ const products = [
     ],
   },
   {
-    slug: "school-bell",
-    name: "Smart School Bell System",
-    shortName: "Smart School Bell",
-    tagline: "Smart Infrastructure",
+    slug: "day-counter",
+    name: "Smart Day Counter",
+    shortName: "Smart Day Counter",
+    tagline: "Precision Instrumentation",
     summary:
-      "Automated scheduling and multi-zone audio distribution for educational campuses. Ensure precise timing and clear communication across diverse facilities.",
+      "Industrial-grade digital counters for tracking safety records, project timelines, and operational metrics with high visibility.",
     description:
-      "A technically advanced, automated scheduling solution designed to replace obsolete mechanical bells with precision digital timing, custom audio zones, and centralized management. Built for modern educational facilities demanding reliability and minimal maintenance.",
+      "An industrial-grade timekeeping module designed for extreme environments. Ensuring precise chronological tracking with fail-safe memory and ultra-low power consumption.",
     heroImage:
-      "https://commons.wikimedia.org/wiki/Special:FilePath/Public_address_speaker_in_Eschelbronn_07.JPG?width=1200",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/USB_seven_segment_display_module_(48158381686).jpg?width=1200",
     listImage:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=85",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/USB_seven_segment_display_module_(48158381686).jpg?width=1200",
     homeImage:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1100&q=80",
-    theme: "blue",
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1100&q=80",
+    theme: "cyan",
     features: [
       {
-        title: "Microsecond Precision",
+        title: "Non-Volatile Flash Memory",
         description:
-          "NTP-synchronized timing ensures absolute accuracy across all campus zones, eliminating drift typical in legacy systems.",
+          "Retains count data indefinitely without external power. Critical for systems requiring absolute chronological integrity across power cycles and unexpected outages.",
       },
       {
-        title: "Multi-Zone Audio Routing",
-        description:
-          "Configure custom audio alerts, emergency broadcasts, and standard bell tones independently for classrooms, hallways, and outdoor areas via a centralized dashboard.",
+        title: "Ultra-Low Power Draw",
+        description: "Operates on micro-amps, making it suitable for battery-backed or solar-powered remote installations.",
       },
       {
-        title: "Cloud-Native Management",
-        description:
-          "Manage schedules remotely through a secure, responsive web interface. Deploy firmware updates and monitor system health across multiple campuses from a single pane of glass.",
+        title: "Universal I/O Protocol",
+        description: "Standardized interfaces including RS-485 and Modbus for seamless integration with legacy and modern PLCs.",
       },
       {
-        title: "Fail-Safe Operation",
+        title: "Industrial Hardening",
         description:
-          "Local caching of schedules guarantees uninterrupted operation even during network outages. Battery backup maintains timing integrity.",
+          "Encased in an IP67-rated machined aluminum shell. Resistant to extreme temperatures, vibration, and electromagnetic interference.",
       },
     ],
     applications: [
-      { title: "K-12 Campuses", description: "Automate class-change bells, assemblies, and emergency alerts across every building." },
-      { title: "University & Multi-Building Campuses", description: "Coordinate independent bell schedules and zone-specific announcements from one dashboard." },
-      { title: "Factory & Shift-Based Facilities", description: "Repurpose the same scheduling engine for shift-change signals and safety drills." },
+      { title: "Workplace Safety Milestones", description: "Track days-since-last-incident across factories, warehouses, and job sites." },
+      { title: "Project & Production Timelines", description: "Display elapsed days for construction phases, production runs, or maintenance cycles." },
+      { title: "Regulatory & Compliance Records", description: "Maintain a tamper-evident chronological log for safety audits and inspections." },
     ],
     benefits: [
-      { title: "Zero Timing Drift", description: "NTP synchronization keeps every zone perfectly aligned, eliminating the slow drift of mechanical bells." },
-      { title: "Centralized Control", description: "Update schedules for an entire district from a single web dashboard instead of visiting each building." },
-      { title: "Uninterrupted Operation", description: "Local schedule caching and battery backup keep bells ringing on time during a network or power outage." },
+      { title: "Eliminates Manual Tracking", description: "Replaces error-prone whiteboards and paper logs with an automated, always-accurate display." },
+      { title: "Set-and-Forget Reliability", description: "Non-volatile memory and ultra-low power draw mean the count survives outages without a battery swap schedule." },
+      { title: "Fast, Low-Cost Deployment", description: "Simple RS-485/Modbus wiring integrates with existing PLCs and signage without custom engineering." },
     ],
     gallery: [
-      "https://commons.wikimedia.org/wiki/Special:FilePath/Public_address_speaker_in_Eschelbronn_07.JPG?width=1200",
-      "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Digital_tally_counter.jpg?width=1200",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/USB_seven_segment_display_module_(48158381686).jpg?width=800",
       "https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=800",
+      "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80",
     ],
     specs: [
-      { label: "Power Supply", value: "100–240V AC / 12V DC backup" },
-      { label: "Audio Output", value: "Up to 30W per zone" },
-      { label: "Zones Supported", value: "Up to 64 independent zones" },
-      { label: "Time Sync", value: "NTP / GPS (optional)" },
-      { label: "Connectivity", value: "Ethernet / Wi-Fi" },
-      { label: "Operating Temp", value: "-10°C to +50°C" },
+      { label: "Power Supply", value: "12–24V DC" },
+      { label: "Memory Type", value: "EEPROM" },
+      { label: "Power Consumption", value: "< 50mW" },
+      { label: "Display", value: "High-contrast OLED" },
+      { label: "Operating Temp", value: "-40°C to +85°C" },
+      { label: "Interface", value: "RS-485 / Modbus RTU" },
     ],
   },
 ];
