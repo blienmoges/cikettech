@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PerformanceMonitor from "./components/PerformanceMonitor";
 import CustomerAssistant from "./components/CustomerAssistant";
+import ThemeInit from "./components/ThemeInit";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,16 +37,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Runs before paint so the admin portal never flashes the wrong theme on load.
-const themeInitScript = `
-(function () {
-  try {
-    var theme = localStorage.getItem("cikettech_admin_theme");
-    if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
-  } catch (e) {}
-})();
-`;
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -53,10 +44,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      </head>
-      <body><PerformanceMonitor /><CustomerAssistant />{children}</body>
+      <body>
+        <ThemeInit />
+        <PerformanceMonitor />
+        <CustomerAssistant />
+        {children}
+      </body>
     </html>
   );
 }

@@ -31,30 +31,40 @@ const reasonIcons: Record<string, React.ReactNode> = {
   ),
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "CIKETTECH",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://cikettech.com",
-  description:
-    "CIKETTECH designs and manufactures intelligent electronic systems for modern infrastructure, based in Addis Ababa, Ethiopia.",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Bole Road, Millennium Business Park",
-    addressLocality: "Addis Ababa",
-    addressCountry: "ET",
+const fallbackHomeData: HomeData = {
+  hero: {
+    heading: "Intelligent technology for modern infrastructure.",
+    subheading: "From secure access systems to smart automation, CIKETTECH builds reliable technology for a more connected future.",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    viewProducts: "View products",
   },
+  featured: {
+    heading: "Featured solutions",
+    subheading: "Engineered for institutions, campuses, and growing operations.",
+    viewDetails: "View details",
+  },
+  why: { heading: "Why CIKETTECH" },
+  cta: {
+    heading: "Need a custom solution?",
+    body: "Speak with our engineering team to plan the right system for your facility.",
+    requestQuote: "Request a quote",
+    contactSales: "Contact sales",
+  },
+  about: {
+    eyebrow: "Built in Ethiopia",
+    heading: "Technology designed for real-world operations.",
+    body:
+      "CIKETTECH develops practical, high-performance electronic systems for modern infrastructure, access control, and smart facilities.",
+  },
+  featuredProducts: [],
+  reasons: [],
 };
 
 export default async function Home() {
-  const data = await apiGet<HomeData>("/api/home");
+  const data = await apiGet<HomeData>("/api/home").catch(() => fallbackHomeData);
 
   return (
     <main id="home">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-      />
       <SiteHeader active="Home" />
 
       <section className="hero">
