@@ -5,11 +5,27 @@ const crypto = require("crypto");
 const fs = require("fs");
 const { execFile } = require("child_process");
 const { promisify } = require("util");
+const cloudinary = require("cloudinary").v2;
 
 const execFileAsync = promisify(execFile);
 
 const uploadsDir = process.env.UPLOADS_DIR || path.join(__dirname, "..", "..", "..", "uploads");
 fs.mkdirSync(uploadsDir, { recursive: true });
+
+const cloudinaryEnabled = Boolean(
+  process.env.CLOUDINARY_CLOUD_NAME &&
+    process.env.CLOUDINARY_API_KEY &&
+    process.env.CLOUDINARY_API_SECRET
+);
+
+if (cloudinaryEnabled) {
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure: true,
+  });
+}
 
 const allowedTypes = new Map([
   [".jpg", "image/jpeg"],
@@ -40,6 +56,16 @@ const upload = multer({
   },
 });
 
+async function uploadToCloudinary(filePath) {
+  const result = await cloudinary.uploader.upload(filePath, {
+    folder: process.env.CLOUDINARY_FOLDER || "cikettech",
+    resource_type: "auto",
+    use_filename: false,
+    unique_filename: true,
+  });
+  return result.secure_url;
+}
+
 const router = express.Router();
 
 function hasValidSignature(filePath, ext) {
@@ -68,10 +94,27 @@ router.post("/", (req, res) => upload.single("file")(req, res, async (error) => 
     fs.rmSync(req.file.path, { force: true });
     return res.status(400).json({ error: scanError.code === "ENOENT" ? "Malware scanner is unavailable." : scanError.code === 1 || scanError.message.includes("FOUND") ? "Malware was detected." : scanError.message });
   }
+
+  if (cloudinaryEnabled) {
+    try {
+      const url = await uploadToCloudinary(req.file.path);
+      fs.rmSync(req.file.path, { force: true });
+      return res.status(201).json({
+        url,
+        name: req.file.originalname,
+        size: req.file.size,
+        source: "cloudinary",
+      });
+    } catch (cloudError) {
+      console.warn("Cloudinary upload failed, falling back to local storage:", cloudError.message);
+    }
+  }
+
   res.status(201).json({
     url: `/uploads/${req.file.filename}`,
     name: req.file.originalname,
     size: req.file.size,
+    source: "local",
   });
 }));
 
