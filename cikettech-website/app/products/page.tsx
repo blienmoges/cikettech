@@ -11,7 +11,12 @@ export const metadata: Metadata = {
     "Explore CIKETTECH smart electronic systems for access control, attendance, scheduling, and operational tracking.",
 };
 
-type ProductSummary = { slug: string; name: string; summary: string; image: string };
+type ProductSummary = {
+  slug: string;
+  name: string;
+  summary: string;
+  image: string;
+};
 
 function SupportIcon() {
   return (
@@ -34,8 +39,9 @@ export default async function ProductsPage() {
         </p>
         <h1>Our Products</h1>
         <div>
-          Engineered for precision and built for reliability, our suite of smart systems leverages
-          cutting-edge technology to streamline operations and enhance security.
+          Engineered for precision and built for reliability, our suite of smart
+          systems leverages cutting-edge technology to streamline operations and
+          enhance security.
         </div>
       </section>
 
@@ -75,8 +81,8 @@ export default async function ProductsPage() {
       <section className="products-cta">
         <h2>Interested in One of Our Products?</h2>
         <p>
-          Our engineering team is ready to discuss your specific requirements and architect a
-          tailored solution for your institution.
+          Our engineering team is ready to discuss your specific requirements
+          and architect a tailored solution for your institution.
         </p>
         <Link className="primary-button" href="/contact">
           Contact CIKETTECH
@@ -85,7 +91,11 @@ export default async function ProductsPage() {
 
       <SiteFooter />
 
-      <Link className="support-fab" href="/contact" aria-label="Contact support">
+      <Link
+        className="support-fab"
+        href="/contact"
+        aria-label="Contact support"
+      >
         <SupportIcon />
       </Link>
     </main>
