@@ -4,12 +4,28 @@ import { SiteFooter, SiteHeader } from "./components/site-chrome";
 import { apiGet } from "./lib/server-content";
 
 type HomeData = {
-  hero: { heading: string; subheading: string; image: string; viewProducts: string };
+  hero: {
+    heading: string;
+    subheading: string;
+    image: string;
+    viewProducts: string;
+  };
   featured: { heading: string; subheading: string; viewDetails: string };
   why: { heading: string };
-  cta: { heading: string; body: string; requestQuote: string; contactSales: string };
+  cta: {
+    heading: string;
+    body: string;
+    requestQuote: string;
+    contactSales: string;
+  };
   about: { eyebrow: string; heading: string; body: string };
-  featuredProducts: { slug: string; title: string; description: string; image: string; href: string }[];
+  featuredProducts: {
+    slug: string;
+    title: string;
+    description: string;
+    image: string;
+    href: string;
+  }[];
   reasons: { key: string; title: string; description: string }[];
 };
 
@@ -34,13 +50,16 @@ const reasonIcons: Record<string, React.ReactNode> = {
 const fallbackHomeData: HomeData = {
   hero: {
     heading: "Intelligent technology for modern infrastructure.",
-    subheading: "From secure access systems to smart automation, CIKETTECH builds reliable technology for a more connected future.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    subheading:
+      "From secure access systems to smart automation, CIKETTECH builds reliable technology for a more connected future.",
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
     viewProducts: "View products",
   },
   featured: {
     heading: "Featured solutions",
-    subheading: "Engineered for institutions, campuses, and growing operations.",
+    subheading:
+      "Engineered for institutions, campuses, and growing operations.",
     viewDetails: "View details",
   },
   why: { heading: "Why CIKETTECH" },
@@ -53,15 +72,16 @@ const fallbackHomeData: HomeData = {
   about: {
     eyebrow: "Built in Ethiopia",
     heading: "Technology designed for real-world operations.",
-    body:
-      "CIKETTECH develops practical, high-performance electronic systems for modern infrastructure, access control, and smart facilities.",
+    body: "CIKETTECH develops practical, high-performance electronic systems for modern infrastructure, access control, and smart facilities.",
   },
   featuredProducts: [],
   reasons: [],
 };
 
 export default async function Home() {
-  const data = await apiGet<HomeData>("/api/home").catch(() => fallbackHomeData);
+  const data = await apiGet<HomeData>("/api/home").catch(
+    () => fallbackHomeData,
+  );
 
   return (
     <main id="home">
