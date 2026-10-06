@@ -6,11 +6,10 @@ services:
     build:
       context: ./cikettech-backend
     ports:
-      - "4000:4000"
+      - "127.0.0.1:4000:4000"
     env_file:
       - ./cikettech-backend/.env
     environment:
-      - ALLOWED_ORIGINS=http://localhost:3000
       # Named volumes must be mounted on directories, not files — point the
       # database at a file inside the mounted db/ directory instead of the
       # default ./data.sqlite path.
