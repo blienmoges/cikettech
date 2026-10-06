@@ -56,7 +56,7 @@ export default async function BiometricAttendancePage() {
             src={resolveMediaUrl(product.heroImage)}
             alt={product.name}
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "contain" }}
             sizes="(max-width: 900px) 100vw, 640px"
             unoptimized={product.heroImage.includes("wikimedia.org")}
             priority
@@ -95,7 +95,7 @@ export default async function BiometricAttendancePage() {
                   src={resolveMediaUrl(product.heroImage)}
                   alt={product.name}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "contain" }}
                   sizes="(max-width: 900px) 100vw, 480px"
                   unoptimized={product.heroImage.includes("wikimedia.org")}
                 />
@@ -211,7 +211,7 @@ export default async function BiometricAttendancePage() {
               src={resolveMediaUrl(product.gallery[0])}
               alt={`${product.name} gallery photo 1`}
               fill
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "contain" }}
               sizes="(max-width: 900px) 100vw, 640px"
               unoptimized={product.gallery[0].includes("wikimedia.org")}
             />
@@ -223,7 +223,7 @@ export default async function BiometricAttendancePage() {
                   src={resolveMediaUrl(src)}
                   alt={`${product.name} gallery photo ${i + 2}`}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "contain" }}
                   sizes="360px"
                   unoptimized={src.includes("wikimedia.org")}
                 />

@@ -56,7 +56,7 @@ export default async function ProductsPage() {
                     src={resolveMediaUrl(product.image)}
                     alt={product.name}
                     fill
-                    style={{ objectFit: "cover" }}
+                    style={{ objectFit: "contain" }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>

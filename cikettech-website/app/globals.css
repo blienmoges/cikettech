@@ -346,7 +346,7 @@ button {
   position: relative;
   min-height: 328px;
   background-position: center;
-  background-size: cover;
+  background-color: #f1f4f5;
 }
 
 .product-content {
@@ -894,7 +894,7 @@ button {
   position: relative;
   min-height: 328px;
   background-position: center;
-  background-size: cover;
+  background-color: #f1f4f5;
 }
 
 .catalog-content {
@@ -1676,7 +1676,7 @@ button {
   overflow: hidden;
   min-height: 120px;
   border-radius: 10px;
-  background-size: cover;
+  background-color: #f1f4f5;
   background-position: center;
   border: 1px solid #eef4fb;
 }
@@ -1685,7 +1685,7 @@ button {
   overflow: hidden;
   border-radius: 12px;
   min-height: 320px;
-  background-size: cover;
+  background-color: #f1f4f5;
   background-position: center;
   border: 1px solid #eef4fb;
 }
@@ -2766,11 +2766,7 @@ button {
   overflow: hidden;
   min-height: 360px;
   border-radius: 12px;
-  background:
-    linear-gradient(180deg, rgba(3, 31, 60, 0.04), rgba(3, 31, 60, 0.18)),
-    url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85");
-  background-position: center;
-  background-size: cover;
+  background-color: #f1f4f5;
   border: 1px solid rgba(226, 239, 255, 0.06);
 }
 

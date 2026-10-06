@@ -93,7 +93,7 @@ export default async function DayCounterPage() {
             src={product.heroImage}
             alt={product.name}
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "contain" }}
             sizes="(max-width: 900px) 100vw, 640px"
             unoptimized={product.heroImage.includes("wikimedia.org")}
             priority
@@ -123,7 +123,7 @@ export default async function DayCounterPage() {
                   src="https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=900"
                   alt="Controller board close-up"
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "contain" }}
                   sizes="(max-width: 900px) 100vw, 480px"
                   unoptimized
                 />
@@ -159,7 +159,7 @@ export default async function DayCounterPage() {
               src="https://commons.wikimedia.org/wiki/Special:FilePath/Digital_tally_counter.jpg?width=600"
               alt="Smart Day Counter enclosure"
               fill
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "contain" }}
               sizes="(max-width: 900px) 100vw, 320px"
               unoptimized
             />
@@ -203,7 +203,7 @@ export default async function DayCounterPage() {
               src={product.gallery[0]}
               alt={`${product.name} gallery photo 1`}
               fill
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "contain" }}
               sizes="(max-width: 900px) 100vw, 640px"
               unoptimized={product.gallery[0].includes("wikimedia.org")}
             />
@@ -215,7 +215,7 @@ export default async function DayCounterPage() {
                   src={src}
                   alt={`${product.name} gallery photo ${i + 2}`}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "contain" }}
                   sizes="360px"
                   unoptimized={src.includes("wikimedia.org")}
                 />
