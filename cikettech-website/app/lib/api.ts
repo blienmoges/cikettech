@@ -13,11 +13,10 @@ export function getServerApiBase(): string {
 
 const TOKEN_KEY = "cikettech_admin_token";
 
-/** Uploaded files are stored as backend-relative paths (e.g. "/uploads/x.jpg");
- * external URLs (Unsplash, Wikimedia, ...) are left untouched. */
+/** Backend uploads use /uploads paths; other root-relative paths are frontend public assets. */
 export function resolveMediaUrl(src?: string): string {
   if (!src) return "";
-  return src.startsWith("/") ? `${API_BASE}${src}` : src;
+  return src.startsWith("/uploads/") ? `${API_BASE}${src}` : src;
 }
 
 export function getAdminToken(): string | null {

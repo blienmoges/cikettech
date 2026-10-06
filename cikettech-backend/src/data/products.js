@@ -8,9 +8,9 @@ const products = [
       "Advanced license plate recognition and automated barrier control for seamless vehicle access management. Designed for high-traffic corporate and institutional facilities.",
     description:
       "An intelligent, automated access control solution engineered for commercial and institutional facilities. Utilizing advanced ANPR and machine learning, this system ensures seamless entry, robust security, and comprehensive vehicle flow management.",
-    heroImage: "/uploads/smart%20parking.jpg",
-    listImage: "/uploads/smart%20parking.jpg",
-    homeImage: "/uploads/smart%20parking.jpg",
+    heroImage: "/smart parking.jpg",
+    listImage: "/smart parking.jpg",
+    homeImage: "/smart parking.jpg",
     theme: "blue",
     features: [
       {
@@ -42,10 +42,10 @@ const products = [
       { title: "Improved UX", description: "Frictionless entry for VIPs, employees, and tenants without manual checks." },
     ],
     gallery: [
-      "/uploads/smart%20parking.jpg",
-      "/uploads/smart%20parking.jpg",
-      "/uploads/smart%20parking.jpg",
-      "/uploads/smart%20parking.jpg",
+      "/smart parking.jpg",
+      "/smart parking.jpg",
+      "/smart parking.jpg",
+      "/smart parking.jpg",
     ],
     specs: [
       { label: "Power Supply", value: "12–24V DC" },
@@ -65,9 +65,9 @@ const products = [
       "Secure, rapid, and hygienic workforce tracking utilizing advanced facial recognition and fingerprint scanning technologies, fully integrated with central HR systems.",
     description:
       "Engineered for high-security environments. Our flagship biometric terminal combines military-grade optical sensors with a proprietary anti-spoofing algorithm, delivered in a minimalist, architectural chassis.",
-    heroImage: "/uploads/biometric.jpg",
-    listImage: "/uploads/biometric.jpg",
-    homeImage: "/uploads/biometric.jpg",
+    heroImage: "/biometric.jpg",
+    listImage: "/biometric.jpg",
+    homeImage: "/biometric.jpg",
     theme: "blue",
     features: [
       {
@@ -100,10 +100,10 @@ const products = [
       { title: "Enterprise-Grade Data Security", description: "End-to-end AES-256 encryption and a zero-knowledge architecture protect biometric data at rest and in transit." },
     ],
     gallery: [
-      "/uploads/biometric.jpg",
-      "/uploads/biometric.jpg",
-      "/uploads/biometric.jpg",
-      "/uploads/biometric.jpg",
+      "/biometric.jpg",
+      "/biometric.jpg",
+      "/biometric.jpg",
+      "/biometric.jpg",
     ],
     specs: [
       { label: "Sensor Type", value: "Optical Silk ID" },
@@ -123,9 +123,9 @@ const products = [
       "Automated scheduling and multi-zone audio distribution for educational campuses. Ensure precise timing and clear communication across diverse facilities.",
     description:
       "A technically advanced, automated scheduling solution designed to replace obsolete mechanical bells with precision digital timing, custom audio zones, and centralized management. Built for modern educational facilities demanding reliability and minimal maintenance.",
-    heroImage: "/uploads/bell%20system.jpg",
-    listImage: "/uploads/bell%20system.jpg",
-    homeImage: "/uploads/bell%20system.jpg",
+    heroImage: "/bell system.jpg",
+    listImage: "/bell system.jpg",
+    homeImage: "/bell system.jpg",
     theme: "blue",
     features: [
       {
@@ -160,10 +160,10 @@ const products = [
       { title: "Uninterrupted Operation", description: "Local schedule caching and battery backup keep bells ringing on time during a network or power outage." },
     ],
     gallery: [
-      "/uploads/bell%20system.jpg",
-      "/uploads/bell%20system.jpg",
-      "/uploads/bell%20system.jpg",
-      "/uploads/bell%20system.jpg",
+      "/bell system.jpg",
+      "/bell system.jpg",
+      "/bell system.jpg",
+      "/bell system.jpg",
     ],
     specs: [
       { label: "Power Supply", value: "100–240V AC / 12V DC backup" },
