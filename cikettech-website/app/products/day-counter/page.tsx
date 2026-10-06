@@ -8,7 +8,8 @@ import { t } from "../../lib/i18n";
 
 export const metadata = {
   title: "Smart Day Counter | CIKETTECH",
-  description: "Smart Day Counter product page with specs, capabilities, and quote form.",
+  description:
+    "Smart Day Counter product page with specs, capabilities, and quote form.",
 };
 
 type ProductDetail = {
@@ -24,7 +25,14 @@ type ProductDetail = {
 
 function ChipIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="7" y="7" width="10" height="10" rx="1.5" />
       <rect x="10" y="10" width="4" height="4" rx="0.5" />
       <path d="M9 3v2M12 3v2M15 3v2M9 19v2M12 19v2M15 19v2M3 9h2M3 12h2M3 15h2M19 9h2M19 12h2M19 15h2" />
@@ -34,7 +42,14 @@ function ChipIcon() {
 
 function BatteryIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="2.5" y="8" width="16" height="8" rx="1.5" />
       <path d="M21.5 10.5v3" />
       <path d="M6 11v2M9 11v2" />
@@ -44,7 +59,14 @@ function BatteryIcon() {
 
 function PlugIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M9 2v5M15 2v5M7 7h10v3a5 5 0 0 1-10 0V7Z" />
       <path d="M12 15v3M9 21h6" />
     </svg>
@@ -53,7 +75,14 @@ function PlugIcon() {
 
 function ShieldIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 3.5 19 6.5v5.5c0 4.5-3 7-7 8.5-4-1.5-7-4-7-8.5V6.5L12 3.5Z" />
       <path d="m9.2 12.2 1.9 1.9 3.7-3.9" />
     </svg>
@@ -105,8 +134,9 @@ export default async function DayCounterPage() {
         <div className="section-heading">
           <h2>Core Capabilities</h2>
           <p>
-            Engineered for absolute reliability, the Smart Day Counter integrates seamlessly into
-            existing industrial automation frameworks.
+            Engineered for absolute reliability, the Smart Day Counter
+            integrates seamlessly into existing industrial automation
+            frameworks.
           </p>
         </div>
 
@@ -172,7 +202,10 @@ export default async function DayCounterPage() {
           <h2>{t(locale, "idealApplicationsBenefits", translations)}</h2>
         </div>
 
-        <div className="capabilities-grid" style={{ gridTemplateColumns: "1fr 1fr" }}>
+        <div
+          className="capabilities-grid"
+          style={{ gridTemplateColumns: "1fr 1fr" }}
+        >
           <div>
             {product.applications.map((a) => (
               <article className="cap-card" key={a.title}>
@@ -230,29 +263,33 @@ export default async function DayCounterPage() {
           <h2>{t(locale, "technicalSpecifications", translations)}</h2>
         </div>
         <div className="specs-table">
-          {Array.from({ length: Math.ceil(product.specs.length / 2) }).map((_, rowIdx) => {
-            const left = product.specs[rowIdx * 2];
-            const right = product.specs[rowIdx * 2 + 1];
-            return (
-              <div className="spec-row" key={left.label}>
-                <div>{left.label}</div>
-                <div>{left.value}</div>
-                {right && (
-                  <>
-                    <div>{right.label}</div>
-                    <div>{right.value}</div>
-                  </>
-                )}
-              </div>
-            );
-          })}
+          {Array.from({ length: Math.ceil(product.specs.length / 2) }).map(
+            (_, rowIdx) => {
+              const left = product.specs[rowIdx * 2];
+              const right = product.specs[rowIdx * 2 + 1];
+              return (
+                <div className="spec-row" key={left.label}>
+                  <div>{left.label}</div>
+                  <div>{left.value}</div>
+                  {right && (
+                    <>
+                      <div>{right.label}</div>
+                      <div>{right.value}</div>
+                    </>
+                  )}
+                </div>
+              );
+            },
+          )}
         </div>
       </section>
 
       <section id="quote" className="quote-section">
         <div className="section-heading">
           <h2>{t(locale, "requestAQuote", translations)}</h2>
-          <p>Get pricing and availability information for the Smart Day Counter.</p>
+          <p>
+            Get pricing and availability information for the Smart Day Counter.
+          </p>
         </div>
 
         <div className="quote-card-wrapper">
