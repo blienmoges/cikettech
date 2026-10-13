@@ -271,15 +271,16 @@ export default function ProductForm({ product }: { product?: Product }) {
               accept="image/*"
               onUploaded={(result) => setImage(result.url)}
             />
-            <div
-              className="admin-media-thumb"
-              style={{
-                backgroundImage: `url('${
-                  resolveMediaUrl(image) ||
-                  "https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=300"
-                }')`,
-              }}
-            />
+            {image ? (
+              <div
+                className="admin-media-thumb"
+                style={{ backgroundImage: `url('${resolveMediaUrl(image)}')` }}
+              />
+            ) : (
+              <div className="admin-media-thumb admin-media-thumb-empty">
+                Upload an image to preview it
+              </div>
+            )}
           </div>
         </div>
       </div>

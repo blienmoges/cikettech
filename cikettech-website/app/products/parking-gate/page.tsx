@@ -114,7 +114,9 @@ export default async function ParkingGatePage() {
         <div className="section-heading">
           <h2>{t(locale, "productGallery", translations)}</h2>
         </div>
-        <div className="gallery-grid">
+        <div
+          className={`gallery-grid${gallery.length < 2 ? " gallery-grid-single" : ""}`}
+        >
           <div className="gallery-large">
             <Image
               src={resolveMediaUrl(gallery[0])}
@@ -125,20 +127,22 @@ export default async function ParkingGatePage() {
               unoptimized={gallery[0].includes("wikimedia.org")}
             />
           </div>
-          <div>
-            {gallery.slice(1).map((src, i) => (
-              <div key={src} className="gallery-small">
-                <Image
-                  src={resolveMediaUrl(src)}
-                  alt={`${product.name} gallery photo ${i + 2}`}
-                  fill
-                  style={{ objectFit: "contain" }}
-                  sizes="360px"
-                  unoptimized={src.includes("wikimedia.org")}
-                />
-              </div>
-            ))}
-          </div>
+          {gallery.length > 1 && (
+            <div>
+              {gallery.slice(1).map((src, i) => (
+                <div key={src} className="gallery-small">
+                  <Image
+                    src={resolveMediaUrl(src)}
+                    alt={`${product.name} gallery photo ${i + 2}`}
+                    fill
+                    style={{ objectFit: "contain" }}
+                    sizes="360px"
+                    unoptimized={src.includes("wikimedia.org")}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

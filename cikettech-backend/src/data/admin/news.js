@@ -2,7 +2,7 @@ const articles = [
   {
     id: "1",
     title: "New Data Center Expansion Announced for Addis Ababa",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=200",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Energy_Efficient_Processors.jpg?width=200",
     en: "Complete",
     am: "Complete",
     status: "Published",

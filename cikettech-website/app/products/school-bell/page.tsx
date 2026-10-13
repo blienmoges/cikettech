@@ -99,6 +99,7 @@ export default async function SchoolBellPage() {
     getLocale(),
     getTranslations(),
   ]);
+  const gallery = [...new Set(product.gallery)];
 
   return (
     <main>
@@ -137,7 +138,7 @@ export default async function SchoolBellPage() {
         <div className="section-heading">
           <h2>Support a Well-Organized School Day</h2>
           <p>
-            Plan bell schedules and timed audio around your school's timetable,
+            Plan bell schedules and timed audio around your school&apos;s timetable,
             learning spaces, and daily routines.
           </p>
         </div>
@@ -191,31 +192,35 @@ export default async function SchoolBellPage() {
         <div className="section-heading">
           <h2>{t(locale, "productGallery", translations)}</h2>
         </div>
-        <div className="gallery-grid">
+        <div
+          className={`gallery-grid${gallery.length < 2 ? " gallery-grid-single" : ""}`}
+        >
           <div className="gallery-large">
             <Image
-              src={resolveMediaUrl(product.gallery[0])}
+              src={resolveMediaUrl(gallery[0])}
               alt={`${product.name} gallery photo 1`}
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 900px) 100vw, 640px"
-              unoptimized={product.gallery[0].includes("wikimedia.org")}
+              unoptimized={gallery[0].includes("wikimedia.org")}
             />
           </div>
-          <div>
-            {product.gallery.slice(1).map((src, i) => (
-              <div key={src} className="gallery-small">
-                <Image
-                  src={resolveMediaUrl(src)}
-                  alt={`${product.name} gallery photo ${i + 2}`}
-                  fill
-                  style={{ objectFit: "contain" }}
-                  sizes="360px"
-                  unoptimized={src.includes("wikimedia.org")}
-                />
-              </div>
-            ))}
-          </div>
+          {gallery.length > 1 && (
+            <div>
+              {gallery.slice(1).map((src, i) => (
+                <div key={src} className="gallery-small">
+                  <Image
+                    src={resolveMediaUrl(src)}
+                    alt={`${product.name} gallery photo ${i + 2}`}
+                    fill
+                    style={{ objectFit: "contain" }}
+                    sizes="360px"
+                    unoptimized={src.includes("wikimedia.org")}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

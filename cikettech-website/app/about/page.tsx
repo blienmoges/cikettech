@@ -69,10 +69,10 @@ export default async function AboutPage() {
           role="img"
           aria-label={data.hero.image}
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=85')",
+            backgroundImage: "url('/smart-parking.PNG')",
             backgroundPosition: "center",
-            backgroundSize: "cover",
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
           }}
         />
       </section>
@@ -139,14 +139,13 @@ export default async function AboutPage() {
         <div className="team-grid">
           {data.team.map((member) => (
             <figure className="team-card" key={member.name}>
-              <div className="team-photo">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  style={{ objectFit: "cover" }}
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
+              <div className="team-photo team-initials" aria-label={`${member.name} initials`}>
+                <span>
+                  {member.name
+                    .split(" ")
+                    .map((part) => part[0])
+                    .join("")}
+                </span>
               </div>
               <figcaption>
                 <strong>{member.name}</strong>

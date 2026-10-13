@@ -48,7 +48,7 @@ export default async function ImpactPage() {
           <h1>{data.hero.heading}</h1>
           <p>{data.hero.body}</p>
         </div>
-        <div className="innovation-hero-image" role="img" aria-label="Ethiopian engineers and technicians at work" />
+        <div className="innovation-hero-image impact-hero-image" role="img" aria-label="CIKETTECH smart parking gate prototype" />
       </section>
 
       <section className="research-section">
@@ -74,7 +74,7 @@ export default async function ImpactPage() {
             {data.cta.link}
           </Link>
         </div>
-        <div className="future-image" role="img" aria-label="CIKETTECH manufacturing facility" />
+        <div className="future-image impact-future-image" role="img" aria-label="CIKETTECH biometric attendance device" />
       </section>
 
       <SiteFooter />

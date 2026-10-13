@@ -6,7 +6,7 @@ const content = {
       heading: "Smart Electronic Products, Designed and Made in Ethiopia",
       subheading:
         "CIKETTECH designs and manufactures practical technology for safer access, better attendance, and smarter operations—from parking systems to solutions for schools and workplaces.",
-      image: "computer processor hardware",
+      image: "electronic circuit board",
       viewProducts: "View Products",
     },
     featured: {
@@ -54,7 +54,7 @@ const content = {
       heading: "በኢትዮጵያ የተነደፉና የተመረቱ ብልህ የኤሌክትሮኒክስ ምርቶች",
       subheading:
         "CIKETTECH የተሻለ የመግቢያ ቁጥጥር፣ የሰራተኞች መገኘት ክትትል እና ውጤታማ አሰራርን የሚደግፉ ተግባራዊ ቴክኖሎጂዎችን ይነድፋል፤ ከፓርኪንግ ስርዓቶች እስከ ለትምህርት ቤቶችና ለስራ ቦታዎች የሚሆኑ መፍትሄዎች።",
-      image: "computer processor hardware",
+      image: "electronic circuit board",
       viewProducts: "ምርቶችን ይመልከቱ",
     },
     featured: {

@@ -5,7 +5,7 @@ const content = {
       heading: "Building Smart Electronic Products in Ethiopia",
       body:
         "We are dedicated to advancing technology manufacturing and innovation. Our focus is on delivering high-quality, intelligent electronic solutions that drive progress and connectivity across the region.",
-      image: "engineers at work",
+      image: "CIKETTECH smart parking gate prototype",
     },
     sections: {
       profileHeading: "Company Profile",
@@ -81,7 +81,7 @@ const content = {
       heading: "በኢትዮጵያ ብልህ የኤሌክትሮኒክስ ምርቶችን መገንባት",
       body:
         "የቴክኖሎጂ ማምረቻ እና ፈጠራን ለማሳደግ ቁርጠኞች ነን። ትኩረታችን በክልሉ ውስጥ እድገትን እና ግንኙነትን የሚያንቀሳቅሱ ከፍተኛ ጥራት ያላቸው፣ ብልህ የኤሌክትሮኒክስ መፍትሄዎችን ማቅረብ ላይ ነው።",
-      image: "engineers at work",
+      image: "CIKETTECH smart parking gate prototype",
     },
     sections: {
       profileHeading: "የኩባንያ መገለጫ",
@@ -147,19 +147,8 @@ const content = {
   },
 };
 
-const teamImages = [
-  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1544006659-f0b21884ce1d?auto=format&fit=crop&w=600&q=80",
-];
-
 function getAboutPage(lang) {
-  const localized = content[lang] || content.en;
-  return {
-    ...localized,
-    team: localized.team.map((member, i) => ({ ...member, image: teamImages[i] })),
-  };
+  return content[lang] || content.en;
 }
 
 module.exports = { getAboutPage };

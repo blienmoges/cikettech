@@ -56,7 +56,7 @@ export default async function InnovationPage() {
           <h1>{data.hero.heading}</h1>
           <p>{data.hero.body}</p>
         </div>
-        <div className="innovation-hero-image" role="img" aria-label="Engineers prototyping electronics" />
+        <div className="innovation-hero-image" role="img" aria-label="CIKETTECH parking gate prototype under test" />
       </section>
 
       <section className="workflow-section">

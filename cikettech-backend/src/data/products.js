@@ -41,12 +41,7 @@ const products = [
       { title: "Improved Parking Visibility", description: "Make access activity easier for facility teams to review." },
       { title: "Less Manual Coordination", description: "Support a more orderly arrival process for staff and visitors." },
     ],
-    gallery: [
-      "/smart-parking.PNG",
-      "/smart-parking.PNG",
-      "/smart-parking.PNG",
-      "/smart-parking.PNG",
-    ],
+    gallery: ["/smart-parking.PNG"],
     specs: [
       { label: "Power Supply", value: "12–24V DC" },
       { label: "Memory Type", value: "EEPROM" },
@@ -98,12 +93,7 @@ const products = [
       { title: "Consistent Timekeeping", description: "Keep attendance activity organized for routine workplace administration." },
       { title: "Useful Attendance Visibility", description: "Make recorded attendance easier for authorized staff to review." },
     ],
-    gallery: [
-      "/biometric.jpg",
-      "/biometric.jpg",
-      "/biometric.jpg",
-      "/biometric.jpg",
-    ],
+    gallery: ["/biometric.jpg"],
     specs: [
       { label: "Sensor Type", value: "Optical Silk ID" },
       { label: "Matching Speed", value: "< 0.5s per scan" },
@@ -122,9 +112,12 @@ const products = [
       "Schedule school bells and coordinate timed audio across learning spaces. Designed to help schools manage daily routines and communicate schedule changes.",
     description:
       "The Smart School Bell System helps schools manage bell schedules and timed announcements. It supports structured daily routines across educational facilities, with scheduling and audio distribution arranged around each school's needs.",
-    heroImage: "/bell system.jpg",
-    listImage: "/bell system.jpg",
-    homeImage: "/bell system.jpg",
+    heroImage:
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Public_address_speaker_in_Eschelbronn_07.JPG?width=1200",
+    listImage:
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Public_address_speaker_in_Eschelbronn_07.JPG?width=1200",
+    homeImage:
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Public_address_speaker_in_Eschelbronn_07.JPG?width=1200",
     theme: "blue",
     features: [
       {
@@ -159,10 +152,7 @@ const products = [
       { title: "Clearer Daily Communication", description: "Use consistent audio signals to communicate routine schedule transitions." },
     ],
     gallery: [
-      "/bell system.jpg",
-      "/bell system.jpg",
-      "/bell system.jpg",
-      "/bell system.jpg",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Public_address_speaker_in_Eschelbronn_07.JPG?width=1200",
     ],
     specs: [
       { label: "Power Supply", value: "100–240V AC / 12V DC backup" },
@@ -187,7 +177,7 @@ const products = [
     listImage:
       "https://commons.wikimedia.org/wiki/Special:FilePath/USB_seven_segment_display_module_(48158381686).jpg?width=1200",
     homeImage:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1100&q=80",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/USB_seven_segment_display_module_(48158381686).jpg?width=1200",
     theme: "cyan",
     features: [
       {
@@ -222,8 +212,6 @@ const products = [
     gallery: [
       "https://commons.wikimedia.org/wiki/Special:FilePath/Digital_tally_counter.jpg?width=1200",
       "https://commons.wikimedia.org/wiki/Special:FilePath/USB_seven_segment_display_module_(48158381686).jpg?width=800",
-      "https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=800",
-      "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80",
     ],
     specs: [
       { label: "Power Supply", value: "12–24V DC" },

@@ -3,7 +3,7 @@ const products = [
     id: "1",
     code: "PRD-001",
     name: "AI Smart Parking",
-    image: "https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=200&q=70",
+    image: "/smart-parking.PNG",
     english: "Complete",
     amharic: "Complete",
     status: "Published",

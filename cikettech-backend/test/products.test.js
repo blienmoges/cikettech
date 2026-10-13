@@ -88,13 +88,17 @@ describe("public content endpoints", () => {
     const expectedImages = {
       "parking-gate": "/smart-parking.PNG",
       "biometric-attendance": "/biometric.jpg",
-      "school-bell": "/bell system.jpg",
+      "school-bell":
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Public_address_speaker_in_Eschelbronn_07.JPG?width=1200",
+      "day-counter":
+        "https://commons.wikimedia.org/wiki/Special:FilePath/USB_seven_segment_display_module_(48158381686).jpg?width=1200",
     };
 
     for (const [slug, image] of Object.entries(expectedImages)) {
       const detail = await request(app).get(`/api/products/${slug}`);
       expect(detail.status).toBe(200);
       expect(detail.body.heroImage).toBe(image);
+      expect(new Set(detail.body.gallery).size).toBe(detail.body.gallery.length);
 
       const list = await request(app).get("/api/products");
       expect(list.body.find((product) => product.slug === slug).image).toBe(image);
@@ -107,6 +111,11 @@ describe("public content endpoints", () => {
     );
     expect(parkingGate.image).toBe("/smart-parking.PNG");
     expect(parkingGate.description).toContain("AI-assisted recognition");
+
+    const dayCounter = home.body.featuredProducts.find(
+      (product) => product.slug === "day-counter",
+    );
+    expect(dayCounter.image).toBe(expectedImages["day-counter"]);
   });
 
   test("only published news/projects/awards are exposed publicly", async () => {

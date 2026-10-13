@@ -4,7 +4,7 @@ const images = [
     name: "parking-system-hero.jpg",
     date: "Oct 24, 2023",
     size: "1.2 MB",
-    src: "https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=500&q=75",
+    src: "/smart-parking.PNG",
   },
   {
     id: "2",

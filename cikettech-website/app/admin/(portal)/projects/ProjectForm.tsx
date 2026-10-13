@@ -207,19 +207,19 @@ export default function ProjectForm({ project }: { project?: Project }) {
             <div className="admin-card-divider" />
             <div className="admin-gallery-grid">
               {gallery.map((src, i) => (
-                <div key={i} className="admin-gallery-thumb" style={{ backgroundImage: `url('${src}')` }} />
+                <div key={i} className="admin-gallery-thumb" style={{ backgroundImage: `url('${resolveMediaUrl(src)}')` }} />
               ))}
               {gallery.length < 5 && (
                 <button
                   type="button"
                   className="admin-gallery-add"
+                  disabled={!image || gallery.includes(image)}
                   onClick={() =>
-                    setGallery((g) => [
-                      ...g,
-                      "https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=200",
-                    ])
+                    setGallery((g) =>
+                      image && !g.includes(image) ? [...g, image] : g,
+                    )
                   }
-                  aria-label="Add gallery image"
+                  aria-label="Add the main image to the gallery"
                 >
                   <PlusIcon />
                 </button>

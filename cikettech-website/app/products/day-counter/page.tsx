@@ -97,6 +97,7 @@ export default async function DayCounterPage() {
     getLocale(),
     getTranslations(),
   ]);
+  const gallery = [...new Set(product.gallery)];
   const [wide, small, ...rest] = product.features;
 
   return (
@@ -149,8 +150,8 @@ export default async function DayCounterPage() {
               <p>{wide.description}</p>
               <div className="cap-image tall">
                 <Image
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Controller_board_(14837601847).jpg?width=900"
-                  alt="Controller board close-up"
+                  src={gallery[1]}
+                  alt="Seven-segment digital display module"
                   fill
                   style={{ objectFit: "contain" }}
                   sizes="(max-width: 900px) 100vw, 480px"
@@ -185,8 +186,8 @@ export default async function DayCounterPage() {
 
           <div className="cap-image-tile">
             <Image
-              src="https://commons.wikimedia.org/wiki/Special:FilePath/Digital_tally_counter.jpg?width=600"
-              alt="Smart Day Counter enclosure"
+              src={gallery[0]}
+              alt="Digital tally counter"
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 900px) 100vw, 320px"
@@ -229,31 +230,35 @@ export default async function DayCounterPage() {
         <div className="section-heading">
           <h2>{t(locale, "productGallery", translations)}</h2>
         </div>
-        <div className="gallery-grid">
+        <div
+          className={`gallery-grid${gallery.length < 2 ? " gallery-grid-single" : ""}`}
+        >
           <div className="gallery-large">
             <Image
-              src={product.gallery[0]}
+              src={gallery[0]}
               alt={`${product.name} gallery photo 1`}
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 900px) 100vw, 640px"
-              unoptimized={product.gallery[0].includes("wikimedia.org")}
+              unoptimized={gallery[0].includes("wikimedia.org")}
             />
           </div>
-          <div>
-            {product.gallery.slice(1).map((src, i) => (
-              <div key={src} className="gallery-small">
-                <Image
-                  src={src}
-                  alt={`${product.name} gallery photo ${i + 2}`}
-                  fill
-                  style={{ objectFit: "contain" }}
-                  sizes="360px"
-                  unoptimized={src.includes("wikimedia.org")}
-                />
-              </div>
-            ))}
-          </div>
+          {gallery.length > 1 && (
+            <div>
+              {gallery.slice(1).map((src, i) => (
+                <div key={src} className="gallery-small">
+                  <Image
+                    src={src}
+                    alt={`${product.name} gallery photo ${i + 2}`}
+                    fill
+                    style={{ objectFit: "contain" }}
+                    sizes="360px"
+                    unoptimized={src.includes("wikimedia.org")}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

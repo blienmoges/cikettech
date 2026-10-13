@@ -31,6 +31,7 @@ export default async function BiometricAttendancePage() {
     getLocale(),
     getTranslations(),
   ]);
+  const gallery = [...new Set(product.gallery)];
   const [main, matching, sync, integration] = product.features;
 
   return (
@@ -67,7 +68,7 @@ export default async function BiometricAttendancePage() {
       <section className="capabilities-section">
         <div className="section-heading">
           <h2>Attendance System Features</h2>
-          <p>Explore the system's attendance-recording and management capabilities.</p>
+          <p>Explore the system&apos;s attendance-recording and management capabilities.</p>
         </div>
 
         <div className="capabilities-grid">
@@ -205,31 +206,35 @@ export default async function BiometricAttendancePage() {
         <div className="section-heading">
           <h2>{t(locale, "productGallery", translations)}</h2>
         </div>
-        <div className="gallery-grid">
+        <div
+          className={`gallery-grid${gallery.length < 2 ? " gallery-grid-single" : ""}`}
+        >
           <div className="gallery-large">
             <Image
-              src={resolveMediaUrl(product.gallery[0])}
+              src={resolveMediaUrl(gallery[0])}
               alt={`${product.name} gallery photo 1`}
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 900px) 100vw, 640px"
-              unoptimized={product.gallery[0].includes("wikimedia.org")}
+              unoptimized={gallery[0].includes("wikimedia.org")}
             />
           </div>
-          <div>
-            {product.gallery.slice(1).map((src, i) => (
-              <div key={src} className="gallery-small">
-                <Image
-                  src={resolveMediaUrl(src)}
-                  alt={`${product.name} gallery photo ${i + 2}`}
-                  fill
-                  style={{ objectFit: "contain" }}
-                  sizes="360px"
-                  unoptimized={src.includes("wikimedia.org")}
-                />
-              </div>
-            ))}
-          </div>
+          {gallery.length > 1 && (
+            <div>
+              {gallery.slice(1).map((src, i) => (
+                <div key={src} className="gallery-small">
+                  <Image
+                    src={resolveMediaUrl(src)}
+                    alt={`${product.name} gallery photo ${i + 2}`}
+                    fill
+                    style={{ objectFit: "contain" }}
+                    sizes="360px"
+                    unoptimized={src.includes("wikimedia.org")}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -263,7 +268,7 @@ export default async function BiometricAttendancePage() {
         <div className="section-heading">
           <h2>{t(locale, "requestAQuote", translations)}</h2>
           <p>
-            Share your workplace or institution's attendance requirements so we
+            Share your workplace or institution&apos;s attendance requirements so we
             can discuss the right next step.
           </p>
         </div>
