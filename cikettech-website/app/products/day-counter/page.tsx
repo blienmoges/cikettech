@@ -9,7 +9,7 @@ import { t } from "../../lib/i18n";
 export const metadata = {
   title: "Smart Day Counter | CIKETTECH",
   description:
-    "Smart Day Counter product page with specs, capabilities, and quote form.",
+    "Explore CIKETTECH's Smart Day Counter for displaying workplace milestones and project timelines.",
 };
 
 type ProductDetail = {
@@ -105,15 +105,15 @@ export default async function DayCounterPage() {
 
       <section className="product-hero">
         <div className="product-hero-copy">
-          <p className="eyebrow">Precision Instrumentation</p>
+          <p className="eyebrow">Day Counting for Workplaces and Projects</p>
           <h1>{product.name}</h1>
           <p>{product.description}</p>
           <div className="hero-actions">
             <Link className="primary-button" href="/contact">
-              Request Specifications
+              Request a Quote
             </Link>
             <Link className="secondary-button" href="#specs">
-              Technical Data Sheet
+              Technical Specifications
             </Link>
           </div>
         </div>
@@ -132,11 +132,10 @@ export default async function DayCounterPage() {
 
       <section className="capabilities-section">
         <div className="section-heading">
-          <h2>Core Capabilities</h2>
+          <h2>Clear, Visible Day Counts</h2>
           <p>
-            Engineered for absolute reliability, the Smart Day Counter
-            integrates seamlessly into existing industrial automation
-            frameworks.
+            Display elapsed days for a selected workplace milestone, project,
+            or operational timeline.
           </p>
         </div>
 
@@ -288,7 +287,8 @@ export default async function DayCounterPage() {
         <div className="section-heading">
           <h2>{t(locale, "requestAQuote", translations)}</h2>
           <p>
-            Get pricing and availability information for the Smart Day Counter.
+            Tell us how you plan to use the Smart Day Counter, and our team can
+            discuss product details and pricing.
           </p>
         </div>
 

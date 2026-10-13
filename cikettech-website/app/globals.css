@@ -207,6 +207,23 @@ button {
   max-width: 735px;
 }
 
+.hero-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26px;
+  padding: 0;
+  border-radius: 16px;
+  background: transparent;
+}
+
+.hero-brand img {
+  display: block;
+  width: min(100%, 440px);
+  height: auto;
+  object-fit: contain;
+}
+
 .hero h1 {
   margin: 0;
   max-width: 700px;

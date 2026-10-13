@@ -8,7 +8,7 @@ import { resolveMediaUrl } from "../lib/api";
 export const metadata: Metadata = {
   title: "Products | CIKETTECH",
   description:
-    "Explore CIKETTECH smart electronic systems for access control, attendance, scheduling, and operational tracking.",
+    "Explore CIKETTECH smart electronic products for parking access, staff attendance, school schedules, and day counting.",
 };
 
 type ProductSummary = {
@@ -37,11 +37,10 @@ export default async function ProductsPage() {
         <p>
           <Link href="/">Home</Link> / <span>Products</span>
         </p>
-        <h1>Our Products</h1>
+        <h1>Smart Products for Everyday Operations</h1>
         <div>
-          Engineered for precision and built for reliability, our suite of smart
-          systems leverages cutting-edge technology to streamline operations and
-          enhance security.
+          Discover smart electronic products designed and manufactured in
+          Ethiopia for parking, workplaces, schools, and facility operations.
         </div>
       </section>
 
@@ -79,10 +78,10 @@ export default async function ProductsPage() {
       </section>
 
       <section className="products-cta">
-        <h2>Interested in One of Our Products?</h2>
+        <h2>Find the Right Product for Your Needs</h2>
         <p>
-          Our engineering team is ready to discuss your specific requirements
-          and architect a tailored solution for your institution.
+          Tell us about your organization and requirements. Our team can help
+          you explore the product options and discuss next steps.
         </p>
         <Link className="primary-button" href="/contact">
           Contact CIKETTECH

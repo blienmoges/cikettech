@@ -1,0 +1,34 @@
+<svg width="760" height="200" viewBox="0 0 760 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="760" height="200" rx="22" fill="#F7FAFC"/>
+
+  <g transform="translate(26 10)">
+    <circle cx="80" cy="90" r="70" fill="#EFF6FF"/>
+    <path d="M80 18C121 18 154 49 154 90C154 131 121 162 80 162C58 162 38 154 22 141" stroke="#0B1120" stroke-width="10" stroke-linecap="round"/>
+    <path d="M80 24C112 24 138 52 138 90C138 128 112 156 80 156C62 156 46 149 34 137" stroke="#0B1120" stroke-width="10" stroke-linecap="round" opacity="0.18"/>
+
+    <path d="M26 90H52" stroke="#0B1120" stroke-width="6" stroke-linecap="round"/>
+    <path d="M108 90H134" stroke="#0B1120" stroke-width="6" stroke-linecap="round"/>
+    <path d="M80 24V50" stroke="#0B1120" stroke-width="6" stroke-linecap="round"/>
+    <path d="M80 130V156" stroke="#0B1120" stroke-width="6" stroke-linecap="round"/>
+
+    <path d="M35 54C49 42 63 35 80 35C94 35 108 40 119 48" stroke="#0D79FF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M35 126C49 138 63 145 80 145C94 145 108 140 119 132" stroke="#0D79FF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M46 42L63 57" stroke="#0D79FF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M114 42L97 57" stroke="#0D79FF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M46 138L63 123" stroke="#0D79FF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M114 138L97 123" stroke="#0D79FF" stroke-width="4" stroke-linecap="round"/>
+
+    <circle cx="80" cy="90" r="8" fill="#0D79FF"/>
+    <circle cx="80" cy="24" r="6" fill="#0D79FF"/>
+    <circle cx="80" cy="156" r="6" fill="#0D79FF"/>
+    <circle cx="26" cy="90" r="6" fill="#0D79FF"/>
+    <circle cx="134" cy="90" r="6" fill="#0D79FF"/>
+    <circle cx="49" cy="48" r="6" fill="#0D79FF"/>
+    <circle cx="111" cy="48" r="6" fill="#0D79FF"/>
+    <circle cx="49" cy="132" r="6" fill="#0D79FF"/>
+    <circle cx="111" cy="132" r="6" fill="#0D79FF"/>
+  </g>
+
+  <text x="220" y="118" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="800" letter-spacing="-1.8" fill="#0B1120">CIKET</text>
+  <text x="452" y="118" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="800" letter-spacing="-1.8" fill="#0D79FF">TECH</text>
+</svg>

@@ -10,7 +10,7 @@ import { t } from "../../lib/i18n";
 export const metadata = {
   title: "Smart School Bell System | CIKETTECH",
   description:
-    "Smart School Bell System product page with capabilities and quote form.",
+    "Explore CIKETTECH's Smart School Bell System for managing school bell schedules and timed audio.",
 };
 
 type ProductDetail = {
@@ -109,7 +109,7 @@ export default async function SchoolBellPage() {
           {product.tagline && (
             <span className="capability-pill">{product.tagline}</span>
           )}
-          <h1>{product.name}.</h1>
+          <h1>{product.name}</h1>
           <p>{product.description}</p>
           <div className="hero-actions">
             <Link className="primary-button" href="/contact">
@@ -135,10 +135,10 @@ export default async function SchoolBellPage() {
 
       <section className="capabilities-section">
         <div className="section-heading">
-          <h2>Engineered for Precision.</h2>
+          <h2>Support a Well-Organized School Day</h2>
           <p>
-            The core architecture of the Smart School Bell System is built on a
-            foundation of reliability, scalability, and ease of integration.
+            Plan bell schedules and timed audio around your school's timetable,
+            learning spaces, and daily routines.
           </p>
         </div>
 
@@ -249,8 +249,8 @@ export default async function SchoolBellPage() {
         <div className="section-heading">
           <h2>{t(locale, "requestAQuote", translations)}</h2>
           <p>
-            Provide details about your facility requirements, and our
-            engineering team will architect a tailored solution.
+            Tell us about your school, timetable, and audio requirements so our
+            team can discuss a suitable setup.
           </p>
         </div>
         <div className="quote-card-wrapper">

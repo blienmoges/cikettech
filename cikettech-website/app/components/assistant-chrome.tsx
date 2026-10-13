@@ -34,7 +34,7 @@ export function AssistantHeader() {
   return (
     <header className="assistant-header">
       <Link href="/" className="assistant-logo" aria-label="CIKETTECH home">
-        <Image src="/cikettech-logo-mark.svg" alt="CIKETTECH" width={48} height={48} priority />
+        <Image src="/CIKET1.PNG" alt="CIKETTECH" width={48} height={48} priority />
       </Link>
       <nav aria-label="Primary navigation">
         {navItems.map((item) => (

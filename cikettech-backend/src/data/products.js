@@ -3,49 +3,49 @@ const products = [
     slug: "parking-gate",
     name: "AI Smart Parking Gate System",
     shortName: "AI Smart Parking Gate",
-    tagline: null,
+    tagline: "AI-assisted vehicle access control",
     summary:
-      "Advanced license plate recognition and automated barrier control for seamless vehicle access management. Designed for high-traffic corporate and institutional facilities.",
+      "Streamline vehicle entry with AI-assisted recognition and automated gate control. Keep access activity organized and make parking operations easier to oversee.",
     description:
-      "An intelligent, automated access control solution engineered for commercial and institutional facilities. Utilizing advanced ANPR and machine learning, this system ensures seamless entry, robust security, and comprehensive vehicle flow management.",
-    heroImage: "/smart parking.jpg",
-    listImage: "/smart parking.jpg",
-    homeImage: "/smart parking.jpg",
+      "The AI Smart Parking Gate System coordinates vehicle recognition, gate operation, and access records in one parking entry solution. Designed for business and institutional facilities, it helps teams manage authorized vehicle access and maintain a clearer view of parking activity.",
+    heroImage: "/smart-parking.PNG",
+    listImage: "/smart-parking.PNG",
+    homeImage: "/smart-parking.PNG",
     theme: "blue",
     features: [
       {
-        title: "High-Speed ANPR Recognition",
+        title: "AI-Assisted Vehicle Recognition",
         description:
-          "Edge-deployed AI models process license plates locally in under 200ms, ensuring near-zero latency during peak traffic.",
+          "Support a consistent vehicle entry workflow with AI-assisted recognition.",
       },
       {
-        title: "Cloud Dashboard",
-        description: "Real-time analytics, capacity management, and access logs via secure cloud portal.",
+        title: "Organized Access Records",
+        description: "Keep vehicle access activity available for routine parking and facility oversight.",
       },
       {
-        title: "Anti-Tailgating",
-        description: "LiDAR and camera sensors detect unauthorized vehicles following authorized entries.",
+        title: "Coordinated Gate Operation",
+        description: "Connect vehicle recognition with gate control at your facility entrance.",
       },
       {
-        title: "Ruggedized Hardware",
-        description: "IP65-rated housings designed to operate reliably in outdoor installations.",
+        title: "Adaptable to Your Site",
+        description: "Plan parking access around your facility's entry points, traffic flow, and operating needs.",
       },
     ],
     applications: [
-      { title: "Corporate Campuses", description: "Streamline employee access and manage visitor parking dynamically." },
-      { title: "Commercial Retail", description: "Ticketless entry with payment integration for retail parking experiences." },
-      { title: "Residential Complexes", description: "Secure, touchless entry for residents with guest pre-registration flows." },
+      { title: "Office and Business Sites", description: "Coordinate staff and visitor vehicle entry at offices and business facilities." },
+      { title: "Campuses and Institutions", description: "Organize vehicle access at campuses and other institutional locations." },
+      { title: "Managed Parking Areas", description: "Bring gate operation and parking access oversight into one site workflow." },
     ],
     benefits: [
-      { title: "Reduced Operational Costs", description: "Eliminate need for toll staff and physical ticketing equipment." },
-      { title: "Enhanced Security", description: "Maintain a searchable database of vehicle entries with timestamped images." },
-      { title: "Improved UX", description: "Frictionless entry for VIPs, employees, and tenants without manual checks." },
+      { title: "Consistent Entry Process", description: "Coordinate vehicle recognition and gate operation at managed entrances." },
+      { title: "Improved Parking Visibility", description: "Make access activity easier for facility teams to review." },
+      { title: "Less Manual Coordination", description: "Support a more orderly arrival process for staff and visitors." },
     ],
     gallery: [
-      "/smart parking.jpg",
-      "/smart parking.jpg",
-      "/smart parking.jpg",
-      "/smart parking.jpg",
+      "/smart-parking.PNG",
+      "/smart-parking.PNG",
+      "/smart-parking.PNG",
+      "/smart-parking.PNG",
     ],
     specs: [
       { label: "Power Supply", value: "12–24V DC" },
@@ -60,44 +60,43 @@ const products = [
     slug: "biometric-attendance",
     name: "Biometric Attendance System",
     shortName: "Biometric Attendance",
-    tagline: "Precision Biometric Attendance System",
+    tagline: "Attendance for Workplaces and Institutions",
     summary:
-      "Secure, rapid, and hygienic workforce tracking utilizing advanced facial recognition and fingerprint scanning technologies, fully integrated with central HR systems.",
+      "Record attendance using biometric identification and organize workforce timekeeping. Suitable for organizations looking to move beyond manual attendance registers.",
     description:
-      "Engineered for high-security environments. Our flagship biometric terminal combines military-grade optical sensors with a proprietary anti-spoofing algorithm, delivered in a minimalist, architectural chassis.",
+      "The Biometric Attendance System helps organizations record staff attendance and manage timekeeping with biometric identification. It is designed for workplaces and institutions that want a more consistent alternative to paper-based attendance records.",
     heroImage: "/biometric.jpg",
     listImage: "/biometric.jpg",
     homeImage: "/biometric.jpg",
     theme: "blue",
     features: [
       {
-        title: "Optical Silk ID Sensor",
+        title: "Biometric Identification",
         description:
-          "Our proprietary sensor reads beneath the skin surface, ensuring rapid authentication even with dry, wet, or rough fingerprints. Features active liveness detection.",
-        badge: "99.9% Accuracy",
+          "Use biometric identification to support staff attendance recording.",
       },
       {
-        title: "< 0.5s Matching",
-        description: "Powered by a dedicated NPU for localized, instantaneous template matching without network latency.",
+        title: "Attendance Records",
+        description: "Capture staff check-in and check-out activity for day-to-day timekeeping.",
       },
       {
-        title: "Encrypted Sync",
-        description: "End-to-end AES-256 encryption for all biometric data in transit and at rest. Zero-knowledge architecture.",
+        title: "Centralized Attendance Management",
+        description: "Organize recorded attendance information for review and administrative follow-up.",
       },
       {
-        title: "Enterprise Integration",
-        description: "Seamlessly connects with major ERPs, HRMS, and Active Directory systems via RESTful API and webhooks.",
+        title: "For Organizational Workflows",
+        description: "Consider how attendance records can fit the existing processes of your workplace or institution.",
       },
     ],
     applications: [
-      { title: "Corporate Offices", description: "Replace manual sign-in sheets with frictionless, tamper-proof clock-in/clock-out records." },
-      { title: "Manufacturing & Warehousing", description: "Withstand dusty, high-traffic environments while tracking shift attendance across large workforces." },
-      { title: "Healthcare & Education Facilities", description: "Verify identity for staff access and attendance where both hygiene and accuracy matter." },
+      { title: "Offices", description: "Keep staff attendance records in an office environment." },
+      { title: "Workplaces with Shift Schedules", description: "Support attendance tracking for teams working scheduled shifts." },
+      { title: "Education and Other Institutions", description: "Organize staff attendance at schools and institutional facilities." },
     ],
     benefits: [
-      { title: "99.9% Matching Accuracy", description: "Optical Silk ID sensing with active liveness detection virtually eliminates buddy-punching and spoofing." },
-      { title: "Seamless HR Integration", description: "RESTful API and webhook support sync attendance data directly into existing payroll and HR systems." },
-      { title: "Enterprise-Grade Data Security", description: "End-to-end AES-256 encryption and a zero-knowledge architecture protect biometric data at rest and in transit." },
+      { title: "Less Manual Record-Keeping", description: "Use a digital attendance process in place of paper registers." },
+      { title: "Consistent Timekeeping", description: "Keep attendance activity organized for routine workplace administration." },
+      { title: "Useful Attendance Visibility", description: "Make recorded attendance easier for authorized staff to review." },
     ],
     gallery: [
       "/biometric.jpg",
@@ -120,44 +119,44 @@ const products = [
     shortName: "Smart School Bell",
     tagline: "Smart Infrastructure",
     summary:
-      "Automated scheduling and multi-zone audio distribution for educational campuses. Ensure precise timing and clear communication across diverse facilities.",
+      "Schedule school bells and coordinate timed audio across learning spaces. Designed to help schools manage daily routines and communicate schedule changes.",
     description:
-      "A technically advanced, automated scheduling solution designed to replace obsolete mechanical bells with precision digital timing, custom audio zones, and centralized management. Built for modern educational facilities demanding reliability and minimal maintenance.",
+      "The Smart School Bell System helps schools manage bell schedules and timed announcements. It supports structured daily routines across educational facilities, with scheduling and audio distribution arranged around each school's needs.",
     heroImage: "/bell system.jpg",
     listImage: "/bell system.jpg",
     homeImage: "/bell system.jpg",
     theme: "blue",
     features: [
       {
-        title: "Microsecond Precision",
+        title: "Scheduled Bell Times",
         description:
-          "NTP-synchronized timing ensures absolute accuracy across all campus zones, eliminating drift typical in legacy systems.",
+          "Set bell times to support the daily timetable and recurring school routines.",
       },
       {
-        title: "Multi-Zone Audio Routing",
+        title: "Audio by Area",
         description:
-          "Configure custom audio alerts, emergency broadcasts, and standard bell tones independently for classrooms, hallways, and outdoor areas via a centralized dashboard.",
+          "Plan bell and audio coverage for the areas included in your school's installation.",
       },
       {
-        title: "Cloud-Native Management",
+        title: "Schedule Management",
         description:
-          "Manage schedules remotely through a secure, responsive web interface. Deploy firmware updates and monitor system health across multiple campuses from a single pane of glass.",
+          "Organize school bell schedules in a way that fits your timetable and operating routines.",
       },
       {
-        title: "Fail-Safe Operation",
+        title: "Designed for School Routines",
         description:
-          "Local caching of schedules guarantees uninterrupted operation even during network outages. Battery backup maintains timing integrity.",
+          "Use timed bell signals to help staff and students follow class changes and other scheduled activities.",
       },
     ],
     applications: [
-      { title: "K-12 Campuses", description: "Automate class-change bells, assemblies, and emergency alerts across every building." },
-      { title: "University & Multi-Building Campuses", description: "Coordinate independent bell schedules and zone-specific announcements from one dashboard." },
-      { title: "Factory & Shift-Based Facilities", description: "Repurpose the same scheduling engine for shift-change signals and safety drills." },
+      { title: "Schools", description: "Schedule bell signals around lessons, breaks, and the school day." },
+      { title: "Multi-Building Campuses", description: "Plan timed bell coverage across the buildings included in the campus setup." },
+      { title: "Education Facilities", description: "Support regular routines and scheduled announcements in learning environments." },
     ],
     benefits: [
-      { title: "Zero Timing Drift", description: "NTP synchronization keeps every zone perfectly aligned, eliminating the slow drift of mechanical bells." },
-      { title: "Centralized Control", description: "Update schedules for an entire district from a single web dashboard instead of visiting each building." },
-      { title: "Uninterrupted Operation", description: "Local schedule caching and battery backup keep bells ringing on time during a network or power outage." },
+      { title: "A More Predictable School Day", description: "Scheduled bell signals help mark class transitions and planned activities." },
+      { title: "Simpler Schedule Changes", description: "Update bell times to reflect changes to the school timetable." },
+      { title: "Clearer Daily Communication", description: "Use consistent audio signals to communicate routine schedule transitions." },
     ],
     gallery: [
       "/bell system.jpg",
@@ -178,11 +177,11 @@ const products = [
     slug: "day-counter",
     name: "Smart Day Counter",
     shortName: "Smart Day Counter",
-    tagline: "Precision Instrumentation",
+    tagline: "Day Counting for Workplaces and Projects",
     summary:
-      "Industrial-grade digital counters for tracking safety records, project timelines, and operational metrics with high visibility.",
+      "Display day counts for workplace safety milestones, project timelines, or other operational records that teams need to see at a glance.",
     description:
-      "An industrial-grade timekeeping module designed for extreme environments. Ensuring precise chronological tracking with fail-safe memory and ultra-low power consumption.",
+      "The Smart Day Counter provides a visible way to track elapsed days for a selected milestone or timeline. It can support workplace safety communication, project updates, and other settings where a shared day count is useful.",
     heroImage:
       "https://commons.wikimedia.org/wiki/Special:FilePath/USB_seven_segment_display_module_(48158381686).jpg?width=1200",
     listImage:
@@ -192,33 +191,33 @@ const products = [
     theme: "cyan",
     features: [
       {
-        title: "Non-Volatile Flash Memory",
+        title: "Visible Day Count",
         description:
-          "Retains count data indefinitely without external power. Critical for systems requiring absolute chronological integrity across power cycles and unexpected outages.",
+          "Show the current day count where staff and visitors can easily see it.",
       },
       {
-        title: "Ultra-Low Power Draw",
-        description: "Operates on micro-amps, making it suitable for battery-backed or solar-powered remote installations.",
+        title: "Track a Selected Milestone",
+        description: "Use a day count to communicate progress from a chosen start date or event.",
       },
       {
-        title: "Universal I/O Protocol",
-        description: "Standardized interfaces including RS-485 and Modbus for seamless integration with legacy and modern PLCs.",
+        title: "Useful Across Workflows",
+        description: "Apply day counting to safety milestones, project timelines, or operational schedules.",
       },
       {
-        title: "Industrial Hardening",
+        title: "Easy-to-Understand Communication",
         description:
-          "Encased in an IP67-rated machined aluminum shell. Resistant to extreme temperatures, vibration, and electromagnetic interference.",
+          "Make elapsed time easier to communicate with a dedicated digital counter.",
       },
     ],
     applications: [
-      { title: "Workplace Safety Milestones", description: "Track days-since-last-incident across factories, warehouses, and job sites." },
-      { title: "Project & Production Timelines", description: "Display elapsed days for construction phases, production runs, or maintenance cycles." },
-      { title: "Regulatory & Compliance Records", description: "Maintain a tamper-evident chronological log for safety audits and inspections." },
+      { title: "Workplace Safety", description: "Display the number of days since a selected safety milestone." },
+      { title: "Projects", description: "Show elapsed days for a project phase, target, or other timeline." },
+      { title: "Operational Areas", description: "Make a shared day count visible to teams across a facility." },
     ],
     benefits: [
-      { title: "Eliminates Manual Tracking", description: "Replaces error-prone whiteboards and paper logs with an automated, always-accurate display." },
-      { title: "Set-and-Forget Reliability", description: "Non-volatile memory and ultra-low power draw mean the count survives outages without a battery swap schedule." },
-      { title: "Fast, Low-Cost Deployment", description: "Simple RS-485/Modbus wiring integrates with existing PLCs and signage without custom engineering." },
+      { title: "Clear Shared Updates", description: "Give teams and visitors a visible reference for a selected day count." },
+      { title: "Less Manual Updating", description: "Use a dedicated counter instead of relying only on handwritten day totals." },
+      { title: "Adaptable Uses", description: "Configure the counter around the milestone or timeline your organization wants to communicate." },
     ],
     gallery: [
       "https://commons.wikimedia.org/wiki/Special:FilePath/Digital_tally_counter.jpg?width=1200",

@@ -10,11 +10,12 @@ import { t } from "../../lib/i18n";
 export const metadata = {
   title: "AI Smart Parking Gate System | CIKETTECH",
   description:
-    "AI Smart Parking Gate System - product detail, features, gallery and quote form.",
+    "Explore CIKETTECH's AI Smart Parking Gate System for organized vehicle entry, coordinated gate control, and parking access records. Designed for business and institutional facilities.",
 };
 
 type ProductDetail = {
   name: string;
+  tagline?: string | null;
   description: string;
   heroImage: string;
   features: { title: string; description: string }[];
@@ -30,6 +31,7 @@ export default async function ParkingGatePage() {
     getLocale(),
     getTranslations(),
   ]);
+  const gallery = [...new Set(product.gallery)];
 
   return (
     <main>
@@ -37,6 +39,7 @@ export default async function ParkingGatePage() {
 
       <section className="product-hero">
         <div className="product-hero-copy">
+          {product.tagline && <p className="eyebrow">{product.tagline}</p>}
           <h1>{product.name}</h1>
           <p>{product.description}</p>
           <div className="hero-actions">
@@ -64,7 +67,7 @@ export default async function ParkingGatePage() {
 
       <section className="capabilities-section">
         <div className="section-heading">
-          <h2>Core Features</h2>
+          <h2>Designed for a More Organized Parking Entry</h2>
         </div>
 
         <div className="capabilities-grid">
@@ -114,16 +117,16 @@ export default async function ParkingGatePage() {
         <div className="gallery-grid">
           <div className="gallery-large">
             <Image
-              src={resolveMediaUrl(product.gallery[0])}
+              src={resolveMediaUrl(gallery[0])}
               alt={`${product.name} gallery photo 1`}
               fill
               style={{ objectFit: "contain" }}
               sizes="(max-width: 900px) 100vw, 640px"
-              unoptimized={product.gallery[0].includes("wikimedia.org")}
+              unoptimized={gallery[0].includes("wikimedia.org")}
             />
           </div>
           <div>
-            {product.gallery.slice(1).map((src, i) => (
+            {gallery.slice(1).map((src, i) => (
               <div key={src} className="gallery-small">
                 <Image
                   src={resolveMediaUrl(src)}
@@ -169,8 +172,8 @@ export default async function ParkingGatePage() {
         <div className="section-heading">
           <h2>{t(locale, "requestAQuote", translations)}</h2>
           <p>
-            Contact our engineering sales team to discuss tailored system
-            requirements.
+            Tell us about your entrance, parking layout, and access requirements.
+            Our team can help you assess a suitable setup for your facility.
           </p>
         </div>
         <div className="quote-card-wrapper">

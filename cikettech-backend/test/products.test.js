@@ -86,7 +86,7 @@ describe("settings", () => {
 describe("public content endpoints", () => {
   test("product catalog uses the named product photos", async () => {
     const expectedImages = {
-      "parking-gate": "/smart parking.jpg",
+      "parking-gate": "/smart-parking.PNG",
       "biometric-attendance": "/biometric.jpg",
       "school-bell": "/bell system.jpg",
     };
@@ -99,6 +99,14 @@ describe("public content endpoints", () => {
       const list = await request(app).get("/api/products");
       expect(list.body.find((product) => product.slug === slug).image).toBe(image);
     }
+
+    const home = await request(app).get("/api/home");
+    expect(home.status).toBe(200);
+    const parkingGate = home.body.featuredProducts.find(
+      (product) => product.slug === "parking-gate",
+    );
+    expect(parkingGate.image).toBe("/smart-parking.PNG");
+    expect(parkingGate.description).toContain("AI-assisted recognition");
   });
 
   test("only published news/projects/awards are exposed publicly", async () => {

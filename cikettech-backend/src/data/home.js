@@ -3,89 +3,97 @@ const { getLocalizedProducts } = require("./products");
 const content = {
   en: {
     hero: {
-      heading: "Intelligent Technology Designed and Manufactured in Ethiopia",
+      heading: "Smart Electronic Products, Designed and Made in Ethiopia",
       subheading:
-        "We engineer precision smart solutions for modern infrastructure, advancing local technology to global standards.",
+        "CIKETTECH designs and manufactures practical technology for safer access, better attendance, and smarter operations—from parking systems to solutions for schools and workplaces.",
       image: "computer processor hardware",
       viewProducts: "View Products",
     },
     featured: {
-      heading: "Featured Products",
-      subheading: "Smart solutions engineered for efficiency and security.",
+      heading: "Technology for Everyday Operations",
+      subheading:
+        "Explore smart products for parking, workforce attendance, schools, and daily operations.",
       viewDetails: "View Details",
     },
-    why: { heading: "Why Choose CIKETTECH" },
+    why: { heading: "Built on Local Expertise" },
     cta: {
-      heading: "Looking for a Smart Electronic Solution?",
-      body: "Contact us today to discuss how our intelligent systems can optimize your infrastructure and operations.",
+      heading: "Have a Technology Need to Solve?",
+      body: "Tell us about your facility, school, or project. We can help you find the right product or discuss an electronic solution for your needs.",
       requestQuote: "Request a Quote",
       contactSales: "Contact Sales",
     },
     about: {
-      eyebrow: "About Us",
-      heading: "Pioneering Local Innovation",
+      eyebrow: "Designed and Made in Ethiopia",
+      heading: "Local engineering for practical challenges.",
       body:
-        "CIKETTECH is a forward-thinking technology company based in Ethiopia, dedicated to designing, developing, and manufacturing intelligent electronic systems. We bridge the gap between complex engineering and practical everyday solutions, ensuring quality, reliability, and precision in every product we create.",
+        "CIKETTECH is an Ethiopian technology company that designs and manufactures smart electronic products. Our work brings together embedded systems, artificial intelligence, computer vision, and electronics development to address real needs in schools, workplaces, and facilities.",
     },
     reasons: [
       {
         key: "precision",
-        title: "Precision Engineering",
-        description: "Designed with rigorous standards to ensure flawless operation in demanding environments.",
+        title: "Practical Product Engineering",
+        description:
+          "We turn real operational needs into focused electronic products, drawing on embedded systems and product development.",
       },
       {
         key: "reliability",
-        title: "Reliability",
-        description: "Built with high-quality components to deliver consistent performance day after day.",
+        title: "Technology That Connects",
+        description:
+          "Our capabilities span electronics, artificial intelligence, computer vision, and IoT connectivity.",
       },
       {
         key: "global",
-        title: "Local Expertise, Global Standards",
-        description: "Proudly manufactured in Ethiopia while adhering to international technological benchmarks.",
+        title: "Made in Ethiopia",
+        description:
+          "We design and manufacture smart electronic products locally, contributing to Ethiopia's growing technology and manufacturing sector.",
       },
     ],
   },
   am: {
     hero: {
-      heading: "በኢትዮጵያ የተነደፈ እና የተመረተ ብልህ ቴክኖሎጂ",
+      heading: "በኢትዮጵያ የተነደፉና የተመረቱ ብልህ የኤሌክትሮኒክስ ምርቶች",
       subheading:
-        "ለዘመናዊ መሠረተ ልማት ትክክለኛ ብልህ መፍትሄዎችን እንነድፋለን፣ የአገር ውስጥ ቴክኖሎጂን ወደ ዓለም አቀፍ ደረጃ በማሳደግ።",
+        "CIKETTECH የተሻለ የመግቢያ ቁጥጥር፣ የሰራተኞች መገኘት ክትትል እና ውጤታማ አሰራርን የሚደግፉ ተግባራዊ ቴክኖሎጂዎችን ይነድፋል፤ ከፓርኪንግ ስርዓቶች እስከ ለትምህርት ቤቶችና ለስራ ቦታዎች የሚሆኑ መፍትሄዎች።",
       image: "computer processor hardware",
       viewProducts: "ምርቶችን ይመልከቱ",
     },
     featured: {
-      heading: "ተለይተው የቀረቡ ምርቶች",
-      subheading: "ለቅልጥፍና እና ደህንነት የተነደፉ ብልህ መፍትሄዎች።",
+      heading: "ለዕለታዊ አሰራር የሚሆኑ ቴክኖሎጂዎች",
+      subheading:
+        "ለፓርኪንግ፣ ለሰራተኞች መገኘት ክትትል፣ ለትምህርት ቤቶች እና ለዕለታዊ አሰራር የተዘጋጁ ብልህ ምርቶችን ይመልከቱ።",
       viewDetails: "ዝርዝር ይመልከቱ",
     },
-    why: { heading: "ለምን ሲከትቴክን ይምረጡ" },
+    why: { heading: "በአገር ውስጥ ብቃት የተገነባ" },
     cta: {
-      heading: "ብልህ የኤሌክትሮኒክስ መፍትሄ እየፈለጉ ነው?",
-      body: "ብልህ ስርዓቶቻችን መሠረተ ልማትዎን እና ስራዎችዎን እንዴት ማሻሻል እንደሚችሉ ለመወያየት ዛሬ ያግኙን።",
+      heading: "ሊፈቱት የሚፈልጉት የቴክኖሎጂ ፍላጎት አለ?",
+      body: "ስለ ተቋምዎ፣ ትምህርት ቤትዎ ወይም ፕሮጀክትዎ ይንገሩን። ተስማሚ ምርት እንዲያገኙ ወይም ለፍላጎትዎ የኤሌክትሮኒክስ መፍትሄ እንዲያቅዱ እንረዳዎታለን።",
       requestQuote: "ዋጋ ጠይቅ",
       contactSales: "የሽያጭ ክፍልን ያግኙ",
     },
     about: {
-      eyebrow: "ስለ እኛ",
-      heading: "የአገር ውስጥ ፈጠራን በመምራት ላይ",
+      eyebrow: "በኢትዮጵያ የተነደፉና የተመረቱ",
+      heading: "ለተግባራዊ ፍላጎቶች የአገር ውስጥ ምህንድስና።",
       body:
-        "ሲከትቴክ በኢትዮጵያ የሚገኝ የወደፊት አስተሳሰብ ያለው የቴክኖሎጂ ኩባንያ ሲሆን፣ ብልህ የኤሌክትሮኒክስ ስርዓቶችን በመንደፍ፣ በማልማት እና በማምረት ላይ ያተኮረ ነው። ውስብስብ ምህንድስናን ከዕለታዊ ተግባራዊ መፍትሄዎች ጋር በማገናኘት፣ በምንፈጥረው እያንዳንዱ ምርት ላይ ጥራትን፣ አስተማማኝነትን እና ትክክለኛነትን እናረጋግጣለን።",
+        "CIKETTECH ብልህ የኤሌክትሮኒክስ ምርቶችን የሚነድፍና የሚያመርት የኢትዮጵያ የቴክኖሎጂ ኩባንያ ነው። ስራችን የተካተቱ ስርዓቶችን፣ ሰው ሰራሽ አስተውሎትን፣ የኮምፒውተር እይታን እና የኤሌክትሮኒክስ ምርት ልማትን በማጣመር በትምህርት ቤቶች፣ በስራ ቦታዎች እና በተቋማት ያሉ ተግባራዊ ፍላጎቶችን ይመልሳል።",
     },
     reasons: [
       {
         key: "precision",
-        title: "ትክክለኛ ምህንድስና",
-        description: "በአስቸጋሪ አካባቢዎች ውስጥ ያለ ስህተት አሠራርን ለማረጋገጥ በጥብቅ ደረጃዎች የተነደፈ።",
+        title: "ተግባራዊ የምርት ምህንድስና",
+        description:
+          "የተካተቱ ስርዓቶችንና የምርት ልማትን በመጠቀም ተግባራዊ ፍላጎቶችን ወደ ተስማሚ የኤሌክትሮኒክስ ምርቶች እንቀይራለን።",
       },
       {
         key: "reliability",
-        title: "አስተማማኝነት",
-        description: "ቀን በቀን ወጥ የሆነ አፈጻጸምን ለማቅረብ በከፍተኛ ጥራት ክፍሎች የተገነባ።",
+        title: "የተገናኙ ቴክኖሎጂዎች",
+        description:
+          "ብቃታችን ኤሌክትሮኒክስን፣ ሰው ሰራሽ አስተውሎትን፣ የኮምፒውተር እይታን እና የአይኦቲ ግንኙነትን ያካትታል።",
       },
       {
         key: "global",
-        title: "የአገር ውስጥ ብቃት፣ ዓለም አቀፍ ደረጃዎች",
-        description: "ከዓለም አቀፍ የቴክኖሎጂ መመዘኛዎች ጋር በመጣጣም በኢትዮጵያ በኩራት የሚመረት።",
+        title: "በኢትዮጵያ የተመረተ",
+        description:
+          "በኢትዮጵያ ውስጥ ብልህ የኤሌክትሮኒክስ ምርቶችን በመንደፍና በማምረት ለአገሪቱ የቴክኖሎጂና የማምረቻ ዘርፍ እድገት እናበረክታለን።",
       },
     ],
   },

@@ -54,7 +54,7 @@ export default function AdminPortalShell({ children }: { children: React.ReactNo
       <aside className="admin-sidebar">
         <div>
           <div className="admin-sidebar-logo">
-            <Image src="/cikettech-logo-mark.svg" alt="CIKETTECH" width={44} height={44} priority />
+            <Image src="/CIKET1.PNG" alt="CIKETTECH" width={44} height={44} priority />
           </div>
           <p className="admin-sidebar-tag">Admin Portal</p>
         </div>

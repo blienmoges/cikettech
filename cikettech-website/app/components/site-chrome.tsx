@@ -19,7 +19,7 @@ const navItems = [
 function Logo() {
   return (
     <Link className="logo" href="/" aria-label="CIKETTECH home">
-      <Image src="/cikettech-logo-mark.svg" alt="CIKETTECH" width={64} height={64} priority />
+      <Image src="/CIKET1.PNG" alt="CIKETTECH" width={64} height={64} priority />
     </Link>
   );
 }

@@ -15,7 +15,7 @@ export default function ForgotPasswordPage() {
         <div className="admin-login-side">
           <div>
             <div className="admin-login-logo">
-              <Image src="/cikettech-logo-mark.svg" alt="CIKETTECH" width={54} height={54} priority />
+              <Image src="/CIKET1.PNG" alt="CIKETTECH" width={54} height={54} priority />
             </div>
             <p className="admin-login-tag">Admin Portal</p>
           </div>

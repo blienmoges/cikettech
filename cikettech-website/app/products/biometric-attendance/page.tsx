@@ -8,9 +8,9 @@ import { getLocale } from "../../lib/locale";
 import { t } from "../../lib/i18n";
 
 export const metadata = {
-  title: "Precision Biometric Attendance System | CIKETTECH",
+  title: "Biometric Attendance System | CIKETTECH",
   description:
-    "Precision Biometric Attendance System product page with architecture and quote form.",
+    "Explore CIKETTECH's Biometric Attendance System for recording staff attendance and organizing workplace timekeeping.",
 };
 
 type ProductDetail = {
@@ -39,7 +39,7 @@ export default async function BiometricAttendancePage() {
 
       <section className="product-hero">
         <div className="product-hero-copy">
-          <p className="eyebrow">Next-Gen Access Control</p>
+          <p className="eyebrow">Staff Attendance and Timekeeping</p>
           <h1>{product.name}</h1>
           <p>{product.description}</p>
           <div className="hero-actions">
@@ -66,8 +66,8 @@ export default async function BiometricAttendancePage() {
 
       <section className="capabilities-section">
         <div className="section-heading">
-          <h2>System Architecture</h2>
-          <p>Technical specifications and core capabilities.</p>
+          <h2>Attendance System Features</h2>
+          <p>Explore the system's attendance-recording and management capabilities.</p>
         </div>
 
         <div className="capabilities-grid">
@@ -163,12 +163,12 @@ export default async function BiometricAttendancePage() {
               <h3>{integration.title}</h3>
               <p>{integration.description}</p>
               <Link className="text-action" href="/technology">
-                View API Docs
+                Explore Our Technology
               </Link>
             </article>
           )}
 
-          <div className="cap-placeholder">Integration Topology</div>
+          <div className="cap-placeholder">System Overview</div>
         </div>
       </section>
 
@@ -263,7 +263,8 @@ export default async function BiometricAttendancePage() {
         <div className="section-heading">
           <h2>{t(locale, "requestAQuote", translations)}</h2>
           <p>
-            Provide your facility details for a customized implementation plan.
+            Share your workplace or institution's attendance requirements so we
+            can discuss the right next step.
           </p>
         </div>
         <div className="quote-card-wrapper">
